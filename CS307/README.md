@@ -3,6 +3,21 @@
 ## Overview
 Data science and notebook-heavy labs/projects with Python environments.
 
+## What I Learned
+- Strengthened practical data analysis skills from raw data cleaning through interpretation.
+- Learned to communicate findings clearly using notebooks, visualizations, and final project narratives.
+- Improved repeatable experiment structure across multiple labs.
+
+## Skills Applied
+- Python data stack workflows (`pandas`, notebook analysis, plotting).
+- Exploratory data analysis, feature exploration, and result interpretation.
+- Project organization across labs, notes, and a cumulative final project.
+
+## What This Folder Contains
+- `Final_Project/`: end-to-end project artifacts and final deliverables.
+- `Notes/`: class notes and supporting references.
+- `lab1/` to `lab6/`: lab exercises covering progressive data science concepts.
+
 ## Folder Organization
 - `Final_Project/`
 - `Notes/`

@@ -3,6 +3,22 @@
 ## Overview
 Survey/data analysis coursework focused on health and public datasets.
 
+## What I Learned
+- Practiced working with public and health-focused datasets from ingestion to reporting.
+- Developed stronger habits for documenting assumptions, transformations, and limitations.
+- Improved ability to connect survey-style data to meaningful written conclusions.
+
+## Skills Applied
+- Data preparation and exploratory analysis in notebook/report workflows.
+- Basic statistical reasoning for descriptive and comparative analysis.
+- Documentation-first organization across datasets, notebooks, and reports.
+
+## What This Folder Contains
+- `archive/`: older or superseded class artifacts kept for reference.
+- `datasets/`: source data used in analyses and assignments.
+- `notebooks/`: analysis notebooks and working computations.
+- `reports/`: written deliverables summarizing methods and findings.
+
 ## Folder Organization
 - `archive/`
 - `datasets/`

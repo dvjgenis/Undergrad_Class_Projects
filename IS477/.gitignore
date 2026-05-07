@@ -1,0 +1,16 @@
+fred_apikey.txt
+lab2/secret.txt
+lab2/private_data.csv
+lab4/data
+fred_apikey_assignment_1.txt
+assignment1/data/sp500.csv
+assignment1/data/sp500.sha
+lab6/data
+assignment2/data
+assignment2/flights.drawio
+lab8/data
+lab8/comparisonA.txt
+lab8/comparisonB.txt
+__pycache__
+lab9/data
+.snakemake

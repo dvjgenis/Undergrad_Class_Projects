@@ -1,0 +1,31 @@
+rule reproduce_all:
+    input:
+        "results/uci_adult_results.txt",
+        "results/adult_reconstruction_results.txt",
+        "results/income_threshold.pdf"  
+
+rule prepare_data:
+    output:
+        "data/adult/adult.data",
+        "data/adult/adult.test",
+        "data/folktables/adult_reconstruction.csv"
+    shell:
+        "python scripts/prepare_data.py"
+
+rule reproduce_adult:
+    input:
+        "data/adult/adult.data",
+        "data/adult/adult.test"
+    output:
+        "results/uci_adult_results.txt"
+    shell:
+        "python scripts/reproduce_adult.py"
+
+rule reproduce_folktables:
+    input:
+        "data/folktables/adult_reconstruction.csv"
+    output:
+        "results/adult_reconstruction_results.txt",
+        "results/income_threshold.pdf"
+    shell:
+        "python scripts/reproduce_reconstructed.py"

@@ -1,0 +1,7 @@
+matplotlib
+numpy
+pandas
+pyarrow
+requests
+snakemake
+scikit-learn

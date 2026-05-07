@@ -3,6 +3,23 @@
 ## Overview
 Data visualization coursework with homework, notebooks, and final projects.
 
+## What I Learned
+- Learned how design choices in charts and dashboards affect interpretation quality.
+- Practiced selecting visualization types that match data shape and audience goals.
+- Improved storytelling with visuals by pairing plots with concise explanatory context.
+
+## Skills Applied
+- Data visualization workflows in notebooks and project settings.
+- Visual encoding decisions (color, scale, labels, and layout) for clarity.
+- Iterative refinement of charts from exploratory drafts to polished outputs.
+
+## What This Folder Contains
+- `archive/`: historical or backup class materials.
+- `assignments/`: coursework submissions focused on visualization concepts.
+- `notebooks/`: analysis and plotting notebooks.
+- `projects/`: larger, multi-step visualization projects.
+- `reports/`: written explanations and presentation-ready outputs.
+
 ## Folder Organization
 - `archive/`
 - `assignments/`

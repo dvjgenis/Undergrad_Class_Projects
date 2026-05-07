@@ -3,6 +3,20 @@
 ## Overview
 Systems/programming coursework artifacts and milestone submissions.
 
+## What I Learned
+- Built stronger fundamentals in systems-level programming and implementation workflows.
+- Practiced breaking larger programming milestones into smaller, testable deliverables.
+- Improved debugging strategies for low-level or performance-sensitive code paths.
+
+## Skills Applied
+- Systems programming and code organization for multi-part machine problems.
+- Terminal-based development workflows and iterative debugging.
+- Reading technical specs/prompts and translating them into working implementations.
+
+## What This Folder Contains
+- `MP0.1/`, `MP0.2/`, `MP0.3/`: milestone submissions and supporting source files for early machine problems.
+- `docs/`: architecture and workflow documentation for how class artifacts are organized.
+
 ## Folder Organization
 - `MP0.1/`
 - `MP0.2/`

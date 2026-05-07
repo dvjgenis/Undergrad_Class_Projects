@@ -1,0 +1,105 @@
+,No,Branch_Code,Original_Name,Name,Generation,Height,Weight,Type1,Type2,Ability1,Ability2,Ability_Hidden,Color,Gender_Male,Gender_Female,Gender_Unknown,Egg_Steps,Egg_Group1,Egg_Group2,Get_Rate,Base_Experience,Experience_Type,Category,Mega_Evolution_Flag,Region_Form,HP,Attack,Defense,SP_Attack,SP_Defense,Speed,Total,E_HP,E_Attack,E_Defense,E_SP_Attack,E_SP_Defense,E_Speed
+700,575,575_0,Gothorita,Gothorita,5,0.7,18.0,Psychic,,Frisk,Competitive,Shadow Tag,Purple,25.0,75.0,0,20,Human-Like,,100,137,1059860,Ordinary,,,60,45,70,75,85,55,390,0,0,0,0,2,0
+616,503,503_0,Samurott,Samurott,5,1.5,94.6,Water,,Torrent,,Shell Armor,Blue,87.5,12.5,0,20,Ground,,45,264,1059860,Ordinary,,,95,100,85,108,70,70,528,0,0,0,3,0,0
+1024,853,853_0,Grapploct,Grapploct,8,1.6,39.0,Fighting,,Limber,,Technician,Blue,50.0,50.0,0,25,Water1,Human-Like,45,168,1059860,Ordinary,,,80,118,90,70,80,42,480,0,2,0,0,0,0
+728,600,600_0,Klang,Klang,5,0.6,51.0,Steel,,Plus,Minus,Clear Body,Gray,0.0,0.0,100,20,Mineral,,60,154,1059860,Ordinary,,,60,80,95,70,85,50,440,0,0,2,0,0,0
+608,495,495_0,Snivy,Snivy,5,0.6,8.1,Grass,,Overgrow,,Contrary,Green,87.5,12.5,0,20,Ground,Grass,45,62,1059860,Ordinary,,,45,45,55,45,55,63,308,0,0,0,0,0,1
+655,540,540_0,Sewaddle,Sewaddle,5,0.3,2.5,Bug,Grass,Swarm,Chlorophyll,Overcoat,Yellow,50.0,50.0,0,15,Bug,,255,62,1059860,Ordinary,,,45,53,70,40,60,42,310,0,0,1,0,0,0
+438,358,358_0,Chimecho,Chimecho,3,0.6,1.0,Psychic,,Levitate,,,Blue,50.0,50.0,0,25,Amorphous,,45,159,800000,Ordinary,,,75,50,80,95,90,65,455,0,0,0,1,1,0
+459,376,376_0,Metagross,Metagross,3,1.6,550.0,Steel,Psychic,Clear Body,,Light Metal,Blue,0.0,0.0,100,40,Mineral,,3,300,1250000,Ordinary,,,80,135,130,95,90,70,600,0,0,3,0,0,0
+1013,843,843_0,Silicobra,Silicobra,8,2.2,7.6,Ground,,Sand Spit,Shed Skin,Sand Veil,Green,50.0,50.0,0,20,Ground,Dragon,255,63,1000000,Ordinary,,,52,57,75,35,50,46,315,0,0,1,0,0,0
+302,241,241_0,Miltank,Miltank,2,1.2,75.5,Normal,,Thick Fat,Scrappy,Sap Sipper,Pink,0.0,100.0,0,20,Ground,,45,172,1250000,Ordinary,,,95,80,105,40,70,100,490,0,0,2,0,0,0
+956,789,789_0,Cosmog,Cosmog,7,0.2,0.1,Psychic,,Unaware,,,Blue,0.0,0.0,100,120,Undiscovered,,45,40,1250000,Legendary,,,43,29,31,29,31,37,200,1,0,0,0,0,0
+328,263,263_0,Zigzagoon,Zigzagoon,3,0.4,17.5,Normal,,Pickup,Gluttony,Quick Feet,Brown,50.0,50.0,0,15,Ground,,255,56,1000000,Ordinary,,,38,30,41,30,41,60,240,0,0,0,0,0,1
+845,705,705_0,Sliggoo,Sliggoo,6,0.8,17.5,Dragon,,Sap Sipper,Hydration,Gooey,Purple,50.0,50.0,0,40,Dragon,,45,158,1250000,Ordinary,,,68,75,53,83,113,60,452,0,0,0,0,2,0
+32,25,25_0,Pikachu,Pikachu,1,0.4,6.0,Electric,,Static,,Lightning Rod,Yellow,50.0,50.0,0,10,Ground,Fairy,190,112,1000000,Ordinary,,,35,55,40,50,50,90,320,0,0,0,0,0,2
+50,38,38_1,Ninetales,Alolan Ninetales,7,1.1,19.9,Ice,Fairy,Snow Cloak,,Snow Warning,Blue,25.0,75.0,0,20,Ground,,75,177,1000000,Ordinary,,Alolan,73,67,75,81,100,109,505,0,0,0,0,0,2
+1127,940,940_0,Wattrel,Wattrel,9,0.4,3.6,Electric,Flying,Wind Power,Volt Absorb,Competitive,Black,50.0,50.0,0,20,Water1,Flying,180,56,1059860,Ordinary,,,40,40,35,55,40,70,280,0,0,0,0,0,1
+337,270,270_0,Lotad,Lotad,3,0.5,2.6,Water,Grass,Swift Swim,Rain Dish,Own Tempo,Green,50.0,50.0,0,15,Water1,Grass,255,44,1059860,Ordinary,,,40,30,30,40,50,30,220,0,0,0,0,1,0
+869,718,718_2,Zygarde,Zygarde Complete Form,6,4.5,610.0,Dragon,Ground,Power Construct,,,Black,0.0,0.0,100,120,Undiscovered,,3,354,1250000,Legendary,,,216,100,121,91,95,85,708,3,0,0,0,0,0
+111,83,83_0,Farfetch'd,Farfetch'd,1,0.8,15.0,Normal,Flying,Keen Eye,Inner Focus,Defiant,Brown,50.0,50.0,0,20,Flying,Ground,45,132,1000000,Ordinary,,,52,90,55,58,62,60,377,0,1,0,0,0,0
+741,613,613_0,Cubchoo,Cubchoo,5,0.5,8.5,Ice,,Snow Cloak,Slush Rush,Rattled,White,50.0,50.0,0,20,Ground,,120,61,1000000,Ordinary,,,55,70,40,60,40,40,305,0,1,0,0,0,0
+562,460,460_0,Abomasnow,Abomasnow,4,2.2,135.5,Grass,Ice,Snow Warning,,Soundproof,White,50.0,50.0,0,20,Monster,Grass,60,173,1250000,Ordinary,,,90,92,75,92,85,60,494,0,1,0,1,0,0
+1083,902,902_1,Basculegion,Basculegion Felame,8,3.0,110.0,Water,Ghost,Swift Swim,Adaptability,Mold Breaker,Green,0.0,100.0,0,20,Water2,,45,265,1000000,Ordinary,,,120,92,65,100,75,78,530,3,0,0,0,0,0
+144,108,108_0,Lickitung,Lickitung,1,1.2,65.5,Normal,,Own Tempo,Oblivious,Cloud Nine,Pink,50.0,50.0,0,20,Monster,,45,77,1000000,Ordinary,,,90,55,75,60,75,30,385,2,0,0,0,0,0
+820,681,681_0,Aegislash,Aegislash Shield Form,6,1.7,53.0,Steel,Ghost,Stance Change,,,Brown,50.0,50.0,0,20,Mineral,,45,250,1000000,Ordinary,,,60,50,140,50,140,60,500,0,0,2,0,1,0
+807,669,669_0,Flabebe,Flabebe,6,0.1,0.1,Fairy,,Flower Veil,,Symbiosis,White,0.0,100.0,0,20,Fairy,,225,61,1000000,Ordinary,,,44,38,39,61,79,42,303,0,0,0,0,1,0
+572,469,469_0,Yanmega,Yanmega,4,1.9,51.5,Bug,Flying,Speed Boost,Tinted Lens,Frisk,Green,50.0,50.0,0,20,Bug,,30,180,1000000,Ordinary,,,86,76,86,116,56,95,515,0,2,0,0,0,0
+523,424,424_0,Ambipom,Ambipom,4,1.2,20.3,Normal,,Technician,Pickup,Skill Link,Purple,50.0,50.0,0,20,Ground,,45,169,800000,Ordinary,,,75,100,66,60,66,115,482,0,0,0,0,0,2
+846,705,705_1,Sliggoo,Hisuian Sliggoo,8,0.7,68.5,Steel,Dragon,Sap Sipper,Shell Armor,Gooey,Purple,50.0,50.0,0,40,Dragon,,45,158,1250000,Ordinary,,Hisuian,58,75,83,83,113,40,452,0,0,0,0,2,0
+1018,848,848_0,Toxel,Toxel,8,0.4,11.0,Electric,Poison,Rattled,Static,Klutz,Purple,50.0,50.0,0,25,Undiscovered,,75,48,1059860,Ordinary,,,40,38,35,54,35,40,242,0,0,0,1,0,0
+360,292,292_0,Shedinja,Shedinja,3,0.8,1.2,Bug,Ghost,Wonder Guard,,,Brown,0.0,0.0,100,15,Mineral,,45,83,600000,Ordinary,,,1,90,45,30,30,40,236,2,0,0,0,0,0
+1076,898,898_0,Calyrex,Calyrex,8,1.1,7.7,Psychic,Grass,Unnerve,,,Green,0.0,0.0,100,120,Undiscovered,,3,250,1250000,Legendary,,,100,80,80,80,80,80,500,3,0,0,0,0,0
+18,15,15_0,Beedrill,Beedrill,1,1.0,29.5,Bug,Poison,Swarm,,Sniper,Yellow,50.0,50.0,0,15,Bug,,45,198,1000000,Ordinary,,,65,90,40,45,80,75,395,0,2,0,0,1,0
+1118,931,931_3,Squawkabilly,Squawkabilly White Plumage,9,0.6,2.4,Normal,Flying,Intimidate,Guts,Sheer Force,Green,50.0,50.0,0,15,Flying,,190,146,600000,Ordinary,,,82,96,51,45,51,92,417,0,1,0,0,0,0
+710,585,585_0,Deerling,Deerling Spring Form,5,0.6,19.5,Normal,Grass,Chlorophyll,Sap Sipper,Serene Grace,Pink,50.0,50.0,0,20,Ground,,190,67,1000000,Ordinary,,,60,60,50,40,50,75,335,0,0,0,0,0,1
+967,800,800_0,Necrozma,Necrozma,7,2.4,230.0,Psychic,,Prism Armor,,,Black,0.0,0.0,100,120,Undiscovered,,255,300,1250000,Legendary,,,97,107,101,127,89,79,600,0,1,0,2,0,0
+163,124,124_0,Jynx,Jynx,1,1.4,40.6,Ice,Psychic,Oblivious,Forewarn,Dry Skin,Red,0.0,100.0,0,25,Human-Like,,45,159,1000000,Ordinary,,,65,50,35,115,95,95,455,0,0,0,2,0,0
+207,157,157_0,Typhlosion,Typhlosion,2,1.7,79.5,Fire,,Blaze,,Flash Fire,Yellow,87.5,12.5,0,20,Ground,,45,267,1059860,Ordinary,,,78,84,78,109,85,100,534,0,0,0,3,0,0
+694,570,570_1,Zorua,Hisuian Zorua,8,0.7,12.5,Normal,Ghost,Illusion,,,Gray,87.5,12.5,0,25,Ground,,75,66,1059860,Ordinary,,Hisuian,35,60,40,85,40,70,330,0,0,0,1,0,0
+557,455,455_0,Carnivine,Carnivine,4,1.4,27.0,Grass,,Levitate,,,Green,50.0,50.0,0,25,Grass,,200,159,1250000,Ordinary,,,74,100,72,90,72,46,454,0,2,0,0,0,0
+264,209,209_0,Snubbull,Snubbull,2,0.6,7.8,Fairy,,Intimidate,Run Away,Rattled,Pink,25.0,75.0,0,20,Ground,Fairy,190,60,800000,Ordinary,,,60,80,50,40,40,30,300,0,1,0,0,0,0
+1091,909,909_0,Fuecoco,Fuecoco,9,0.4,9.8,Fire,,Blaze,,Unaware,Red,87.5,12.5,0,20,Ground,,45,62,1059860,Ordinary,,,67,45,59,63,40,36,310,1,0,0,0,0,0
+639,525,525_0,Boldore,Boldore,5,0.9,102.0,Rock,,Sturdy,Weak Armor,Sand Force,Blue,50.0,50.0,0,15,Mineral,,120,137,1059860,Ordinary,,,70,105,105,50,40,20,390,0,1,1,0,0,0
+441,360,360_0,Wynaut,Wynaut,3,0.6,14.0,Psychic,,Shadow Tag,,Telepathy,Blue,50.0,50.0,0,20,Undiscovered,,125,52,1000000,Ordinary,,,95,23,48,23,48,23,260,1,0,0,0,0,0
+1149,962,962_0,Bombirdier,Bombirdier,9,1.5,42.9,Flying,Dark,Big Pecks,Keen Eye,Rocky Payload,White,50.0,50.0,0,35,Flying,,25,243,1250000,Ordinary,,,70,103,85,60,85,82,485,0,2,0,0,0,0
+231,180,180_0,Flaaffy,Flaaffy,2,0.8,13.3,Electric,,Static,,Plus,Pink,50.0,50.0,0,20,Monster,Ground,120,128,1059860,Ordinary,,,70,55,55,80,60,45,365,0,0,0,2,0,0
+813,675,675_0,Pangoro,Pangoro,6,2.1,136.0,Fighting,Dark,Iron Fist,Mold Breaker,Scrappy,White,50.0,50.0,0,25,Ground,Human-Like,65,173,1000000,Ordinary,,,95,124,78,69,71,58,495,0,2,0,0,0,0
+908,748,748_0,Toxapex,Toxapex,7,0.7,14.5,Poison,Water,Merciless,Limber,Regenerator,Blue,50.0,50.0,0,20,Water1,,75,173,1000000,Ordinary,,,50,63,152,53,142,35,495,0,0,2,0,0,0
+627,513,513_0,Pansear,Pansear,5,0.6,11.0,Fire,,Gluttony,,Blaze,Red,87.5,12.5,0,20,Ground,,190,63,1000000,Ordinary,,,50,53,48,53,48,64,316,0,0,0,0,0,1
+38,28,28_1,Sandslash,Alolan Sandslash,7,1.2,55.0,Ice,Steel,Snow Cloak,,Slush Rush,Blue,50.0,50.0,0,20,Ground,,90,158,1000000,Ordinary,,Alolan,75,100,120,25,65,65,450,0,0,2,0,0,0
+1011,841,841_0,Flapple,Flapple,8,0.3,1.0,Grass,Dragon,Ripen,Gluttony,Hustle,Green,50.0,50.0,0,20,Grass,Dragon,45,170,600000,Ordinary,,,70,110,80,95,60,70,485,0,2,0,0,0,0
+226,175,175_0,Togepi,Togepi,2,0.3,1.5,Fairy,,Hustle,Serene Grace,Super Luck,White,87.5,12.5,0,10,Undiscovered,,190,49,800000,Ordinary,,,35,20,65,40,65,20,245,0,0,0,0,1,0
+341,274,274_0,Nuzleaf,Nuzleaf,3,1.0,28.0,Grass,Dark,Chlorophyll,Early Bird,Pickpocket,Brown,50.0,50.0,0,15,Ground,Grass,120,119,1059860,Ordinary,,,70,70,40,60,40,60,340,0,2,0,0,0,0
+709,584,584_0,Vanilluxe,Vanilluxe,5,1.3,57.5,Ice,,Ice Body,Snow Warning,Weak Armor,White,50.0,50.0,0,20,Mineral,,45,268,1250000,Ordinary,,,71,95,85,110,95,79,535,0,0,0,3,0,0
+33,26,26_0,Raichu,Raichu,1,0.8,30.0,Electric,,Static,,Lightning Rod,Yellow,50.0,50.0,0,10,Ground,Fairy,75,243,1000000,Ordinary,,,60,90,55,90,80,110,485,0,0,0,0,0,3
+4,4,4_0,Charmander,Charmander,1,0.6,8.5,Fire,,Blaze,,Solar Power,Red,87.5,12.5,0,20,Monster,Dragon,45,62,1059860,Ordinary,,,39,52,43,60,50,65,309,0,0,0,0,0,1
+1012,842,842_0,Appletun,Appletun,8,0.4,13.0,Grass,Dragon,Ripen,Gluttony,Thick Fat,Green,50.0,50.0,0,20,Grass,Dragon,45,170,600000,Ordinary,,,110,85,80,100,80,30,485,2,0,0,0,0,0
+721,593,593_0,Jellicent,Jellicent,5,2.2,135.0,Water,Ghost,Water Absorb,Cursed Body,Damp,White,50.0,50.0,0,20,Amorphous,,60,168,1000000,Ordinary,,,100,60,70,85,105,60,480,0,0,0,0,2,0
+300,239,239_0,Elekid,Elekid,2,0.6,23.5,Electric,,Static,,Vital Spirit,Yellow,75.0,25.0,0,25,Undiscovered,,45,72,1000000,Ordinary,,,45,63,37,65,55,95,360,0,0,0,0,0,1
+924,764,764_0,Comfey,Comfey,7,0.1,0.3,Fairy,,Flower Veil,Triage,Natural Cure,Green,25.0,75.0,0,20,Grass,,60,170,800000,Ordinary,,,51,52,90,82,110,100,485,0,0,0,0,2,0
+156,118,118_0,Goldeen,Goldeen,1,0.6,15.0,Water,,Swift Swim,Water Veil,Lightning Rod,Red,50.0,50.0,0,20,Water2,,225,64,1000000,Ordinary,,,45,67,60,35,50,63,320,0,1,0,0,0,0
+1039,868,868_0,Milcery,Milcery,8,0.2,0.3,Fairy,,Sweet Veil,,Aroma Veil,White,0.0,100.0,0,20,Fairy,Amorphous,200,54,1000000,Ordinary,,,45,40,40,50,61,34,270,0,0,0,0,1,0
+201,151,151_0,Mew,Mew,1,0.4,4.0,Psychic,,Synchronize,,,Pink,0.0,0.0,100,120,Undiscovered,,45,300,1059860,Mythical,,,100,100,100,100,100,100,600,3,0,0,0,0,0
+223,172,172_0,Pichu,Pichu,2,0.3,2.0,Electric,,Static,,Lightning Rod,Yellow,50.0,50.0,0,10,Undiscovered,,190,41,1000000,Ordinary,,,20,40,15,35,35,60,205,0,0,0,0,0,1
+637,523,523_0,Zebstrika,Zebstrika,5,1.6,79.5,Electric,,Lightning Rod,Motor Drive,Sap Sipper,Black,50.0,50.0,0,20,Ground,,75,174,1000000,Ordinary,,,75,100,63,80,63,116,497,0,0,0,0,0,2
+1030,859,859_0,Impidimp,Impidimp,8,0.4,5.5,Dark,Fairy,Prankster,Frisk,Pickpocket,Pink,100.0,0.0,0,20,Fairy,Human-Like,255,53,1000000,Ordinary,,,45,45,30,55,40,50,265,0,0,0,1,0,0
+40,30,30_0,Nidorina,Nidorina,1,0.8,20.0,Poison,,Poison Point,Rivalry,Hustle,Blue,0.0,100.0,0,20,Undiscovered,,120,128,1059860,Ordinary,,,70,62,67,55,55,56,365,2,0,0,0,0,0
+999,829,829_0,Gossifleur,Gossifleur,8,0.4,2.2,Grass,,Cotton Down,Regenerator,Effect Spore,Green,50.0,50.0,0,20,Grass,,190,50,1000000,Ordinary,,,40,40,60,40,60,10,250,0,0,0,0,1,0
+212,161,161_0,Sentret,Sentret,2,0.8,6.0,Normal,,Run Away,Keen Eye,Frisk,Brown,50.0,50.0,0,15,Ground,,255,43,1000000,Ordinary,,,35,46,34,35,45,20,215,0,1,0,0,0,0
+1144,957,957_0,Tinkatink,Tinkatink,9,0.4,8.9,Fairy,Steel,Mold Breaker,Own Tempo,Pickpocket,Pink,0.0,100.0,0,20,Fairy,,190,59,1059860,Ordinary,,,50,45,45,35,64,58,297,0,0,0,0,1,0
+210,159,159_0,Croconaw,Croconaw,2,1.1,25.0,Water,,Torrent,,Sheer Force,Blue,87.5,12.5,0,20,Monster,Water1,45,142,1059860,Ordinary,,,65,80,80,59,63,58,405,0,1,1,0,0,0
+844,704,704_0,Goomy,Goomy,6,0.3,2.8,Dragon,,Sap Sipper,Hydration,Gooey,Purple,50.0,50.0,0,40,Dragon,,45,60,1250000,Ordinary,,,45,50,35,55,75,40,300,0,0,0,0,1,0
+63,50,50_1,Diglett,Alolan Diglett,7,0.2,1.0,Ground,Steel,Sand Veil,Tangling Hair,Sand Force,Brown,50.0,50.0,0,20,Ground,,255,53,1000000,Ordinary,,Alolan,10,55,30,35,45,90,265,0,0,0,0,0,1
+867,718,718_0,Zygarde,Zygarde 50% Form,6,5.0,305.0,Dragon,Ground,Aura Break,,,Green,0.0,0.0,100,120,Undiscovered,,3,300,1250000,Legendary,,,108,100,121,81,95,95,600,3,0,0,0,0,0
+642,528,528_0,Swoobat,Swoobat,5,0.9,10.5,Psychic,Flying,Unaware,Klutz,Simple,Blue,50.0,50.0,0,15,Ground,Flying,45,149,1000000,Ordinary,,,67,57,55,77,55,114,425,0,0,0,0,0,2
+698,573,573_0,Cinccino,Cinccino,5,0.5,7.5,Normal,,Cute Charm,Technician,Skill Link,Gray,25.0,75.0,0,15,Ground,,60,165,800000,Ordinary,,,75,95,60,65,60,115,470,0,0,0,0,0,2
+386,313,313_0,Volbeat,Volbeat,3,0.7,17.7,Bug,,Illuminate,Swarm,Prankster,Gray,100.0,0.0,0,15,Bug,Human-Like,150,151,600000,Ordinary,,,65,73,75,47,85,85,430,0,0,0,0,0,1
+1050,877,877_0,Morpeko,Morpeko Full Berry Mode,8,0.3,3.0,Electric,Dark,Hunger Switch,,,Yellow,50.0,50.0,0,10,Ground,Fairy,180,153,1000000,Ordinary,,,58,95,58,70,58,97,436,0,0,0,0,0,2
+378,307,307_0,Meditite,Meditite,3,0.6,11.2,Fighting,Psychic,Pure Power,,Telepathy,Blue,50.0,50.0,0,20,Human-Like,,180,56,1000000,Ordinary,,,30,40,55,40,55,60,280,0,0,0,0,0,1
+332,265,265_0,Wurmple,Wurmple,3,0.3,3.6,Bug,,Shield Dust,,Run Away,Red,50.0,50.0,0,15,Bug,,255,56,1000000,Ordinary,,,45,45,35,20,30,20,195,1,0,0,0,0,0
+1036,865,865_0,Sirfetch'd,Sirfetch'd,8,0.8,117.0,Fighting,,Steadfast,,Scrappy,White,50.0,50.0,0,20,Flying,Ground,45,177,1000000,Ordinary,,,62,135,95,68,82,65,507,0,2,0,0,0,0
+563,460,460_1,Abomasnow,Mega Abomasnow,4,2.7,185.0,Grass,Ice,Snow Warning,,,White,50.0,50.0,0,20,Monster,Grass,60,208,1250000,Ordinary,Mega,,90,132,105,132,105,30,594,0,1,0,1,0,0
+385,312,312_0,Minun,Minun,3,0.4,4.2,Electric,,Minus,,Volt Absorb,Yellow,50.0,50.0,0,20,Fairy,,200,142,1000000,Ordinary,,,60,40,50,75,85,95,405,0,0,0,0,0,1
+836,696,696_0,Tyrunt,Tyrunt,6,0.8,26.0,Rock,Dragon,Strong Jaw,,Sturdy,Brown,87.5,12.5,0,30,Monster,Dragon,45,72,1000000,Ordinary,,,58,89,77,45,45,48,362,0,1,0,0,0,0
+123,92,92_0,Gastly,Gastly,1,1.3,0.1,Ghost,Poison,Levitate,,,Purple,50.0,50.0,0,20,Amorphous,,190,62,1059860,Ordinary,,,30,35,30,100,35,80,310,0,0,0,1,0,0
+240,188,188_0,Skiploom,Skiploom,2,0.6,1.0,Grass,Flying,Chlorophyll,Leaf Guard,Infiltrator,Green,50.0,50.0,0,20,Fairy,Grass,120,119,1059860,Ordinary,,,55,45,50,45,65,80,340,0,0,0,0,0,2
+487,395,395_0,Empoleon,Empoleon,4,1.7,84.5,Water,Steel,Torrent,,Defiant,Blue,87.5,12.5,0,20,Water1,Ground,45,239,1059860,Ordinary,,,84,86,88,111,101,60,530,0,0,0,3,0,0
+881,727,727_0,Incineroar,Incineroar,7,1.8,83.0,Fire,Dark,Blaze,,Intimidate,Red,87.5,12.5,0,15,Ground,,45,265,1059860,Ordinary,,,95,115,90,80,90,60,530,0,3,0,0,0,0
+574,471,471_0,Glaceon,Glaceon,4,0.8,25.9,Ice,,Snow Cloak,,Ice Body,Blue,87.5,12.5,0,35,Ground,,45,184,1000000,Ordinary,,,65,60,110,130,95,65,525,0,0,0,2,0,0
+354,286,286_0,Breloom,Breloom,3,1.2,39.2,Grass,Fighting,Effect Spore,Poison Heal,Technician,Green,50.0,50.0,0,15,Fairy,Grass,90,161,1640000,Ordinary,,,60,130,80,60,60,70,460,0,2,0,0,0,0
+536,436,436_0,Bronzor,Bronzor,4,0.5,60.5,Steel,Psychic,Levitate,Heatproof,Heavy Metal,Green,0.0,0.0,100,20,Mineral,,255,60,1000000,Ordinary,,,57,24,86,24,86,23,300,0,0,1,0,0,0
+686,563,563_0,Cofagrigus,Cofagrigus,5,1.7,76.5,Ghost,,Mummy,,,Yellow,50.0,50.0,0,25,Mineral,Amorphous,90,169,1000000,Ordinary,,,58,50,145,95,105,30,483,0,0,2,0,0,0
+890,736,736_0,Grubbin,Grubbin,7,0.4,4.4,Bug,,Swarm,,,Gray,50.0,50.0,0,15,Bug,,255,60,1000000,Ordinary,,,47,62,45,55,45,46,300,0,1,0,0,0,0
+773,642,642_0,Thundurus,Thundurus Incarnate Form,5,1.5,61.0,Electric,Flying,Prankster,,Defiant,Blue,100.0,0.0,0,120,Undiscovered,,3,290,1250000,Semi-Legendary,,,79,115,70,125,80,111,580,0,3,0,0,0,0
+1115,931,931_0,Squawkabilly,Squawkabilly Green Plumage,9,0.6,2.4,Normal,Flying,Intimidate,Guts,Guts,Green,50.0,50.0,0,15,Flying,,190,146,600000,Ordinary,,,82,96,51,45,51,92,417,0,1,0,0,0,0
+372,303,303_0,Mawile,Mawile,3,0.6,11.5,Steel,Fairy,Hyper Cutter,Intimidate,Sheer Force,Black,50.0,50.0,0,20,Ground,Fairy,45,133,800000,Ordinary,,,50,85,85,55,55,50,380,0,1,1,0,0,0
+279,220,220_0,Swinub,Swinub,2,0.4,6.5,Ice,Ground,Oblivious,Snow Cloak,Thick Fat,Brown,50.0,50.0,0,20,Ground,,225,50,1250000,Ordinary,,,50,50,40,30,30,50,250,0,1,0,0,0,0
+722,594,594_0,Alomomola,Alomomola,5,1.2,31.6,Water,,Healer,Hydration,Regenerator,Pink,50.0,50.0,0,40,Water1,Water2,75,165,800000,Ordinary,,,165,75,80,40,45,65,470,2,0,0,0,0,0
+200,150,150_2,Mewtwo,Mega Mewtwo Y,1,1.5,33.0,Psychic,,Insomnia,,,Purple,0.0,0.0,100,120,Undiscovered,,3,351,1250000,Legendary,Mega,,106,150,70,194,120,140,780,0,0,0,3,0,0
+404,329,329_0,Vibrava,Vibrava,3,1.1,15.3,Ground,Dragon,Levitate,,,Green,50.0,50.0,0,20,Bug,Dragon,120,119,1059860,Ordinary,,,50,70,50,50,50,70,340,0,1,0,0,0,1
+104,79,79_0,Slowpoke,Slowpoke,1,1.2,36.0,Water,Psychic,Oblivious,Own Tempo,Regenerator,Pink,50.0,50.0,0,20,Monster,Water1,190,63,1000000,Ordinary,,,90,65,65,40,40,15,315,1,0,0,0,0,0
+43,33,33_0,Nidorino,Nidorino,1,0.9,19.5,Poison,,Poison Point,Rivalry,Hustle,Purple,100.0,0.0,0,20,Monster,Ground,120,128,1059860,Ordinary,,,61,72,57,55,55,65,365,0,2,0,0,0,0
+232,181,181_0,Ampharos,Ampharos,2,1.4,61.5,Electric,,Static,,Plus,Yellow,50.0,50.0,0,20,Monster,Ground,45,255,1059860,Ordinary,,,90,75,85,115,90,55,510,0,0,0,3,0,0
+936,774,774_2,Minior,Minior Orange Core,7,0.3,0.3,Rock,Flying,Shields Down,,,Red,0.0,0.0,100,25,Mineral,,255,175,1059860,Ordinary,,,60,100,60,100,60,120,500,0,1,0,1,0,0
+914,754,754_0,Lurantis,Lurantis,7,0.9,18.5,Grass,,Leaf Guard,,Contrary,Pink,50.0,50.0,0,20,Grass,,75,168,1000000,Ordinary,,,70,105,90,80,90,45,480,0,2,0,0,0,0

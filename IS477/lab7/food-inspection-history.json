@@ -1,0 +1,133 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Risk",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Risk using expression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Risk",
+    "expression": "value.toUppercase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Risk using expression value.toUppercase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Risk",
+    "expression": "value.replace(/[\\p{Zs}\\s]+/,' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Risk using expression value.replace(/[\\p{Zs}\\s]+/,' ')"
+  },
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "City State Zip",
+    "guessCellType": true,
+    "removeOriginalColumn": false,
+    "mode": "separator",
+    "separator": ",",
+    "regex": false,
+    "maxColumns": 0,
+    "description": "Split column City State Zip by separator"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "City State Zip 1",
+    "newColumnName": "City",
+    "description": "Rename column City State Zip 1 to City"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "City State Zip 2",
+    "newColumnName": "State",
+    "description": "Rename column City State Zip 2 to State"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "City State Zip 3",
+    "newColumnName": "ZIP",
+    "description": "Rename column City State Zip 3 to ZIP"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "ZIP",
+    "newColumnName": "Zip",
+    "description": "Rename column ZIP to Zip"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "License #",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column License # using expression value.toNumber()"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "City",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Chicago",
+          "chicago",
+          "CHicago"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Chicago"
+      },
+      {
+        "from": [
+          "ALSIP",
+          "alsip"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Alsip"
+      },
+      {
+        "from": [
+          "MAYWOOD",
+          "Maywood"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Maywood"
+      }
+    ],
+    "description": "Mass edit cells in column City"
+  }
+]

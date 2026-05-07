@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resource xmlns="http://datacite.org/schema/kernel-4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://datacite.org/schema/kernel-4 http://schema.datacite.org/meta/kernel-4.3/metadata.xsd">
+  <identifier identifierType="DOI">10.5072/zenodo.132137</identifier>
+  <alternateIdentifiers>
+    <alternateIdentifier alternateIdentifierType="URL">https://sandbox.zenodo.org/records/132137</alternateIdentifier>
+    <alternateIdentifier alternateIdentifierType="oai">oai:zenodo.org:132137</alternateIdentifier>
+  </alternateIdentifiers>
+  <creators>
+    <creator>
+      <creatorName nameType="Personal">Genis, Dulf Vincent</creatorName>
+      <givenName>Dulf Vincent</givenName>
+      <familyName>Genis</familyName>
+      <nameIdentifier nameIdentifierScheme="ORCID">0009-0006-1678-602X</nameIdentifier>
+      <affiliation>University of Illinois Urbana-Champaign</affiliation>
+    </creator>
+  </creators>
+  <titles>
+    <title>IS477 FA24 Class Repository</title>
+  </titles>
+  <publisher>Zenodo</publisher>
+  <publicationYear>2024</publicationYear>
+  <dates>
+    <date dateType="Issued">2024-11-14</date>
+    <date dateType="Accepted">2024-11-14</date>
+    <date dateType="Updated">2024-11-14</date>
+  </dates>
+  <resourceType resourceTypeGeneral="Workflow"></resourceType>
+  <relatedIdentifiers>
+    <relatedIdentifier relatedIdentifierType="URL" relationType="IsSupplementTo" resourceTypeGeneral="Workflow">https://github.com/illinois-data-curation/is477-fa24-dgeni2/releases/tag/lab-10</relatedIdentifier>
+    <relatedIdentifier relatedIdentifierType="DOI" relationType="IsVersionOf">10.5072/zenodo.132136</relatedIdentifier>
+  </relatedIdentifiers>
+  <rightsList>
+    <rights rightsURI="https://creativecommons.org/licenses/by/4.0/legalcode" rightsIdentifierScheme="spdx" rightsIdentifier="cc-by-4.0">Creative Commons Attribution 4.0 International</rights>
+    <rights rightsURI="https://opensource.org/licenses/MIT" rightsIdentifierScheme="spdx" rightsIdentifier="mit">MIT License</rights>
+  </rightsList>
+  <descriptions>
+    <description descriptionType="Abstract">This deposit contains the IS477 FA24 Class Repository, which includes files and metadata created as part of a lab exercise on metadata and data documentation. The purpose of this repository is to explore descriptive metadata practices using Zenodo's Sandbox environment. The dataset is designed to simulate the process of creating, managing, and documenting data for academic and research purposes, and was developed as part of the lab.</description>
+  </descriptions>
+</resource>

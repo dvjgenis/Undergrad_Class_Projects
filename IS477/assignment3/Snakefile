@@ -1,0 +1,21 @@
+rule create_db:
+    input: "input/create_and_load_db.sql", "input/Food_Inspections_50k.csv"
+    output: "inspections.db"
+    shell: "sqlite3 {output} < {input[0]}"
+
+rule aggregate_sql:
+    input: "inspections.db"
+    output: "results/sql-fac-types.csv"
+    shell: "sqlite3 {input} < aggregate.sql"
+
+rule aggregate_pandas:
+    input: "input/Food_Inspections_50k.csv"
+    output: "results/pandas-fac-types.csv"
+    shell: "python aggregate.py"
+
+rule compare:
+    input:
+        sql="results/sql-fac-types.csv",
+        pandas="results/pandas-fac-types.csv"
+    output: "results/comparison.csv"
+    shell: "python compare.py"

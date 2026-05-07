@@ -3,6 +3,26 @@
 ## Overview
 Machine learning/AI coursework with assignments, notebooks, and reports.
 
+## What I Learned
+- Built practical intuition for end-to-end ML workflows from preprocessing to evaluation.
+- Learned to compare modeling approaches and justify trade-offs using metrics.
+- Improved reproducibility habits through scripts, datasets, and structured reporting.
+
+## Skills Applied
+- Python-based ML experimentation and notebook-driven prototyping.
+- Feature preparation, model evaluation, and results interpretation.
+- Organizing ML assets across scripts, datasets, projects, and reports.
+
+## What This Folder Contains
+- `assignments/`: required coursework and graded implementations.
+- `datasets/`: training/evaluation data and source files.
+- `docs/`: supporting architecture and documentation notes.
+- `notebooks/`: exploratory analysis and model experiments.
+- `projects/`: larger AI/ML project work.
+- `reports/`: written summaries of methodology and outcomes.
+- `samples/`: small reference examples and trial artifacts.
+- `scripts/`: reusable utilities and automation scripts.
+
 ## Folder Organization
 - `assignments/`
 - `datasets/`

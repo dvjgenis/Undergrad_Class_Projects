@@ -1,0 +1,6 @@
+.mode csv
+.import --skip 1 data/nycflights13/airports.csv airports
+.import --skip 1 data/nycflights13/airlines.csv airlines
+.import --skip 1 data/nycflights13/planes.csv planes
+.import --skip 1 data/nycflights13/weather.csv weather
+.import --skip 1 data/nycflights13/flights.csv flights

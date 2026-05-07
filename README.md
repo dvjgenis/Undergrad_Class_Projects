@@ -1,50 +1,47 @@
 # Undergrad Class Projects Portfolio
 
-> Organized coursework, labs, and projects across computer science, information science, mathematics, and statistics.
+Coursework portfolio spanning computer science, information science, mathematics, and statistics.  
+This repository documents how I progressed from foundational programming and quantitative reasoning to applied machine learning, data systems, visualization, and AI prototyping.
 
-## Quick Visual Index
+## Portfolio Highlights
 
-| Class | Focus | Skills Demonstrated | Folder |
+- **Breadth of work:** includes labs, homework, mini-projects, capstones, and independent extensions.
+- **Applied outcomes:** each class folder captures what I learned, skills practiced, and concrete artifacts.
+- **Production habits:** projects are organized for reproducibility, documentation, and clear navigation.
+
+## Academic Tracks
+
+| Class | Focus Area | Portfolio-Relevant Skills | Class Folder |
 |---|---|---|---|
-| `CS277` | Data structures and programming fundamentals | algorithmic thinking, runtime analysis, file processing, graph basics | [`CS277/README.md`](./CS277/README.md) |
-| `CS307` | Machine learning | model training, evaluation, feature engineering, deep learning workflows | [`CS307/README.md`](./CS307/README.md) |
-| `IS308` | Applied data analysis | dataset cleaning, exploratory analysis, survey/public data interpretation | [`IS308/README.md`](./IS308/README.md) |
-| `IS445` | Data visualization | visual storytelling, dashboard design, chart grammar, communication | [`IS445/README.md`](./IS445/README.md) |
-| `IS467` | AI and machine learning systems | notebook experimentation, ML pipelines, prompt/LLM workflows, technical reporting | [`IS467/README.md`](./IS467/README.md) |
-| `IS477` | Data management and reproducibility | SQL/data workflows, reproducible analysis, project structuring, automation | [`IS477/README.md`](./IS477/README.md) |
-| `IS492` | AI capstone and agentic systems | multi-agent design, fullstack prototyping, LLM evaluation, research integration | [`IS492/README.md`](./IS492/README.md) |
-| `MATH257` | Linear algebra for data science | matrix methods, decompositions, numerical reasoning, math-to-code translation | [`MATH257/README.md`](./MATH257/README.md) |
-| `STAT207` | Statistics | hypothesis testing, statistical modeling, data interpretation, experiment reasoning | [`STAT207/README.md`](./STAT207/README.md) |
+| `CS277` | Systems and programming fundamentals | algorithmic problem solving, implementation discipline, debugging workflows | [`CS277/README.md`](./CS277/README.md) |
+| `CS307` | Data science and machine learning | model development, evaluation, feature analysis, notebook experimentation | [`CS307/README.md`](./CS307/README.md) |
+| `IS308` | Applied data analysis | data cleaning, exploratory analysis, public/survey data interpretation | [`IS308/README.md`](./IS308/README.md) |
+| `IS445` | Data visualization | visual storytelling, chart design decisions, communication of insights | [`IS445/README.md`](./IS445/README.md) |
+| `IS467` | AI/ML systems | modeling workflows, experimentation, technical reporting, reproducibility | [`IS467/README.md`](./IS467/README.md) |
+| `IS477` | Data management and reproducible workflows | SQL, schema design, data processing pipelines, automation | [`IS477/README.md`](./IS477/README.md) |
+| `IS492` | Capstone AI and fullstack prototyping | LLM integration, agentic workflows, end-to-end project delivery | [`IS492/README.md`](./IS492/README.md) |
+| `MATH257` | Mathematical foundations | linear algebra reasoning, structured problem solving, quantitative rigor | [`MATH257/README.md`](./MATH257/README.md) |
+| `STAT207` | Statistical analysis | inference, modeling, hypothesis testing, interpretation of real datasets | [`STAT207/README.md`](./STAT207/README.md) |
 
-## Skills Coverage Map
+## Core Competencies Demonstrated
 
-| Skill Area | Classes |
-|---|---|
-| Python programming | `CS277`, `CS307`, `IS467`, `IS477`, `IS492`, `MATH257`, `STAT207` |
-| Machine learning | `CS307`, `IS467`, `IS492` |
-| Data visualization | `IS445`, `STAT207`, `IS308` |
-| Statistical analysis | `STAT207`, `IS308`, `CS307` |
-| Data engineering/reproducibility | `IS477`, `IS492` |
-| Mathematical foundations | `MATH257`, `STAT207`, `CS277` |
-| AI/LLM systems | `IS492`, `IS467` |
+- `Python and notebook workflows`: analysis, modeling, scripting, and reproducible experiments.
+- `Data and statistics`: exploratory analysis, inference, and evidence-based interpretation.
+- `Data systems`: SQL, schema design, and structured data workflows.
+- `Machine learning and AI`: model experimentation, evaluation, and LLM-enabled prototyping.
+- `Technical communication`: README documentation, reports, and architecture notes.
 
-## Class Navigation
+## How To Navigate This Repository
 
-- [`CS277/README.md`](./CS277/README.md)
-- [`CS307/README.md`](./CS307/README.md)
-- [`IS308/README.md`](./IS308/README.md)
-- [`IS445/README.md`](./IS445/README.md)
-- [`IS467/README.md`](./IS467/README.md)
-- [`IS477/README.md`](./IS477/README.md)
-- [`IS492/README.md`](./IS492/README.md)
-- [`MATH257/README.md`](./MATH257/README.md)
-- [`STAT207/README.md`](./STAT207/README.md)
+- Open any class `README.md` for a concise summary of learning outcomes and artifacts.
+- Use each class `docs/architecture.md` to understand folder structure and workflow context.
+- Explore coursework by folder type (`assignments`, `labs`, `projects`, `datasets`, `reports`, `archive`) depending on your review goal.
 
-## Repository Conventions
+## Repository Standards
 
-- Each class folder includes `README.md` and `docs/architecture.md`.
-- Coursework is arranged into semantic folders such as `assignments`, `labs`, `projects`, `datasets`, `reports`, and `archive`.
-- Large project environments/dependencies stay with the project they belong to.
+- Every class folder is maintained as a standalone portfolio unit with its own documentation.
+- Artifacts are grouped by purpose to keep code, data, reports, and media easy to review.
+- Dependencies and runtime setup are kept near the projects that use them.
 
 ## Getting Started
 
@@ -53,7 +50,7 @@ git clone <your-repo-url>
 cd Undergrad_Class_Projects
 ```
 
-Open any class README to review outcomes, architecture, and project artifacts.
+Then open any class-level README to review work samples, skills applied, and project context.
 
 ## License
 
