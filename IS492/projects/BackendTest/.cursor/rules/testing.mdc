@@ -1,0 +1,21 @@
+---
+description: Rules for tests — pytest, engine tests, evaluation
+globs: tests/**/*, engine/**/test*.py
+---
+
+# Testing Rules
+
+When editing tests:
+
+## Commands
+
+Use the Makefile. Do not hallucinate ad-hoc commands:
+
+- `make test-solver` — Engine/solver tests (pytest on engine/)
+- `make calc-her` — Harmonic Error Rate (music21)
+- `make eval-telemetry` — Repair Efficiency, survey analysis
+
+## Conventions
+
+- Run tests after each implementation chunk.
+- Prefer deterministic, isolated tests. No flaky timing or external services unless required.

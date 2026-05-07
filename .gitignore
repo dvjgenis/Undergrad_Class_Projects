@@ -1,0 +1,20 @@
+IS492/projects/BackendTest/tools/langchain/
+
+# Large binaries / datasets not suitable for regular GitHub push
+*.mp4
+*.dmg
+*.tar.gz
+
+# Quarto downloaded toolchain artifacts
+CS307/lab5/bin/tools/
+CS307/lab5/share/
+CS307/lab5/quarto-*.tar.gz
+
+# Very large raw datasets
+IS308/datasets/HINTS6_R_20250731/hints6_public.csv
+IS467/datasets/data/2018/1-Year/psam_p48.csv
+
+# Common local build/cache artifacts
+**/.DS_Store
+**/__pycache__/
+**/.next/

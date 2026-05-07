@@ -1,0 +1,455 @@
+========================================================================================
+VISUALIZATION SUMMARIES — METADATA, DATA CONTEXT, AND TABLE OF CONTENTS
+========================================================================================
+
+--- GENERATION ---
+  UTC time:     2026-04-21 19:59:12Z
+  Output file:  /Users/dvgenis/Desktop/IS308/visualization_summaries.txt
+
+--- PURPOSE (WHAT THIS FILE IS FOR) ---
+  This document supports the figures in visualizations.ipynb with machine- and human-
+  readable numeric extracts. It is suitable for appendices, codebooks, or sharing
+  with collaborators who do not open the notebook.
+
+  Analytic stance: DESCRIPTIVE ONLY. Surveys are not linked at the respondent level.
+  Do not infer causation, individual-level mediation, or clinical effectiveness from
+  these tabulations. Ecological associations (e.g., state A vs. state B on two
+  different surveys) confound many unmeasured factors.
+
+--- INPUT FILES (paths relative to notebook working directory) ---
+  HINTS 6 public:     HINTS6_R_20250731/hints6_public.csv
+  Household Pulse CSV: Mental_Health_Care_in_the_Last_4_Weeks.csv
+  NSDUH SAE Table 37: 2023-nsduh-sae-tables-percents-CSVs/NSDUHsaeExcelTab37-2023.csv
+
+--- RUNTIME ROW COUNTS (after filtering / typing in the notebook) ---
+  HINTS rows:              6,252
+  Pulse rows (full file): 10,404
+  NSDUH rows (raw table): 56
+  NSDUH state rows used:  51 (regions like 'Northeast' excluded)
+
+--- HINTS 6 (Figures A and B) ---
+  Survey: Health Information National Trends Survey (National Cancer Institute).
+  Population: Noninstitutionalized U.S. adults; analysis uses public-use file weights
+  as implemented below (PERSON_FINWT0 for weighted percentages).
+
+  Primary derived variables in this notebook:
+    - tele_status: from ReceiveTelehealthCare — 1 = any telehealth (Yes...),
+      0 = explicit no-telehealth strings, else missing (excluded from denominators).
+    - income_clean: IncomeRanges with missing/web-partial strings set to NaN.
+    - race5: RaceEthn5 with missing/not ascertained/web partial set to NaN.
+    - metro3: collapsed from PR_RUCA_2010 — Metropolitan -> Metro; Micropolitan /
+      Small town / Rural -> Non-metro; else Missing.
+
+  Figure A: Among adults with non-missing telehealth status in each subgroup,
+  weighted % with tele_status == 1 (any telehealth in past 12 months per survey item).
+
+  Figure B: Among adults with tele_status == 1 (telehealth users), weighted
+  distribution of Likert agreement items (good care, technology problems, privacy
+  concern). 'Unweighted n' in subtitles is the count of users with non-suppressed
+  responses after excluding inapplicable/missing-like strings.
+
+--- Household Pulse (Figures C and D) ---
+  Survey: U.S. Census Household Pulse (mental health items in the extract used).
+  Reference window: questions refer to the **last 4 weeks** (see indicator labels).
+  Columns used: Indicator, Group, State, Subgroup, Time Period Start Date, Value,
+  LowCI, HighCI; dates parsed to 'dt'.
+
+  Figure C: National Estimate, United States / United States; time series of
+  percent for counseling/therapy received and unmet need indicators.
+
+  Figure D: For each survey wave date, count non-missing state values; choose the
+  **latest** date among those with maximum coverage so the snapshot reflects the
+  most recent period with full (or maximal) state reporting. Plots restrict to rows
+  where State == Subgroup. Two panels: combined med/counseling indicator and unmet
+  counseling need (exact indicator strings match the notebook code).
+
+  Pulse date range in file (all rows): 2020-08-19 .. 2022-04-27
+  Pulse rows in national estimate slice (approx): 152
+
+--- NSDUH small-area estimates (Figures E and F) ---
+  Product: NSDUH SAE CSV Table 37 (2023), percent receiving **any mental health
+  treatment in the past year**, adults 18+ (see survey/SAE documentation for definition).
+  Parsing: skiprows=6 keeps the true header row (skiprows=7 drops 'State').
+  Column '18+ Estimate' parsed to numeric pct_18p after stripping '%'.
+  These are **modeled** estimates (small-area methods), not raw state sample sizes.
+
+  Figure E: Horizontal bar chart of state percentages (low to high).
+  Figure F: Scatter of Pulse snapshot (last-4-weeks combined indicator) vs NSDUH
+  past-year treatment % by state — ecological; correlation is not causal.
+
+--- FIGURE-TO-SECTION MAP (below this preamble) ---
+  Figure A.1–A.3  Telehealth use by income, race/ethnicity, metro (HINTS, weighted).
+  Figure B       Likert distributions among telehealth users (HINTS, weighted).
+  Figure C       National Pulse time series with CIs where present.
+  Figure D       State snapshot tables (metadata + two state rankings).
+  Figure E       NSDUH state table used for bars.
+  Figure F       Scatter summary + merged state-level pairs.
+
+========================================================================================
+DATA TABLES (values underlying the charts)
+========================================================================================
+Figure A.1 HINTS - Any telehealth in past 12 months by household income (weighted %)
+--------------------------------------------------------------------------------
+              income       pct
+        $0 to $9,999 36.237284
+  $10,000 to $14,999 43.140303
+  $15,000 to $19,999 31.187934
+  $20,000 to $34,999 35.523234
+  $35,000 to $49,999 38.689408
+  $50,000 to $74,999 33.895250
+  $75,000 to $99,999 41.022016
+$100,000 to $199,999 44.621068
+    $200,000 or more 42.204123
+
+Figure A.2 HINTS - Any telehealth by race/ethnicity (weighted %)
+--------------------------------------------------------------------
+                                  race       pct
+Non-Hispanic Black or African American 34.923666
+                    Non-Hispanic Asian 37.491357
+                    Non-Hispanic White 39.391207
+                              Hispanic 39.703895
+                    Non-Hispanic Other 48.340336
+
+Figure A.3 HINTS - Any telehealth by metro status (weighted %)
+------------------------------------------------------------------
+    metro       pct
+    Metro 39.875625
+Non-metro 35.807716
+
+Figure B - Agreement: telehealth was good care (unweighted telehealth users n=2343)
+--------------------------------------------------------------------------------
+         response  weighted_pct
+   Somewhat agree     37.831170
+Somewhat disagree     16.484808
+   Strongly agree     37.662861
+Strongly disagree      8.021161
+
+Figure B - Agreement: had technology problems (unweighted telehealth users n=2296)
+--------------------------------------------------------------------------------
+         response  weighted_pct
+   Somewhat agree     13.467806
+Somewhat disagree     17.891120
+   Strongly agree      5.563308
+Strongly disagree     63.077767
+
+Figure B - Agreement: concerned about privacy (unweighted telehealth users n=2285)
+--------------------------------------------------------------------------------
+         response  weighted_pct
+   Somewhat agree     12.701157
+Somewhat disagree     17.269191
+   Strongly agree      3.194564
+Strongly disagree     66.835087
+
+Figure C - U.S. national series: Received counseling/therapy (last 4 wks)
+-----------------------------------------------------------------------------
+period_start  percent  low_ci  high_ci
+  2020-08-19      8.7     8.3      9.2
+  2020-09-02      9.1     8.7      9.5
+  2020-09-16      9.0     8.7      9.4
+  2020-09-30      9.0     8.7      9.4
+  2020-10-14     10.0     9.5     10.5
+  2020-10-28      9.8     9.4     10.2
+  2020-11-11      9.9     9.5     10.3
+  2020-11-25     10.1     9.6     10.6
+  2020-12-09     10.2     9.7     10.7
+  2020-12-22      NaN     NaN      NaN
+  2021-01-06      9.6     9.2     10.1
+  2021-01-20      9.8     9.4     10.1
+  2021-02-03     10.3     9.8     10.7
+  2021-02-17     10.3     9.9     10.7
+  2021-03-03     10.6    10.1     11.0
+  2021-03-17     10.1     9.6     10.6
+  2021-03-30      NaN     NaN      NaN
+  2021-04-14      9.8     9.4     10.3
+  2021-04-28     10.2     9.8     10.6
+  2021-05-12     10.0     9.5     10.4
+  2021-05-26     10.1     9.7     10.5
+  2021-06-09      9.7     9.3     10.1
+  2021-06-23     10.8    10.3     11.2
+  2021-07-06      NaN     NaN      NaN
+  2021-07-21     10.7    10.2     11.3
+  2021-08-04     10.1     9.7     10.4
+  2021-08-18     10.1     9.7     10.6
+  2021-09-01     10.3     9.9     10.8
+  2021-09-15     10.2     9.8     10.6
+  2021-09-29     10.5    10.0     11.0
+  2021-10-12      NaN     NaN      NaN
+  2021-12-01     10.3     9.8     10.7
+  2021-12-29     10.6    10.2     11.1
+  2022-01-26     10.5    10.2     10.9
+  2022-02-23      NaN     NaN      NaN
+  2022-03-02     11.3    10.9     11.8
+  2022-03-30     10.9    10.5     11.4
+  2022-04-27     11.3    10.8     11.9
+
+Figure C - U.S. national series: Needed counseling/therapy, did not get it (last 4 wks)
+--------------------------------------------------------------------------------
+period_start  percent  low_ci  high_ci
+  2020-08-19      9.2     8.8      9.6
+  2020-09-02      9.7     9.4     10.0
+  2020-09-16     10.4    10.0     10.8
+  2020-09-30      9.7     9.3     10.1
+  2020-10-14     10.6    10.1     11.0
+  2020-10-28     11.2    10.8     11.7
+  2020-11-11     11.1    10.7     11.6
+  2020-11-25     12.0    11.5     12.5
+  2020-12-09     12.4    11.9     13.0
+  2020-12-22      NaN     NaN      NaN
+  2021-01-06     11.4    10.9     11.9
+  2021-01-20     11.7    11.1     12.2
+  2021-02-03     11.5    11.0     11.9
+  2021-02-17     11.9    11.3     12.4
+  2021-03-03     11.7    11.2     12.3
+  2021-03-17     11.1    10.6     11.7
+  2021-03-30      NaN     NaN      NaN
+  2021-04-14      9.9     9.4     10.4
+  2021-04-28      9.8     9.3     10.2
+  2021-05-12     10.1     9.7     10.5
+  2021-05-26      9.8     9.3     10.3
+  2021-06-09      9.8     9.4     10.3
+  2021-06-23     10.3     9.8     10.9
+  2021-07-06      NaN     NaN      NaN
+  2021-07-21     11.4    10.9     11.9
+  2021-08-04     10.6    10.1     11.0
+  2021-08-18     11.2    10.8     11.7
+  2021-09-01     11.3    10.9     11.8
+  2021-09-15     11.6    11.1     12.0
+  2021-09-29     11.0    10.5     11.5
+  2021-10-12      NaN     NaN      NaN
+  2021-12-01     11.1    10.7     11.6
+  2021-12-29     11.3    10.8     11.8
+  2022-01-26     11.1    10.5     11.8
+  2022-02-23      NaN     NaN      NaN
+  2022-03-02     11.5    10.9     12.0
+  2022-03-30     11.5    11.0     11.9
+  2022-04-27     11.5    10.9     12.2
+
+Figure D - Snapshot metadata (Household Pulse)
+--------------------------------------------------
+snapshot_start_date  states_with_combo_indicator  states_with_unmet_indicator
+         2022-04-27                           51                           51
+
+Figure D.1 - States: any MH med and/or counseling (same snapshot)
+---------------------------------------------------------------------
+               State  pct_combo  low_ci  high_ci
+              Nevada       19.2    15.5     23.3
+             Arizona       20.5    17.7     23.5
+              Hawaii       21.1    15.7     27.4
+          California       21.9    19.2     24.9
+            Delaware       23.0    18.3     28.3
+               Texas       24.1    21.3     27.0
+             Georgia       24.3    21.2     27.7
+          New Jersey       24.4    21.0     28.0
+             Montana       24.8    20.7     29.3
+          New Mexico       25.2    21.3     29.5
+            Illinois       25.3    20.8     30.2
+               Idaho       26.0    22.6     29.7
+            Maryland       26.1    22.8     29.6
+             Florida       26.2    22.5     30.3
+            New York       26.3    21.8     31.3
+             Wyoming       26.3    21.6     31.5
+           Tennessee       26.8    23.4     30.3
+      North Carolina       26.9    22.9     31.1
+           Wisconsin       27.5    23.6     31.7
+District of Columbia       27.6    22.6     33.0
+            Colorado       27.7    24.3     31.3
+         Mississippi       27.7    22.8     33.1
+             Indiana       27.7    24.5     31.1
+      South Carolina       27.8    23.3     32.7
+        Pennsylvania       27.9    23.8     32.3
+             Vermont       27.9    23.7     32.5
+            Michigan       28.0    25.2     30.8
+        South Dakota       28.1    22.2     34.5
+               Maine       28.5    23.5     33.9
+             Alabama       28.9    24.1     34.0
+              Alaska       29.0    24.2     34.2
+            Virginia       29.2    25.2     33.4
+                Ohio       29.3    25.0     34.0
+         Connecticut       29.4    25.6     33.3
+            Oklahoma       29.5    24.7     34.7
+            Missouri       29.9    25.3     34.7
+           Louisiana       29.9    23.8     36.6
+        Rhode Island       29.9    24.4     35.8
+                Iowa       30.1    25.7     34.7
+            Arkansas       30.3    26.1     34.7
+              Kansas       30.8    26.0     36.0
+        North Dakota       30.9    25.7     36.6
+            Nebraska       31.3    26.7     36.2
+       New Hampshire       31.7    27.7     36.0
+       Massachusetts       32.5    29.3     35.9
+                Utah       32.7    28.3     37.2
+           Minnesota       32.9    28.9     37.1
+          Washington       33.1    29.6     36.7
+              Oregon       33.2    29.2     37.3
+            Kentucky       36.2    31.5     41.0
+       West Virginia       36.8    30.6     43.2
+
+Figure D.2 - States: unmet counseling/therapy need (same snapshot)
+----------------------------------------------------------------------
+               State  pct_unmet_need  low_ci  high_ci
+            Delaware             6.6     3.7     10.8
+        Rhode Island             7.5     4.3     11.8
+          New Jersey             7.8     5.2     11.0
+        South Dakota             7.9     5.3     11.1
+        North Dakota             8.0     5.3     11.6
+              Hawaii             8.2     5.2     12.2
+                Ohio             8.5     6.1     11.4
+      North Carolina             8.7     6.4     11.7
+                Iowa             8.9     6.2     12.2
+      South Carolina             9.0     6.1     12.6
+         Connecticut             9.2     7.2     11.5
+             Florida             9.3     7.1     11.9
+        Pennsylvania             9.5     6.8     12.8
+             Indiana             9.7     7.0     13.0
+       West Virginia             9.8     6.6     13.8
+           Louisiana             9.9     5.7     15.5
+       New Hampshire            10.1     7.0     14.1
+            Virginia            10.1     7.1     13.8
+            Nebraska            10.4     8.4     12.7
+            Colorado            10.6     8.2     13.6
+             Arizona            10.8     8.3     13.6
+               Maine            10.8     7.8     14.6
+              Nevada            11.1     8.1     14.6
+            New York            11.2     8.2     15.0
+             Georgia            11.2     8.2     14.8
+           Minnesota            11.3     8.2     15.2
+             Wyoming            11.5     8.6     15.1
+           Tennessee            11.6     9.2     14.2
+           Wisconsin            11.6     8.5     15.3
+             Vermont            11.9     8.2     16.5
+            Maryland            11.9     8.9     15.4
+            Missouri            12.0     8.8     15.8
+               Idaho            12.1     9.5     15.2
+            Michigan            12.1     9.5     15.1
+             Alabama            12.1     8.4     16.7
+             Montana            12.6     8.6     17.6
+          New Mexico            12.7    10.0     15.9
+               Texas            12.7    10.3     15.4
+       Massachusetts            12.9    10.5     15.5
+            Oklahoma            13.0    10.0     16.6
+          California            13.4    11.2     15.9
+         Mississippi            13.4     8.3     20.1
+              Kansas            14.3    11.5     17.4
+            Illinois            14.4    11.2     18.1
+            Kentucky            14.7    10.6     19.6
+          Washington            14.8    12.5     17.4
+            Arkansas            15.1    12.0     18.7
+              Oregon            15.6    12.6     19.0
+              Alaska            15.8    12.6     19.4
+                Utah            17.9    14.8     21.4
+District of Columbia            20.8    15.5     26.9
+
+Figure E - NSDUH Table 37: percent 18+ with past-year mental health treatment by state
+--------------------------------------------------------------------------------
+               State  pct_18p
+              Hawaii    15.69
+               Texas    17.83
+          California    18.02
+             Florida    18.48
+         Mississippi    19.78
+              Nevada    19.79
+          New Jersey    19.93
+             Georgia    20.33
+          New Mexico    20.88
+             Alabama    21.20
+              Alaska    21.40
+      South Carolina    21.91
+            New York    22.15
+            Illinois    22.48
+           Louisiana    22.74
+      North Carolina    22.80
+           Tennessee    22.89
+            Virginia    23.28
+            Maryland    23.36
+            Delaware    23.40
+            Michigan    23.52
+            Oklahoma    23.62
+            Arkansas    23.81
+             Arizona    23.85
+        North Dakota    24.23
+         Connecticut    24.32
+        Pennsylvania    24.41
+                Ohio    25.35
+          Washington    25.58
+            Nebraska    25.67
+              Kansas    25.82
+        South Dakota    25.90
+             Wyoming    26.03
+             Indiana    26.04
+        Rhode Island    26.08
+           Wisconsin    26.20
+       Massachusetts    26.40
+             Montana    26.66
+       New Hampshire    26.90
+                Iowa    27.01
+            Colorado    27.21
+               Idaho    27.22
+           Minnesota    27.31
+       West Virginia    27.60
+            Missouri    27.60
+               Maine    27.87
+            Kentucky    27.90
+                Utah    28.18
+              Oregon    28.92
+District of Columbia    29.80
+             Vermont    32.63
+
+Figure F - Ecological scatter summary
+-----------------------------------------
+ n_states_in_plot  pearson_r_nsduh_vs_pulse_combo
+               51                        0.600272
+
+Figure F - State-level values (NSDUH vs Pulse combo indicator)
+------------------------------------------------------------------
+               State  nsduh_18p_pct  pulse_combo_pct
+             Alabama          21.20             28.9
+              Alaska          21.40             29.0
+             Arizona          23.85             20.5
+            Arkansas          23.81             30.3
+          California          18.02             21.9
+            Colorado          27.21             27.7
+         Connecticut          24.32             29.4
+            Delaware          23.40             23.0
+District of Columbia          29.80             27.6
+             Florida          18.48             26.2
+             Georgia          20.33             24.3
+              Hawaii          15.69             21.1
+               Idaho          27.22             26.0
+            Illinois          22.48             25.3
+             Indiana          26.04             27.7
+                Iowa          27.01             30.1
+              Kansas          25.82             30.8
+            Kentucky          27.90             36.2
+           Louisiana          22.74             29.9
+               Maine          27.87             28.5
+            Maryland          23.36             26.1
+       Massachusetts          26.40             32.5
+            Michigan          23.52             28.0
+           Minnesota          27.31             32.9
+         Mississippi          19.78             27.7
+            Missouri          27.60             29.9
+             Montana          26.66             24.8
+            Nebraska          25.67             31.3
+              Nevada          19.79             19.2
+       New Hampshire          26.90             31.7
+          New Jersey          19.93             24.4
+          New Mexico          20.88             25.2
+            New York          22.15             26.3
+      North Carolina          22.80             26.9
+        North Dakota          24.23             30.9
+                Ohio          25.35             29.3
+            Oklahoma          23.62             29.5
+              Oregon          28.92             33.2
+        Pennsylvania          24.41             27.9
+        Rhode Island          26.08             29.9
+      South Carolina          21.91             27.8
+        South Dakota          25.90             28.1
+           Tennessee          22.89             26.8
+               Texas          17.83             24.1
+                Utah          28.18             32.7
+             Vermont          32.63             27.9
+            Virginia          23.28             29.2
+          Washington          25.58             33.1
+       West Virginia          27.60             36.8
+           Wisconsin          26.20             27.5
+             Wyoming          26.03             26.3

@@ -1,0 +1,12 @@
+# HarmonyForge Backend
+music21>=9.0
+fastapi>=0.100
+uvicorn[standard]>=0.22
+pydantic>=2.0
+chromadb>=0.4.0
+
+# TheoryInspector: uses local tools/langgraph when available
+# Optional API keys for LLM-based theory chatbot (.env):
+#   GROQ_API_KEY, OPENAI_API_KEY, ANTHROPIC_API_KEY
+# Optional: TI_USE_LLM_TUTOR=true enables LLM enrichment in Tutor
+# pip install anthropic openai groq  # for optional Tutor LLM

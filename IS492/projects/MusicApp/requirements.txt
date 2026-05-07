@@ -1,0 +1,4 @@
+music21
+# Optional: Audiveris (Java-based OCR for sheet music) and MuseScore (for rendering and PDF<->MusicXML conversion)
+# Install Audiveris separately: https://audiveris.github.io/
+# Install MuseScore: https://musescore.org/

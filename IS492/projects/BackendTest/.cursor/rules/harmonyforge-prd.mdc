@@ -1,0 +1,14 @@
+---
+description: PRD reference — features, personas, success criteria
+alwaysApply: true
+---
+
+# HarmonyForge PRD Reference
+
+**Primary:** `docs/PRD.md` | **Context:** `docs/context/` | **ADRs:** `docs/adr/`
+
+1. **Before feature work:** Read PRD for Must Have / Should Have / Could Have, personas (Gigging Musician, Educator, Ensemble Coordinator), and success criteria.
+
+2. **Align with PRD** when modifying engine, sandbox UI, or Theory Inspector. Respect out-of-scope (full Schenkerian recursion, audio synthesis, copyrighted training).
+
+3. **Architecture separation:** See `architecture.mdc` for Axiomatic Core vs LLM layer boundaries.

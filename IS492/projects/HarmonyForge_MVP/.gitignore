@@ -1,0 +1,3 @@
+# Amp API key (never commit)
+.env
+.env.local

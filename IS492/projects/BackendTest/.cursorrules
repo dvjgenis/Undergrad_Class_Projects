@@ -1,0 +1,25 @@
+# HarmonyForge Root Configuration
+
+**The Legacy** — Root configurations pointing to /docs and Makefile.
+
+## Documentation
+
+- **PRD:** `docs/PRD.md`
+- **Context:** `docs/context/system-map.md`, `docs/context/product-spec.md`
+- **ADRs:** `docs/adr/`
+- **Plan:** `docs/plan.md`
+- **Progress:** `docs/progress.md` (RALPH loop state)
+
+## Execution
+
+Always rely on the **Makefile** to trigger cross-language tests:
+
+- `make test-solver` — Python solver tests (engine)
+- `make calc-her` — Python-based Harmonic Error Rate (music21)
+- `make eval-telemetry` — Repair Efficiency, survey analysis
+
+Do not hallucinate ad-hoc commands. Use `make <target>`.
+
+## Rules
+
+See `.cursor/rules/` for architecture, frontend, backend, AI council, and evaluation guardrails.

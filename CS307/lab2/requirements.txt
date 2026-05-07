@@ -1,0 +1,7 @@
+# reformat this file to be what's required for a requirements.txt file
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+joblib

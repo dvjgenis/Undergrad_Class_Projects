@@ -1,0 +1,33 @@
+---
+description: Rules for the Axiomatic Core — Python CSP solver, voice-leading, validation
+globs: engine/**/*.py
+---
+
+# Axiomatic Core (Logic Engine) Rules
+
+When editing `engine/`:
+
+## Architecture
+
+- **Solver:** Layered DAG + Viterbi shortest path (HarmonySolver blueprint)
+- **Structure:** Schenkerian Lite — phrase boundaries, cadence anchors, structural pillars
+- **No LLM:** This layer is purely deterministic. No API calls to OpenAI/Anthropic/GROQ.
+
+## Key Files
+
+| File | Role |
+|------|------|
+| `core_engine.py` | `solve_harmony()`, `validate_solution()`, `calculate_transition_cost()` |
+| `io_handler.py` | Parse/export MusicXML |
+| `hierarchical_bridge.py` | Chord inference, beat-level merge |
+| `knowledge_rules.py` | RULE_PATTERNS, ERROR_CODE_HINTS, penalty weights |
+
+## Constraint Handling
+
+- **Hard rules:** Voice order, spacing, tritone resolution improper → reject or infinite cost
+- **Soft rules:** Parallel fifths, leading tone, leaps, repeated function → penalty weights
+- **Validation codes:** See `docs/Algorithmic-Backend-Architecture.md` for VOICE_ORDER, SPACING, PARALLEL_PERFECT, etc.
+
+## RALPH Loop
+
+If the solver hits a performance bottleneck (e.g., Schenkerian hierarchy evaluation), log the failure domain in `docs/progress.md` before attempting a fix. Do not use stochastic methods to resolve deterministic constraints.

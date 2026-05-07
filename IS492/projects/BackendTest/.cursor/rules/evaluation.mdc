@@ -1,0 +1,31 @@
+---
+description: Rules for evaluation — music21, HER, Repair Efficiency, telemetry
+globs: eval/**/*.py
+---
+
+# Evaluation Rules
+
+When editing `eval/`:
+
+## Stack
+
+- **Library:** music21 (Python) for symbolic analysis
+- **Metrics:** Harmonic Error Rate (HER), Repair Efficiency, CSI, SUS, NPS
+
+## Commands
+
+Use the Makefile to run evaluation. Do not hallucinate ad-hoc commands:
+
+- `make calc-her` — Harmonic Error Rate benchmarking (0% parallel fifths, voice-crossing target)
+- `make test-solver` — Solver/engine unit tests (via pytest or equivalent)
+- `make eval-telemetry` — Repair Efficiency, survey data analysis
+
+## HER Targets (PRD)
+
+| Metric | Target |
+|--------|--------|
+| Parallel fifths | 0% |
+| Voice-crossing | 0% |
+| Latency-Utility | < 4 minutes to performance-ready |
+
+Evaluation scripts consume MusicXML output from the engine. They do not invoke the LLM layer.

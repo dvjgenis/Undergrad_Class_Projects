@@ -1,0 +1,8 @@
+Neural networks are computing systems inspired by biological neural networks.
+The perceptron, developed by Frank Rosenblatt in 1958, was one of the earliest neural network models.
+Modern neural networks consist of layers of interconnected nodes or "neurons."
+Each connection can transmit a signal from one neuron to another.
+The receiving neuron processes the signal and signals downstream neurons connected to it.
+Deep neural networks contain multiple hidden layers between input and output layers.
+Convolutional Neural Networks (CNNs) revolutionized image processing.
+Recurrent Neural Networks (RNNs) and transformers handle sequential data like text or time series.

@@ -1,0 +1,1750 @@
+Extracted from: capstone_analysis.ipynb
+================================================================================
+
+--- Cell 2 (code) — from pathlib import Path...
+
+--- Cell 4 (code) — df = pd.read_csv(DATA_PATH)...
+[stream:stdout]
+(48842, 16)
+dataset_split
+train    32561
+test     16281
+Name: count, dtype: int64
+[execute_result text/plain]
+   age         workclass  fnlwgt  education  education-num  \
+0   39         State-gov   77516  Bachelors             13   
+1   50  Self-emp-not-inc   83311  Bachelors             13   
+2   38           Private  215646    HS-grad              9   
+3   53           Private  234721       11th              7   
+4   28           Private  338409  Bachelors             13   
+
+       marital-status         occupation   relationship   race     sex  \
+0       Never-married       Adm-clerical  Not-in-family  White    Male   
+1  Married-civ-spouse    Exec-managerial        Husband  White    Male   
+2            Divorced  Handlers-cleaners  Not-in-family  White    Male   
+3  Married-civ-spouse  Handlers-cleaners        Husband  Black    Male   
+4  Married-civ-spouse     Prof-specialty           Wife  Black  Female   
+
+   capital-gain  capital-loss  hours-per-week native-country income  \
+0          2174             0              40  United-States  <=50K   
+1             0             0              13  United-States  <=50K   
+2             0             0              40  United-States  <=50K   
+3             0             0              40  United-States  <=50K   
+4             0             0              40           Cuba  <=50K   
+
+  dataset_split  
+0         train  
+1         train  
+2         train  
+3         train  
+4         train  
+[execute_result text/html]
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>workclass</th>
+      <th>fnlwgt</th>
+      <th>education</th>
+      <th>education-num</th>
+      <th>marital-status</th>
+      <th>occupation</th>
+      <th>relationship</th>
+      <th>race</th>
+      <th>sex</th>
+      <th>capital-gain</th>
+      <th>capital-loss</th>
+      <th>hours-per-week</th>
+      <th>native-country</th>
+      <th>income</th>
+      <th>dataset_split</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>39</td>
+      <td>State-gov</td>
+      <td>77516</td>
+      <td>Bachelors</td>
+      <td>13</td>
+      <td>Never-married</td>
+      <td>Adm-clerical</td>
+      <td>Not-in-family</td>
+      <td>White</td>
+      <td>Male</td>
+      <td>2174</td>
+      <td>0</td>
+      <td>40</td>
+      <td>United-States</td>
+      <td>&lt;=50K</td>
+      <td>train</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>50</td>
+      <td>Self-emp-not-inc</td>
+      <td>83311</td>
+      <td>Bachelors</td>
+      <td>13</td>
+      <td>Married-civ-spouse</td>
+      <td>Exec-managerial</td>
+      <td>Husband</td>
+      <td>White</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>0</td>
+      <td>13</td>
+      <td>United-States</td>
+      <td>&lt;=50K</td>
+      <td>train</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>38</td>
+      <td>Private</td>
+      <td>215646</td>
+      <td>HS-grad</td>
+      <td>9</td>
+      <td>Divorced</td>
+      <td>Handlers-cleaners</td>
+      <td>Not-in-family</td>
+      <td>White</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>0</td>
+      <td>40</td>
+      <td>United-States</td>
+      <td>&lt;=50K</td>
+      <td>train</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>53</td>
+      <td>Private</td>
+      <td>234721</td>
+      <td>11th</td>
+      <td>7</td>
+      <td>Married-civ-spouse</td>
+      <td>Handlers-cleaners</td>
+      <td>Husband</td>
+      <td>Black</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>0</td>
+      <td>40</td>
+      <td>United-States</td>
+      <td>&lt;=50K</td>
+      <td>train</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>28</td>
+      <td>Private</td>
+      <td>338409</td>
+      <td>Bachelors</td>
+      <td>13</td>
+      <td>Married-civ-spouse</td>
+      <td>Prof-specialty</td>
+      <td>Wife</td>
+      <td>Black</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>0</td>
+      <td>40</td>
+      <td>Cuba</td>
+      <td>&lt;=50K</td>
+      <td>train</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+--- Cell 5 (code) — # --- Exploratory Data Analysis (EDA) ---...
+[stream:stderr]
+/var/folders/jb/4gkhgpz15bbgklmqj7_zh0hm0000gn/T/ipykernel_3532/1983341554.py:10: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.countplot(data=df_train, x="income", palette="pastel")
+[display_data text/plain]
+<Figure size 600x400 with 1 Axes>
+[display_data image/png] <embedded PNG, ~15178 bytes — omitted>
+[display_data text/plain]
+        proportion
+income            
+<=50K      0.75919
+>50K       0.24081
+[display_data text/html]
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>proportion</th>
+    </tr>
+    <tr>
+      <th>income</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>&lt;=50K</th>
+      <td>0.75919</td>
+    </tr>
+    <tr>
+      <th>&gt;50K</th>
+      <td>0.24081</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+[stream:stderr]
+/var/folders/jb/4gkhgpz15bbgklmqj7_zh0hm0000gn/T/ipykernel_3532/1983341554.py:27: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  plt.legend(title="Income", loc='upper right')
+[display_data text/plain]
+<Figure size 800x500 with 1 Axes>
+[display_data image/png] <embedded PNG, ~20277 bytes — omitted>
+[display_data text/plain]
+<Figure size 1000x500 with 1 Axes>
+[display_data image/png] <embedded PNG, ~34087 bytes — omitted>
+[display_data text/plain]
+<Figure size 600x400 with 1 Axes>
+[display_data image/png] <embedded PNG, ~17348 bytes — omitted>
+[display_data text/plain]
+<Figure size 1000x500 with 1 Axes>
+[display_data image/png] <embedded PNG, ~21370 bytes — omitted>
+[stream:stdout]
+Columns with '?' (treated as missing):
+workclass         1836
+occupation        1843
+native-country     583
+dtype: int64
+[display_data text/plain]
+<Figure size 800x400 with 1 Axes>
+[display_data image/png] <embedded PNG, ~22775 bytes — omitted>
+[display_data text/plain]
+<pandas.io.formats.style.Styler at 0x11faaa900>
+[display_data text/html]
+<style type="text/css">
+</style>
+<table id="T_0ee24">
+  <caption>Proportion of Income by workclass</caption>
+  <thead>
+    <tr>
+      <th class="index_name level0" >income</th>
+      <th id="T_0ee24_level0_col0" class="col_heading level0 col0" ><=50K</th>
+      <th id="T_0ee24_level0_col1" class="col_heading level0 col1" >>50K</th>
+    </tr>
+    <tr>
+      <th class="index_name level0" >workclass</th>
+      <th class="blank col0" >&nbsp;</th>
+      <th class="blank col1" >&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_0ee24_level0_row0" class="row_heading level0 row0" >?</th>
+      <td id="T_0ee24_row0_col0" class="data row0 col0" >89.60%</td>
+      <td id="T_0ee24_row0_col1" class="data row0 col1" >10.40%</td>
+    </tr>
+    <tr>
+      <th id="T_0ee24_level0_row1" class="row_heading level0 row1" >Federal-gov</th>
+      <td id="T_0ee24_row1_col0" class="data row1 col0" >61.35%</td>
+      <td id="T_0ee24_row1_col1" class="data row1 col1" >38.65%</td>
+    </tr>
+    <tr>
+      <th id="T_0ee24_level0_row2" class="row_heading level0 row2" >Local-gov</th>
+      <td id="T_0ee24_row2_col0" class="data row2 col0" >70.52%</td>
+      <td id="T_0ee24_row2_col1" class="data row2 col1" >29.48%</td>
+    </tr>
+    <tr>
+      <th id="T_0ee24_level0_row3" class="row_heading level0 row3" >Never-worked</th>
+      <td id="T_0ee24_row3_col0" class="data row3 col0" >100.00%</td>
+      <td id="T_0ee24_row3_col1" class="data row3 col1" >0.00%</td>
+    </tr>
+    <tr>
+      <th id="T_0ee24_level0_row4" class="row_heading level0 row4" >Private</th>
+      <td id="T_0ee24_row4_col0" class="data row4 col0" >78.13%</td>
+      <td id="T_0ee24_row4_col1" class="data row4 col1" >21.87%</td>
+    </tr>
+    <tr>
+      <th id="T_0ee24_level0_row5" class="row_heading level0 row5" >Self-emp-inc</th>
+      <td id="T_0ee24_row5_col0" class="data row5 col0" >44.27%</td>
+      <td id="T_0ee24_row5_col1" class="data row5 col1" >55.73%</td>
+    </tr>
+    <tr>
+      <th id="T_0ee24_level0_row6" class="row_heading level0 row6" >Self-emp-not-inc</th>
+      <td id="T_0ee24_row6_col0" class="data row6 col0" >71.51%</td>
+      <td id="T_0ee24_row6_col1" class="data row6 col1" >28.49%</td>
+    </tr>
+    <tr>
+      <th id="T_0ee24_level0_row7" class="row_heading level0 row7" >State-gov</th>
+      <td id="T_0ee24_row7_col0" class="data row7 col0" >72.80%</td>
+      <td id="T_0ee24_row7_col1" class="data row7 col1" >27.20%</td>
+    </tr>
+    <tr>
+      <th id="T_0ee24_level0_row8" class="row_heading level0 row8" >Without-pay</th>
+      <td id="T_0ee24_row8_col0" class="data row8 col0" >100.00%</td>
+      <td id="T_0ee24_row8_col1" class="data row8 col1" >0.00%</td>
+    </tr>
+  </tbody>
+</table>
+
+[stream:stdout]
+
+[display_data text/plain]
+<pandas.io.formats.style.Styler at 0x11fab5810>
+[display_data text/html]
+<style type="text/css">
+</style>
+<table id="T_45b75">
+  <caption>Proportion of Income by marital-status</caption>
+  <thead>
+    <tr>
+      <th class="index_name level0" >income</th>
+      <th id="T_45b75_level0_col0" class="col_heading level0 col0" ><=50K</th>
+      <th id="T_45b75_level0_col1" class="col_heading level0 col1" >>50K</th>
+    </tr>
+    <tr>
+      <th class="index_name level0" >marital-status</th>
+      <th class="blank col0" >&nbsp;</th>
+      <th class="blank col1" >&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_45b75_level0_row0" class="row_heading level0 row0" >Divorced</th>
+      <td id="T_45b75_row0_col0" class="data row0 col0" >89.58%</td>
+      <td id="T_45b75_row0_col1" class="data row0 col1" >10.42%</td>
+    </tr>
+    <tr>
+      <th id="T_45b75_level0_row1" class="row_heading level0 row1" >Married-AF-spouse</th>
+      <td id="T_45b75_row1_col0" class="data row1 col0" >56.52%</td>
+      <td id="T_45b75_row1_col1" class="data row1 col1" >43.48%</td>
+    </tr>
+    <tr>
+      <th id="T_45b75_level0_row2" class="row_heading level0 row2" >Married-civ-spouse</th>
+      <td id="T_45b75_row2_col0" class="data row2 col0" >55.32%</td>
+      <td id="T_45b75_row2_col1" class="data row2 col1" >44.68%</td>
+    </tr>
+    <tr>
+      <th id="T_45b75_level0_row3" class="row_heading level0 row3" >Married-spouse-absent</th>
+      <td id="T_45b75_row3_col0" class="data row3 col0" >91.87%</td>
+      <td id="T_45b75_row3_col1" class="data row3 col1" >8.13%</td>
+    </tr>
+    <tr>
+      <th id="T_45b75_level0_row4" class="row_heading level0 row4" >Never-married</th>
+      <td id="T_45b75_row4_col0" class="data row4 col0" >95.40%</td>
+      <td id="T_45b75_row4_col1" class="data row4 col1" >4.60%</td>
+    </tr>
+    <tr>
+      <th id="T_45b75_level0_row5" class="row_heading level0 row5" >Separated</th>
+      <td id="T_45b75_row5_col0" class="data row5 col0" >93.56%</td>
+      <td id="T_45b75_row5_col1" class="data row5 col1" >6.44%</td>
+    </tr>
+    <tr>
+      <th id="T_45b75_level0_row6" class="row_heading level0 row6" >Widowed</th>
+      <td id="T_45b75_row6_col0" class="data row6 col0" >91.44%</td>
+      <td id="T_45b75_row6_col1" class="data row6 col1" >8.56%</td>
+    </tr>
+  </tbody>
+</table>
+
+[stream:stdout]
+
+[display_data text/plain]
+<pandas.io.formats.style.Styler at 0x11fab5810>
+[display_data text/html]
+<style type="text/css">
+</style>
+<table id="T_f5677">
+  <caption>Proportion of Income by occupation</caption>
+  <thead>
+    <tr>
+      <th class="index_name level0" >income</th>
+      <th id="T_f5677_level0_col0" class="col_heading level0 col0" ><=50K</th>
+      <th id="T_f5677_level0_col1" class="col_heading level0 col1" >>50K</th>
+    </tr>
+    <tr>
+      <th class="index_name level0" >occupation</th>
+      <th class="blank col0" >&nbsp;</th>
+      <th class="blank col1" >&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_f5677_level0_row0" class="row_heading level0 row0" >?</th>
+      <td id="T_f5677_row0_col0" class="data row0 col0" >89.64%</td>
+      <td id="T_f5677_row0_col1" class="data row0 col1" >10.36%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row1" class="row_heading level0 row1" >Adm-clerical</th>
+      <td id="T_f5677_row1_col0" class="data row1 col0" >86.55%</td>
+      <td id="T_f5677_row1_col1" class="data row1 col1" >13.45%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row2" class="row_heading level0 row2" >Armed-Forces</th>
+      <td id="T_f5677_row2_col0" class="data row2 col0" >88.89%</td>
+      <td id="T_f5677_row2_col1" class="data row2 col1" >11.11%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row3" class="row_heading level0 row3" >Craft-repair</th>
+      <td id="T_f5677_row3_col0" class="data row3 col0" >77.34%</td>
+      <td id="T_f5677_row3_col1" class="data row3 col1" >22.66%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row4" class="row_heading level0 row4" >Exec-managerial</th>
+      <td id="T_f5677_row4_col0" class="data row4 col0" >51.60%</td>
+      <td id="T_f5677_row4_col1" class="data row4 col1" >48.40%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row5" class="row_heading level0 row5" >Farming-fishing</th>
+      <td id="T_f5677_row5_col0" class="data row5 col0" >88.43%</td>
+      <td id="T_f5677_row5_col1" class="data row5 col1" >11.57%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row6" class="row_heading level0 row6" >Handlers-cleaners</th>
+      <td id="T_f5677_row6_col0" class="data row6 col0" >93.72%</td>
+      <td id="T_f5677_row6_col1" class="data row6 col1" >6.28%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row7" class="row_heading level0 row7" >Machine-op-inspct</th>
+      <td id="T_f5677_row7_col0" class="data row7 col0" >87.51%</td>
+      <td id="T_f5677_row7_col1" class="data row7 col1" >12.49%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row8" class="row_heading level0 row8" >Other-service</th>
+      <td id="T_f5677_row8_col0" class="data row8 col0" >95.84%</td>
+      <td id="T_f5677_row8_col1" class="data row8 col1" >4.16%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row9" class="row_heading level0 row9" >Priv-house-serv</th>
+      <td id="T_f5677_row9_col0" class="data row9 col0" >99.33%</td>
+      <td id="T_f5677_row9_col1" class="data row9 col1" >0.67%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row10" class="row_heading level0 row10" >Prof-specialty</th>
+      <td id="T_f5677_row10_col0" class="data row10 col0" >55.10%</td>
+      <td id="T_f5677_row10_col1" class="data row10 col1" >44.90%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row11" class="row_heading level0 row11" >Protective-serv</th>
+      <td id="T_f5677_row11_col0" class="data row11 col0" >67.49%</td>
+      <td id="T_f5677_row11_col1" class="data row11 col1" >32.51%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row12" class="row_heading level0 row12" >Sales</th>
+      <td id="T_f5677_row12_col0" class="data row12 col0" >73.07%</td>
+      <td id="T_f5677_row12_col1" class="data row12 col1" >26.93%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row13" class="row_heading level0 row13" >Tech-support</th>
+      <td id="T_f5677_row13_col0" class="data row13 col0" >69.50%</td>
+      <td id="T_f5677_row13_col1" class="data row13 col1" >30.50%</td>
+    </tr>
+    <tr>
+      <th id="T_f5677_level0_row14" class="row_heading level0 row14" >Transport-moving</th>
+      <td id="T_f5677_row14_col0" class="data row14 col0" >79.96%</td>
+      <td id="T_f5677_row14_col1" class="data row14 col1" >20.04%</td>
+    </tr>
+  </tbody>
+</table>
+
+[stream:stdout]
+
+[display_data text/plain]
+<pandas.io.formats.style.Styler at 0x11fab5810>
+[display_data text/html]
+<style type="text/css">
+</style>
+<table id="T_66202">
+  <caption>Proportion of Income by relationship</caption>
+  <thead>
+    <tr>
+      <th class="index_name level0" >income</th>
+      <th id="T_66202_level0_col0" class="col_heading level0 col0" ><=50K</th>
+      <th id="T_66202_level0_col1" class="col_heading level0 col1" >>50K</th>
+    </tr>
+    <tr>
+      <th class="index_name level0" >relationship</th>
+      <th class="blank col0" >&nbsp;</th>
+      <th class="blank col1" >&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_66202_level0_row0" class="row_heading level0 row0" >Husband</th>
+      <td id="T_66202_row0_col0" class="data row0 col0" >55.14%</td>
+      <td id="T_66202_row0_col1" class="data row0 col1" >44.86%</td>
+    </tr>
+    <tr>
+      <th id="T_66202_level0_row1" class="row_heading level0 row1" >Not-in-family</th>
+      <td id="T_66202_row1_col0" class="data row1 col0" >89.69%</td>
+      <td id="T_66202_row1_col1" class="data row1 col1" >10.31%</td>
+    </tr>
+    <tr>
+      <th id="T_66202_level0_row2" class="row_heading level0 row2" >Other-relative</th>
+      <td id="T_66202_row2_col0" class="data row2 col0" >96.23%</td>
+      <td id="T_66202_row2_col1" class="data row2 col1" >3.77%</td>
+    </tr>
+    <tr>
+      <th id="T_66202_level0_row3" class="row_heading level0 row3" >Own-child</th>
+      <td id="T_66202_row3_col0" class="data row3 col0" >98.68%</td>
+      <td id="T_66202_row3_col1" class="data row3 col1" >1.32%</td>
+    </tr>
+    <tr>
+      <th id="T_66202_level0_row4" class="row_heading level0 row4" >Unmarried</th>
+      <td id="T_66202_row4_col0" class="data row4 col0" >93.67%</td>
+      <td id="T_66202_row4_col1" class="data row4 col1" >6.33%</td>
+    </tr>
+    <tr>
+      <th id="T_66202_level0_row5" class="row_heading level0 row5" >Wife</th>
+      <td id="T_66202_row5_col0" class="data row5 col0" >52.49%</td>
+      <td id="T_66202_row5_col1" class="data row5 col1" >47.51%</td>
+    </tr>
+  </tbody>
+</table>
+
+[stream:stdout]
+
+[display_data text/plain]
+<pandas.io.formats.style.Styler at 0x11fab7390>
+[display_data text/html] (10769 chars — truncated)
+<style type="text/css">
+</style>
+<table id="T_34acb">
+  <caption>Proportion of Income by native-country</caption>
+  <thead>
+    <tr>
+      <th class="index_name level0" >income</th>
+      <th id="T_34acb_level0_col0" class="col_heading level0 col0" ><=50K</th>
+      <th id="T_34acb_level0_col1" class="col_heading level0 col1" >>50K</th>
+    </tr>
+    <tr>
+      <th class="index_name level0" >native-country</th>
+      <th class="blank col0" >&nbsp;</th>
+      <th class="blank col1" >&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_34acb_level0_row0" class="row_heading level0 row0" >?</th>
+      <td id="T_34acb_row0_col0" class="data row0 col0" >74.96%</td>
+      <td id="T_34acb_row0_col1" class="data row0 col1" >25.04%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row1" class="row_heading level0 row1" >Cambodia</th>
+      <td id="T_34acb_row1_col0" class="data row1 col0" >63.16%</td>
+      <td id="T_34acb_row1_col1" class="data row1 col1" >36.84%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row2" class="row_heading level0 row2" >Canada</th>
+      <td id="T_34acb_row2_col0" class="data row2 col0" >67.77%</td>
+      <td id="T_34acb_row2_col1" class="data row2 col1" >32.23%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row3" class="row_heading level0 row3" >China</th>
+      <td id="T_34acb_row3_col0" class="data row3 col0" >73.33%</td>
+      <td id="T_34acb_row3_col1" class="data row3 col1" >26.67%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row4" class="row_heading level0 row4" >Columbia</th>
+      <td id="T_34acb_row4_col0" class="data row4 col0" >96.61%</td>
+      <td id="T_34acb_row4_col1" class="data row4 col1" >3.39%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row5" class="row_heading level0 row5" >Cuba</th>
+      <td id="T_34acb_row5_col0" class="data row5 col0" >73.68%</td>
+      <td id="T_34acb_row5_col1" class="data row5 col1" >26.32%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row6" class="row_heading level0 row6" >Dominican-Republic</th>
+      <td id="T_34acb_row6_col0" class="data row6 col0" >97.14%</td>
+      <td id="T_34acb_row6_col1" class="data row6 col1" >2.86%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row7" class="row_heading level0 row7" >Ecuador</th>
+      <td id="T_34acb_row7_col0" class="data row7 col0" >85.71%</td>
+      <td id="T_34acb_row7_col1" class="data row7 col1" >14.29%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row8" class="row_heading level0 row8" >El-Salvador</th>
+      <td id="T_34acb_row8_col0" class="data row8 col0" >91.51%</td>
+      <td id="T_34acb_row8_col1" class="data row8 col1" >8.49%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row9" class="row_heading level0 row9" >England</th>
+      <td id="T_34acb_row9_col0" class="data row9 col0" >66.67%</td>
+      <td id="T_34acb_row9_col1" class="data row9 col1" >33.33%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row10" class="row_heading level0 row10" >France</th>
+      <td id="T_34acb_row10_col0" class="data row10 col0" >58.62%</td>
+      <td id="T_34acb_row10_col1" class="data row10 col1" >41.38%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row11" class="row_heading level0 row11" >Germany</th>
+      <td id="T_34acb_row11_col0" class="data row11 col0" >67.88%</td>
+      <td id="T_34acb_row11_col1" class="data row11 col1" >32.12%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row12" class="row_heading level0 row12" >Greece</th>
+      <td id="T_34acb_row12_col0" class="data row12 col0" >72.41%</td>
+      <td id="T_34acb_row12_col1" class="data row12 col1" >27.59%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row13" class="row_heading level0 row13" >Guatemala</th>
+      <td id="T_34acb_row13_col0" class="data row13 col0" >95.31%</td>
+      <td id="T_34acb_row13_col1" class="data row13 col1" >4.69%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row14" class="row_heading level0 row14" >Haiti</th>
+      <td id="T_34acb_row14_col0" class="data row14 col0" >90.91%</td>
+      <td id="T_34acb_row14_col1" class="data row14 col1" >9.09%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row15" class="row_heading level0 row15" >Holand-Netherlands</th>
+      <td id="T_34acb_row15_col0" class="data row15 col0" >100.00%</td>
+      <td id="T_34acb_row15_col1" class="data row15 col1" >0.00%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row16" class="row_heading level0 row16" >Honduras</th>
+      <td id="T_34acb_row16_col0" class="data row16 col0" >92.31%</td>
+      <td id="T_34acb_row16_col1" class="data row16 col1" >7.69%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row17" class="row_heading level0 row17" >Hong</th>
+      <td id="T_34acb_row17_col0" class="data row17 col0" >70.00%</td>
+      <td id="T_34acb_row17_col1" class="data row17 col1" >30.00%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row18" class="row_heading level0 row18" >Hungary</th>
+      <td id="T_34acb_row18_col0" class="data row18 col0" >76.92%</td>
+      <td id="T_34acb_row18_col1" class="data row18 col1" >23.08%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row19" class="row_heading level0 row19" >India</th>
+      <td id="T_34acb_row19_col0" class="data row19 col0" >60.00%</td>
+      <td id="T_34acb_row19_col1" class="data row19 col1" >40.00%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row20" class="row_heading level0 row20" >Iran</th>
+      <td id="T_34acb_row20_col0" class="data row20 col0" >58.14%</td>
+      <td id="T_34acb_row20_col1" class="data row20 col1" >41.86%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row21" class="row_heading level0 row21" >Ireland</th>
+      <td id="T_34acb_row21_col0" class="data row21 col0" >79.17%</td>
+      <td id="T_34acb_row21_col1" class="data row21 col1" >20.83%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row22" class="row_heading level0 row22" >Italy</th>
+      <td id="T_34acb_row22_col0" class="data row22 col0" >65.75%</td>
+      <td id="T_34acb_row22_col1" class="data row22 col1" >34.25%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row23" class="row_heading level0 row23" >Jamaica</th>
+      <td id="T_34acb_row23_col0" class="data row23 col0" >87.65%</td>
+      <td id="T_34acb_row23_col1" class="data row23 col1" >12.35%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row24" class="row_heading level0 row24" >Japan</th>
+      <td id="T_34acb_row24_col0" class="data row24 col0" >61.29%</td>
+      <td id="T_34acb_row24_col1" class="data row24 col1" >38.71%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row25" class="row_heading level0 row25" >Laos</th>
+      <td id="T_34acb_row25_col0" class="data row25 col0" >88.89%</td>
+      <td id="T_34acb_row25_col1" class="data row25 col1" >11.11%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row26" class="row_heading level0 row26" >Mexico</th>
+      <td id="T_34acb_row26_col0" class="data row26 col0" >94.87%</td>
+      <td id="T_34acb_row26_col1" class="data row26 col1" >5.13%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row27" class="row_heading level0 row27" >Nicaragua</th>
+      <td id="T_34acb_row27_col0" class="data row27 col0" >94.12%</td>
+      <td id="T_34acb_row27_col1" class="data row27 col1" >5.88%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row28" class="row_heading level0 row28" >Outlying-US(Guam-USVI-etc)</th>
+      <td id="T_34acb_row28_col0" class="data row28 col0" >100.00%</td>
+      <td id="T_34acb_row28_col1" class="data row28 col1" >0.00%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row29" class="row_heading level0 row29" >Peru</th>
+      <td id="T_34acb_row29_col0" class="data row29 col0" >93.55%</td>
+      <td id="T_34acb_row29_col1" class="data row29 col1" >6.45%</td>
+    </tr>
+    <tr>
+      <th id="T_34acb_level0_row30" class="row_heading level0 row30" >Philippines</th>
+      <td id="T_34acb_row30_col0" class="data row30 col0" >69.19%</td>
+      <td id="T_34acb_row30_col1" c...
+[stream:stdout]
+
+
+--- Cell 6 (code) — # ------------- Thorough preprocessing & sklearn pipeline for Adult dataset -------------...
+[stream:stdout]
+Evaluating models:
+
+Model: Logistic Regression
+              precision    recall  f1-score   support
+
+       <=50K       0.94      0.80      0.86     12435
+        >50K       0.56      0.84      0.67      3846
+
+    accuracy                           0.81     16281
+   macro avg       0.75      0.82      0.77     16281
+weighted avg       0.85      0.81      0.82     16281
+
+Test ROC AUC: 0.904
+Test Accuracy: 0.806
+
+Model: Gradient Boosting
+              precision    recall  f1-score   support
+
+       <=50K       0.89      0.95      0.92     12435
+        >50K       0.79      0.60      0.69      3846
+
+    accuracy                           0.87     16281
+   macro avg       0.84      0.78      0.80     16281
+weighted avg       0.86      0.87      0.86     16281
+
+Test ROC AUC: 0.920
+Test Accuracy: 0.869
+
+Model: Random Forest
+              precision    recall  f1-score   support
+
+       <=50K       0.88      0.93      0.91     12435
+        >50K       0.73      0.60      0.66      3846
+
+    accuracy                           0.85     16281
+   macro avg       0.80      0.77      0.78     16281
+weighted avg       0.85      0.85      0.85     16281
+
+Test ROC AUC: 0.899
+Test Accuracy: 0.853
+
+Best Model: Gradient Boosting (AUC = 0.920)
+
+Preprocessed feature columns (for explainability):
+['age' 'fnlwgt' 'education-num' 'capital-gain' 'capital-loss'
+ 'hours-per-week' 'race_Amer-Indian-Eskimo' 'race_Asian-Pac-Islander'
+ 'race_Black' 'race_Other' 'race_White' 'native-country_Cambodia'
+ 'native-country_Canada' 'native-country_China' 'native-country_Columbia'
+ 'native-country_Cuba' 'native-country_Dominican-Republic'
+ 'native-country_Ecuador' 'native-country_El-Salvador'
+ 'native-country_England' 'native-country_France' 'native-country_Germany'
+ 'native-country_Greece' 'native-country_Guatemala' 'native-country_Haiti'
+ 'native-country_Holand-Netherlands' 'native-country_Honduras'
+ 'native-country_Hong' 'native-country_Hungary' 'native-country_India'
+ 'native-country_Iran' 'native-country_Ireland' 'native-country_Italy'
+ 'native-country_Jamaica' 'native-country_Japan' 'native-country_Laos'
+ 'native-country_Mexico' 'native-country_Nicaragua'
+ 'native-country_Outlying-US(Guam-USVI-etc)' 'native-country_Peru'
+ 'native-country_Philippines' 'native-country_Poland'
+ 'native-country_Portugal' 'native-country_Puerto-Rico'
+ 'native-country_Scotland' 'native-country_South' 'native-country_Taiwan'
+ 'native-country_Thailand' 'native-country_Trinadad&Tobago'
+ 'native-country_United-States' 'native-country_Vietnam'
+ 'native-country_Yugoslavia' 'relationship_Husband'
+ 'relationship_Not-in-family' 'relationship_Other-relative'
+ 'relationship_Own-child' 'relationship_Unmarried' 'relationship_Wife'
+ 'education_10th' 'education_11th' 'education_12th' 'education_1st-4th'
+ 'education_5th-6th' 'education_7th-8th' 'education_9th'
+ 'education_Assoc-acdm' 'education_Assoc-voc' 'education_Bachelors'
+ 'education_Doctorate' 'education_HS-grad' 'education_Masters'
+ 'education_Preschool' 'education_Prof-school' 'education_Some-college'
+ 'occupation_Adm-clerical' 'occupation_Armed-Forces'
+ 'occupation_Craft-repair' 'occupation_Exec-managerial'
+ 'occupation_Farming-fishing' 'occupation_Handlers-cleaners'
+ 'occupation_Machine-op-inspct' 'occupation_Other-service'
+ 'occupation_Priv-house-serv' 'occupation_Prof-specialty'
+ 'occupation_Protective-serv' 'occupation_Sales' 'occupation_Tech-support'
+ 'occupation_Transport-moving' 'sex_Female' 'sex_Male'
+ 'marital-status_Divorced' 'marital-status_Married-AF-spouse'
+ 'marital-status_Married-civ-spouse'
+ 'marital-status_Married-spouse-absent' 'marital-status_Never-married'
+ 'marital-status_Separated' 'marital-status_Widowed'
+ 'workclass_Federal-gov' 'workclass_Local-gov' 'workclass_Never-worked'
+ 'workclass_Private' 'workclass_Self-emp-inc' 'workclass_Self-emp-not-inc'
+ 'workclass_State-gov' 'workclass_Without-pay']
+
+--- Cell 7 (code) — # Disaggregated test metrics for the best model (by test ROC AUC). Mirrors scripts/generate_phase1_report.py....
+[stream:stdout]
+Disaggregated test metrics (best model) — by sex and race
+[display_data text/plain]
+  attribute               group      n  accuracy  precision    recall  \
+0       sex              Female   5421  0.936912   0.819588  0.538983   
+1       sex                Male  10860  0.834991   0.787736  0.615479   
+2      race  Amer-Indian-Eskimo    159  0.943396   0.916667  0.578947   
+3      race  Asian-Pac-Islander    480  0.837500   0.731092  0.654135   
+4      race               Black   1561  0.928251   0.776860  0.525140   
+5      race               Other    135  0.896296   0.866667  0.520000   
+6      race               White  13946  0.862254   0.794371  0.606590   
+
+         f1   auc_roc  
+0  0.650307  0.939534  
+1  0.691034  0.899927  
+2  0.709677  0.971241  
+3  0.690476  0.892050  
+4  0.626667  0.940755  
+5  0.650000  0.969818  
+6  0.687896  0.916364  
+[display_data text/html]
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>attribute</th>
+      <th>group</th>
+      <th>n</th>
+      <th>accuracy</th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1</th>
+      <th>auc_roc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sex</td>
+      <td>Female</td>
+      <td>5421</td>
+      <td>0.936912</td>
+      <td>0.819588</td>
+      <td>0.538983</td>
+      <td>0.650307</td>
+      <td>0.939534</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>sex</td>
+      <td>Male</td>
+      <td>10860</td>
+      <td>0.834991</td>
+      <td>0.787736</td>
+      <td>0.615479</td>
+      <td>0.691034</td>
+      <td>0.899927</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>race</td>
+      <td>Amer-Indian-Eskimo</td>
+      <td>159</td>
+      <td>0.943396</td>
+      <td>0.916667</td>
+      <td>0.578947</td>
+      <td>0.709677</td>
+      <td>0.971241</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>race</td>
+      <td>Asian-Pac-Islander</td>
+      <td>480</td>
+      <td>0.837500</td>
+      <td>0.731092</td>
+      <td>0.654135</td>
+      <td>0.690476</td>
+      <td>0.892050</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>race</td>
+      <td>Black</td>
+      <td>1561</td>
+      <td>0.928251</td>
+      <td>0.776860</td>
+      <td>0.525140</td>
+      <td>0.626667</td>
+      <td>0.940755</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>race</td>
+      <td>Other</td>
+      <td>135</td>
+      <td>0.896296</td>
+      <td>0.866667</td>
+      <td>0.520000</td>
+      <td>0.650000</td>
+      <td>0.969818</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>race</td>
+      <td>White</td>
+      <td>13946</td>
+      <td>0.862254</td>
+      <td>0.794371</td>
+      <td>0.606590</td>
+      <td>0.687896</td>
+      <td>0.916364</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+--- Cell 9 (code) — # Fairness metrics (plan.md): demographic parity, equality of opportunity (TPR), predictive parity (PPV)....
+[stream:stdout]
+=== Fairness by sex ===
+[display_data text/plain]
+                                              metric      Male    Female  \
+0              Demographic parity: P(predicted >50K)  0.234254  0.071574   
+1    Equality of opportunity: TPR (among truly >50K)  0.615479  0.538983   
+2  Predictive parity: precision (among predicted ...  0.787736  0.819588   
+
+    abs_gap  
+0  0.162681  
+1  0.076496  
+2  0.031852  
+[display_data text/html]
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>metric</th>
+      <th>Male</th>
+      <th>Female</th>
+      <th>abs_gap</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Demographic parity: P(predicted &gt;50K)</td>
+      <td>0.234254</td>
+      <td>0.071574</td>
+      <td>0.162681</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Equality of opportunity: TPR (among truly &gt;50K)</td>
+      <td>0.615479</td>
+      <td>0.538983</td>
+      <td>0.076496</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Predictive parity: precision (among predicted ...</td>
+      <td>0.787736</td>
+      <td>0.819588</td>
+      <td>0.031852</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+[stream:stdout]
+=== Fairness by race (White vs Non-White) ===
+[display_data text/plain]
+                                              metric     White  Non-White  \
+0              Demographic parity: P(predicted >50K)  0.191094   0.114347   
+1    Equality of opportunity: TPR (among truly >50K)  0.606590   0.575843   
+2  Predictive parity: precision (among predicted ...  0.794371   0.767790   
+
+    abs_gap  
+0  0.076747  
+1  0.030748  
+2  0.026581  
+[display_data text/html]
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>metric</th>
+      <th>White</th>
+      <th>Non-White</th>
+      <th>abs_gap</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Demographic parity: P(predicted &gt;50K)</td>
+      <td>0.191094</td>
+      <td>0.114347</td>
+      <td>0.076747</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Equality of opportunity: TPR (among truly &gt;50K)</td>
+      <td>0.606590</td>
+      <td>0.575843</td>
+      <td>0.030748</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Predictive parity: precision (among predicted ...</td>
+      <td>0.794371</td>
+      <td>0.767790</td>
+      <td>0.026581</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+[stream:stdout]
+
+Metric tension (typical pattern): a large demographic-parity gap can coexist with smaller predictive-parity gaps — improving one can worsen another. Your report should name which criterion you prioritize and why (ethical framework), per plan.md.
+
+--- Cell 10 (code) — # SHAP global explainability (plan.md: top 5 drivers + proxy discussion in report)....
+[stream:stdout]
+Top 5 global drivers (mean |SHAP| on subsample) — cite in report:
+[stream:stderr]
+/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+[display_data text/plain]
+                             feature  mean_abs_shap
+0  marital-status_Married-civ-spouse       0.987867
+1                                age       0.498842
+2                      education-num       0.415077
+3                       capital-gain       0.332749
+4                     hours-per-week       0.267255
+[display_data text/html]
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>feature</th>
+      <th>mean_abs_shap</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>marital-status_Married-civ-spouse</td>
+      <td>0.987867</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>age</td>
+      <td>0.498842</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>education-num</td>
+      <td>0.415077</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>capital-gain</td>
+      <td>0.332749</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>hours-per-week</td>
+      <td>0.267255</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+[stream:stderr]
+/var/folders/jb/4gkhgpz15bbgklmqj7_zh0hm0000gn/T/ipykernel_3532/3368839483.py:40: FutureWarning: The NumPy global RNG was seeded by calling `np.random.seed`. In a future version this function will no longer use the global RNG. Pass `rng` explicitly to opt-in to the new behaviour and silence this warning.
+  shap.summary_plot(shap_values, X_shap, feature_names=feature_names, plot_type="bar", show=False)
+[display_data text/plain]
+<Figure size 800x950 with 1 Axes>
+[display_data image/png] <embedded PNG, ~67569 bytes — omitted>
+[stream:stderr]
+/var/folders/jb/4gkhgpz15bbgklmqj7_zh0hm0000gn/T/ipykernel_3532/3368839483.py:45: FutureWarning: The NumPy global RNG was seeded by calling `np.random.seed`. In a future version this function will no longer use the global RNG. Pass `rng` explicitly to opt-in to the new behaviour and silence this warning.
+  shap.summary_plot(shap_values, X_shap, feature_names=feature_names, show=False)
+[display_data text/plain]
+<Figure size 800x950 with 2 Axes>
+[display_data image/png] <embedded PNG, ~89393 bytes — omitted>
+
+--- Cell 11 (code) — # Recourse spot-check (plan.md): one unfavorable prediction (predicted <=50K) and local drivers....
+[stream:stdout]
+Unfavorable case (borderline): test position 12401
+True income label: >50K | Model P(>50K): 0.49958618927816556
+[display_data text/plain]
+                             value
+age                             52
+workclass                  Private
+fnlwgt                      142757
+education             Some-college
+education-num                   10
+marital-status  Married-civ-spouse
+occupation          Prof-specialty
+relationship               Husband
+race                         Black
+sex                           Male
+capital-gain                     0
+capital-loss                     0
+hours-per-week                  56
+native-country       United-States
+[display_data text/html]
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>age</th>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>workclass</th>
+      <td>Private</td>
+    </tr>
+    <tr>
+      <th>fnlwgt</th>
+      <td>142757</td>
+    </tr>
+    <tr>
+      <th>education</th>
+      <td>Some-college</td>
+    </tr>
+    <tr>
+      <th>education-num</th>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>marital-status</th>
+      <td>Married-civ-spouse</td>
+    </tr>
+    <tr>
+      <th>occupation</th>
+      <td>Prof-specialty</td>
+    </tr>
+    <tr>
+      <th>relationship</th>
+      <td>Husband</td>
+    </tr>
+    <tr>
+      <th>race</th>
+      <td>Black</td>
+    </tr>
+    <tr>
+      <th>sex</th>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>capital-gain</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>capital-loss</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>hours-per-week</th>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>native-country</th>
+      <td>United-States</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+[stream:stdout]
+Largest |SHAP| for this individual — use for actionable-recourse discussion:
+[display_data text/plain]
+                              feature      shap
+0   marital-status_Married-civ-spouse  1.104767
+1                                 age  0.582594
+2                      hours-per-week  0.465527
+3                        capital-gain -0.170355
+4                          race_White -0.080449
+5          occupation_Exec-managerial -0.077543
+6                       education-num -0.062121
+7           occupation_Prof-specialty  0.055863
+8                          sex_Female  0.046453
+9                        capital-loss -0.045697
+10           occupation_Other-service  0.040487
+11             relationship_Own-child  0.024416
+[display_data text/html]
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>feature</th>
+      <th>shap</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>marital-status_Married-civ-spouse</td>
+      <td>1.104767</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>age</td>
+      <td>0.582594</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>hours-per-week</td>
+      <td>0.465527</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>capital-gain</td>
+      <td>-0.170355</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>race_White</td>
+      <td>-0.080449</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>occupation_Exec-managerial</td>
+      <td>-0.077543</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>education-num</td>
+      <td>-0.062121</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>occupation_Prof-specialty</td>
+      <td>0.055863</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>sex_Female</td>
+      <td>0.046453</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>capital-loss</td>
+      <td>-0.045697</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>occupation_Other-service</td>
+      <td>0.040487</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>relationship_Own-child</td>
+      <td>0.024416</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+[stream:stdout]
+
+Illustrative levers on raw inputs (not a certified counterfactual; discuss ethics of each in report):
+  education-num=10, hours-per-week=56, age=52, occupation=Prof-specialty
+
+--- Cell 12 (code) — # Optional: LIME local explanation (plan.md allows SHAP or LIME). Complements the recourse cell above....
+[display_data text/plain]
+<IPython.core.display.HTML object>
+[display_data text/html] (1231275 chars — truncated)
+<html>
+        <meta http-equiv="content-type" content="text/html; charset=UTF8">
+        <head><script>var lime =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+/******/
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.PredictedValue = exports.PredictProba = exports.Barchart = exports.Explanation = undefined;
+	
+	var _explanation = __webpack_require__(1);
+	
+	var _explanation2 = _interopRequireDefault(_explanation);
+	
+	var _bar_chart = __webpack_require__(3);
+	
+	var _bar_chart2 = _interopRequireDefault(_bar_chart);
+	
+	var _predict_proba = __webpack_require__(6);
+	
+	var _predict_proba2 = _interopRequireDefault(_predict_proba);
+	
+	var _predicted_value = __webpack_require__(7);
+	
+	var _predicted_value2 = _interopRequireDefault(_predicted_value);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	if (!global._babelPolyfill) {
+	  __webpack_require__(8);
+	}
+	
+	__webpack_require__(339);
+	
+	exports.Explanation = _explanation2.default;
+	exports.Barchart = _bar_chart2.default;
+	exports.PredictProba = _predict_proba2.default;
+	exports.PredictedValue = _predicted_value2.default;
+	//require('style-loader');
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+	
+	var _d2 = __webpack_require__(2);
+	
+	var _d3 = _interopRequireDefault(_d2);
+	
+	var _bar_chart = __webpack_require__(3);
+	
+	var _bar_chart2 = _interopRequireDefault(_bar_chart);
+	
+	var _lodash = __webpack_require__(4);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var Explanation = function () {
+	  function Explanation(class_names) {
+	    _classCallCheck(this, Explanation);
+	
+	    this.names = class_names;
+	    if (class_names.length < 10) {
+	      this.colors = _d3.default.scale.category10().domain(this.names);
+	      this.colors_i = _d3.default.scale.category10().domain((0, _lodash.range)(this.names.length));
+	    } else {
+	      this.colors = _d3.default.scale.category20().domain(this.names);
+	      this.colors_i = _d3.default.scale.category20().domain((0, _lodash.range)(this.names.length));
+	    }
+	  }
+	  // exp: [(feature-name, weight), ...]
+	  // label: int
+	  // div: d3 selection
+	
+	
+	  Explanation.prototype.show = function show(exp, label, div) {
+	    var svg = div.append('svg').style('width', '100%');
+	    var colors = ['#5F9EA0', this.colors_i(label)];
+	    var names = ['NOT ' + this.names[label], this.names[label]];
+	    if (this.names.length == 2) {
+	      colors = [this.colors_i(0), this.colors_i(1)];
+	      names = this.names;
+	    }
+	    var plot = new _bar_chart2.default(svg, exp, true, names, colors, true, 10);
+	    svg.style('height', plot.svg_height + 'px');
+	  };
+	  // exp has all ocurrences of words, with start index and weight:
+	  // exp = [('word', 132, -0.13), ('word3', 111, 1.3)
+	
+	
+	  Explanation.prototype.show_raw_text = function show_raw_text(exp, label, raw, div) {
+	    var opacity = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
+	
+	    //let colors=['#5F9EA0', this.colors(this.exp['class'])];
+	    var colors = ['#5F9EA0', this.colors_i(label)];
+	    if (this.names.length == 2) {
+	      colors = [this.colors_i(0), this.colors_i(1)];
+	    }
+	    var word_lists = [[], []];
+	    var max_weight = -1;
+	    var _iteratorNormalCompletion = true;
+	    var _didIteratorError = false;
+	    var _iteratorError = undefined;
+	
+	    try {
+	      for (var _iterator = exp[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	        var _step$value = _slicedToArray(_step.value, 3),
+	            word = _step$value[0],
+	            start = _step$value[1],
+	            weight = _step$value[2];
+	
+	        if (weight > 0) {
+	          word_lists[1].push([start, start + word.length, weight]);
+	        } else {
+	          word_lists[0].push([start, start + word.length, -weight]);
+	        }
+	        max_weight = Math.max(max_weight, Math.abs(weight));
+	      }
+	    } catch (err) {
+	      _didIteratorError = true;
+	      _iteratorError = err;
+	    } finally {
+	      try {
+	        if (!_iteratorNormalCompletion && _iterator.return) {
+	          _iterator.return();
+	        }
+	      } finally {
+	        if (_didIteratorError) {
+	          throw _iteratorError;
+	        }
+	      }
+	    }
+	
+	    if (!opacity) {
+	      max_weight = 0;
+	    }
+	    this.display_raw_text(div, raw, word_lists, colors, max_weight, true);
+	  };
+	  // exp is list of (feature_name, value, weight)
+	
+	
+	  Explanation.prototype.show_raw_tabular = function show_raw_tabular(exp, label, div) {
+	    div.classed('lime', true).classed('table_div', true);
+	    var colors = ['#5F9EA0', this.colors_i(label)];
+	    if (this.names.length == 2) {
+	      colors = [this.colors_i(0), this.colors_i(1)];
+	    }
+	    var table = div.append('table');
+	    var thead = table.append('tr');
+	    thead.append('td').text('Feature');
+	    thead.append('td').text('Value');
+	    thead.style('color', 'black').style('font-size', '20px');
+	    var _iteratorNormalCompletion2 = true;
+	    var _didIteratorError2 = false;
+	    var _iteratorError2 = undefined;
+	
+	    try {
+	      for (var _iterator2 = exp[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	        var _step2$value = _slicedToArray(_step2.value, 3),
+	            fname = _step2$value[0],
+	            value = _step2$value[1],
+	            weight = _s...
+
+--- Cell 14 (code) — # Compliance gap table — audit_finding lines use computed Phase 2 values (fairness_sex, fairness_race, top5, recourse)....
+[execute_result text/plain]
+                                       audit_finding  \
+0  Sex: P(predicted >50K) Male 23.4%, Female 7.2%...   
+1  Race (White vs Non-White): P(predicted >50K) W...   
+2  Global SHAP (mean |SHAP|) top features: marita...   
+3  Strongest sensitivities in this run: marital-s...   
+4  Training pipeline keeps `sex` and `race` as mo...   
+5  Notebook documents data source, split, metrics...   
+6  Recourse example: borderline unfavorable predi...   
+7  No fairness constraints, reweighting, or post-...   
+8  No human-in-the-loop review or contestation wo...   
+9  No live monitoring, drift detection, or schedu...   
+
+                                          regulation  \
+0                Title VII, Civil Rights Act of 1964   
+1  EEOC Uniform Guidelines on Employee Selection ...   
+2  State / local EEO; EU AI Act (high-risk AI tra...   
+3  Fair Chance / state hiring laws (where applica...   
+4                 GDPR Art. 9; US state privacy laws   
+5                                          EU AI Act   
+6      GDPR Art. 15/22; CCPA/CPRA; NYC Local Law 144   
+7         EEOC guidance; EU AI Act (risk management)   
+8                                       GDPR Art. 22   
+9           EU AI Act Art. 61; NIST AI RMF (Monitor)   
+
+                           article_or_section         status  \
+0                              Section 703(a)           gray   
+1                  Section 4 (adverse impact)           gray   
+2                      Varies by jurisdiction           gray   
+3                                      Varies           gray   
+4           Sensitive / special-category data           gray   
+5       Art. 52 (transparency for certain AI)      compliant   
+6  Explainability / automated decision-making  non-compliant   
+7                Bias mitigation expectations  non-compliant   
+8        Automated individual decision-making  non-compliant   
+9             Post-market monitoring / Govern  non-compliant   
+
+                                               notes  
+0  Disparate treatment / impact risk; document bu...  
+1  Monitor selection rates vs. 4/5 rule; justify ...  
+2  High-impact features (e.g. marital, occupation...  
+3  Legitimate predictors can still skew outcomes;...  
+4  If deployed on EU data subjects, lawful basis ...  
+5  R&D artifact; production would need user-facin...  
+6  No productized appeal path or certified counte...  
+7  Plan mitigation before deployment (calibration...  
+8  Add meaningful human review where Art. 22 appl...  
+9  Define KPIs, logging, and periodic fairness au...  
+[execute_result text/html]
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>audit_finding</th>
+      <th>regulation</th>
+      <th>article_or_section</th>
+      <th>status</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Sex: P(predicted &gt;50K) Male 23.4%, Female 7.2%...</td>
+      <td>Title VII, Civil Rights Act of 1964</td>
+      <td>Section 703(a)</td>
+      <td>gray</td>
+      <td>Disparate treatment / impact risk; document bu...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Race (White vs Non-White): P(predicted &gt;50K) W...</td>
+      <td>EEOC Uniform Guidelines on Employee Selection ...</td>
+      <td>Section 4 (adverse impact)</td>
+      <td>gray</td>
+      <td>Monitor selection rates vs. 4/5 rule; justify ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Global SHAP (mean |SHAP|) top features: marita...</td>
+      <td>State / local EEO; EU AI Act (high-risk AI tra...</td>
+      <td>Varies by jurisdiction</td>
+      <td>gray</td>
+      <td>High-impact features (e.g. marital, occupation...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Strongest sensitivities in this run: marital-s...</td>
+      <td>Fair Chance / state hiring laws (where applica...</td>
+      <td>Varies</td>
+      <td>gray</td>
+      <td>Legitimate predictors can still skew outcomes;...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Training pipeline keeps `sex` and `race` as mo...</td>
+      <td>GDPR Art. 9; US state privacy laws</td>
+      <td>Sensitive / special-category data</td>
+      <td>gray</td>
+      <td>If deployed on EU data subjects, lawful basis ...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Notebook documents data source, split, metrics...</td>
+      <td>EU AI Act</td>
+      <td>Art. 52 (transparency for certain AI)</td>
+      <td>compliant</td>
+      <td>R&amp;D artifact; production would need user-facin...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Recourse example: borderline unfavorable predi...</td>
+      <td>GDPR Art. 15/22; CCPA/CPRA; NYC Local Law 144</td>
+      <td>Explainability / automated decision-making</td>
+      <td>non-compliant</td>
+      <td>No productized appeal path or certified counte...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>No fairness constraints, reweighting, or post-...</td>
+      <td>EEOC guidance; EU AI Act (risk management)</td>
+      <td>Bias mitigation expectations</td>
+      <td>non-compliant</td>
+      <td>Plan mitigation before deployment (calibration...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>No human-in-the-loop review or contestation wo...</td>
+      <td>GDPR Art. 22</td>
+      <td>Automated individual decision-making</td>
+      <td>non-compliant</td>
+      <td>Add meaningful human review where Art. 22 appl...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>No live monitoring, drift detection, or schedu...</td>
+      <td>EU AI Act Art. 61; NIST AI RMF (Monitor)</td>
+      <td>Post-market monitoring / Govern</td>
+      <td>non-compliant</td>
+      <td>Define KPIs, logging, and periodic fairness au...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+--- Cell 16 (code) — checklist_items = [...
+[execute_result text/plain]
+['Document baseline sex/race fairness gaps (demographic parity, TPR, precision) and targets pre-deployment.',
+ 'Log and monitor P(predicted >50K) and error rates by sex and White vs Non-White (or finer race) per EEOC / internal policy.',
+ 'Review SHAP top drivers for proxy variables (marital status, occupation, native-country encodings).',
+ 'Require human review for scores in a defined band (e.g. near 0.5) before adverse hiring actions.',
+ 'Publish data lineage: UCI Adult, canonical train/test via `dataset_split`, and `scripts/build_adult_csv.py`.',
+ 'Map controls to NIST AI RMF Govern/Map/Measure/Manage before production sign-off.',
+ 'Implement bias mitigation (reweighting, thresholding, post-processing, or fairness constraints) if gaps exceed policy.',
+ 'Provide applicant-facing explanation and appeal consistent with GDPR Art. 22 / CCPA / NYC LL 144 where applicable.',
+ 'Version models; retain artifacts so PDF and notebook numbers can be reproduced.',
+ 'Schedule periodic retraining and drift checks; alert on fairness metric regression.',
+ 'Legal review of Title VII, EEOC guidelines, GDPR/EU AI Act, and state/local hiring rules for the deployment context.']
+

@@ -1,0 +1,31 @@
+---
+description: Human-in-the-loop workflow for replying to Slack mentions; never send without approval
+alwaysApply: false
+---
+# Slack replies: human-in-the-loop
+
+When the user asks to **check Slack mentions**, **reply to Slack pings**, or **handle Slack messages** where they were @-mentioned:
+
+## Workflow (mandatory)
+
+1. **Discover mentions**
+   - Use `slack_list_channels` to get channels.
+   - Use `slack_get_channel_history` on relevant channels (or channels the user specifies) with a reasonable `limit` (e.g. 20–50).
+   - Treat a message as a mention if it contains `<@` (Slack user mention format) in the text. If the user has provided their Slack user ID (e.g. `U01234ABCD`), only count messages that mention that ID.
+
+2. **Draft replies only**
+   - For each mention, draft a short, professional reply. Do **not** call any send/post/reply Slack tool yet.
+
+3. **Show and ask for approval**
+   - Present each draft clearly, e.g.:
+     - Channel name/id, message snippet or thread_ts, and the **draft reply text**.
+   - Ask the user to approve: e.g. "Approve all", "Send #1 and #3", "Edit #2 then send", or "Don’t send any".
+
+4. **Send only after explicit approval**
+   - Call `slack_reply_to_thread` (or `slack_post_message` if not a thread) **only** for drafts the user has explicitly approved.
+   - If the user wants edits, apply them and show the updated draft again; send only after they approve.
+
+## Rules
+
+- **Never** send, post, or reply in Slack without the user’s explicit approval for that specific message.
+- If the user says "check Slack" or "my Slack mentions" without asking to reply, only fetch and list mentions; do not draft or send unless they ask.

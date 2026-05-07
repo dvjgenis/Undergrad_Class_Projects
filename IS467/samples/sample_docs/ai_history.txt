@@ -1,0 +1,8 @@
+Artificial Intelligence (AI) has a rich history dating back to the 1950s.
+The term was first coined by John McCarthy in 1956 at the Dartmouth Conference.
+Early AI research focused on symbolic methods and rule-based systems.
+In the 1980s, expert systems became popular but faced limitations.
+The 1990s and early 2000s saw a shift towards machine learning approaches.
+The deep learning revolution began around 2012 with breakthrough results in computer vision.
+Today, large language models like GPT, LLaMA, and Gemini represent cutting-edge AI capabilities.
+These models are trained on vast amounts of text data and can generate human-like responses.

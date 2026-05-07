@@ -1,0 +1,26 @@
+---
+description: Rules for the Tactile Sandbox — Next.js, React, Tailwind, VexFlow
+globs: harmony-forge-redesign/**/*.tsx
+---
+
+# Tactile Sandbox Frontend Rules
+
+When editing `harmony-forge-redesign/` components:
+
+## Stack
+
+- **Framework:** Next.js 16, React 19
+- **Styling:** Tailwind CSS 4
+- **Notation:** VexFlow for score rendering and direct note manipulation
+- **State:** Zustand (`useWorkflowStore`, `useScoreEditorStore`, `useSandboxStore`)
+- **Audio:** Tone.js for playback verification
+
+## Principles
+
+1. **Edit-Authority:** The user is the sole creative agent. UI enables direct manipulation (drag notes, change inversions, add NCTs); it does not auto-apply AI suggestions.
+
+2. **Red Line / Blue Line:** Violations from `/api/validate` are deterministic. Red = theory violations; Blue = genre nuances (e.g., parallel fifths acceptable in pop/mariachi). Render these as visual highlights on the score.
+
+3. **Theory Inspector sidebar:** Displays LLM explanations and suggestions. The sidebar never edits the score; the user applies changes manually.
+
+4. **Context hygiene:** When building the translation layer between VexFlow notation and backend rules, perform a State Handover. Summarize progress in `docs/progress.md` and pin relevant Theory Inspector files for fresh sessions.

@@ -1,0 +1,26 @@
+---
+description: Rules for LLM orchestration — LangGraph, Leader→Auditor→RAG→Tutor
+globs: TheoryInspector/**/*.py
+---
+
+# AI Council (Theory Inspector) Rules
+
+When editing `TheoryInspector/`:
+
+## Flow
+
+1. **Leader** — Classifies intent (EXPLANATION vs VALIDATION)
+2. **Auditor** — Runs symbolic tools (intervals, parallels, key, Roman numerals) on score data
+3. **RAG** — Fusion retrieval (vector + BM25) from theory chunks; ChromaDB
+4. **Tutor** — Returns ante-hoc explanation with reasoning steps, severity, sources
+
+## Boundaries
+
+- **AI never edits.** The Theory Inspector explains and suggests; the user applies changes. See `docs/AI-as-Consultant-Interaction-Model.md`.
+- **Input:** JSON-based score deltas from the deterministic engine (error codes, measure, voices). MusicXML for context.
+- **Output:** Text and structured data. No edits to the score.
+
+## Context Hygiene
+
+- **Context Bankruptcy Reset:** When the translation layer between VexFlow and backend rules grows complex, summarize progress in `docs/progress.md`. List specific Theory Inspector files to pin for a fresh session.
+- **Sub-Agent Scouting:** To debug constraint logic, use a Scout agent on `engine/` to map state cascades. Do not mix engine debugging with LLM agent edits in the same context.

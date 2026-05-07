@@ -1,0 +1,274 @@
+SALT LAB Research Project: Prompt Sheet
+A complete research project and final paper involves Many Steps and Teamworks. The following checklist is meant to help you understand what is key to a successful research ideation.
+It does NOT mean you need to answer all the questions before we discuss our research plans.
+However, it is important to be aware of what is expected and what resources (data, people, computing, IRB, human subject funding, etc.) you may need to accomplish our goal.
+Why should students prepare this?
+Students are the initiators of their projects, so the necessary information needs to be in place for productive discussion.
+By trying to fill the blanks, you may realize what is manageable and what needs to be adapted.
+It also helps me understand if you need more help and where the help should be.
+The initial replies may not be mature and will not be judged. They are meant for you to think thoroughly about our own project, baby. They are also telling me how "serious" you are about this topic.
+ 
+Can you still chat about some random thoughts?
+Yes, during our meetings, I am definitely open to discussing any other ideas that spark in our minds and are not put on paper. But these documents are needed for serious discussions about our project plans.
+
+
+
+
+
+
+
+
+
+
+Abstract
+What is the context of the work? [1] 
+Current generative music AI is dominated by stochastic "Black Box" models, such as the Anticipatory Music Transformer (Thickstun et al., 2024) and DeepBach (Hadjeres et al., 2017), which prioritize probabilistic texture over structural integrity. While these models excel at surface-level mimicry, they suffer from "structural drift"—a phenomenon where probabilistic "guessing" leads to theoretically invalid hallucinations (e.g., parallel fifths or voice-crossing) that violate the rigid harmonic rules of professional chamber music. For the gigging musician, these systems create a "Mechanical Toil" bottleneck; because the output is often unquantized MIDI or fixed audio, users are forced into a strenuous, multi-hour repair phase to ensure the arrangement is performable and "Musically Honest." Consequently, despite the speed of AI generation, the lack of tactile agency and symbolic editability prevents these tools from being integrated into real-world professional workflows.
+What’s the gap?
+Recent research identifies a critical "Collaging and Refinement" phase in AI-assisted creativity, in which users must integrate AI-generated fragments into their own work to maintain Expressive Sovereignty. However, a profound "Workflow Gap" exists because current tools provide "all-or-nothing" automation rather than a collaborative environment. For professional musicians, this results in a "Repair Phase Bottleneck": the time saved by AI generation is immediately lost to the cognitive load of "forced auditing"—manually hunting for subtle harmonic errors in an opaque system. Furthermore, as noted by Louie et al. (2020), users feel a diminished sense of ownership when AI does too much. There is a lack of a "Jumping Pad"—a system that respects the Latency-Utility Threshold (preserving the user's train of thought) while providing the "Glass Box" transparency needed for the user to remain the primary creative steward.
+How do you address this? – new, (method)
+We propose HarmonyForge, a three-stage system that replaces probabilistic "guessing" with an Axiomatic Hierarchy:
+Generation (The Logic Core): Drawing on the "Glass Box" philosophy of MusicAIR (Liao et al., 2025) and HarmonySolver (Pawłowski et al., 2020), we implement a deterministic constraint-satisfaction engine. Unlike the probabilistic grammars of SchenkComposer (Hahn et al., 2023), our engine uses a strictly rule-based backtracking solver to guarantee theoretically valid SATB foundations.
+Repair/Refinement (The Tactile Sandbox): We provide a direct-manipulation web interface where users exercise "Edit-Authority." Musicians can drag notes and modify inversions, transitioning the workflow from "passive recipient" to " active Creative Stewardship."
+Explainability (The Theory Inspector): Following the "Reviewer Agent" pattern of ComposerX (Deng et al., 2024), we embed an LLM-driven "Theory Tutor." Rather than suggesting notes (which LLMs do poorly), the system acts as a "Theory Spell-checker," providing visual "Red Line" validation and ante-hoc explanations of theoretical conflicts found in user edits, as justified by Zhou et al. (2024).
+What do you expect to find?
+We hypothesize that this "Glass Box" approach will significantly outperform end-to-end deep learning models in "Repair Efficiency" by reducing the time spent on "forced auditing." By automating the "Mechanical Toil" of clef and key transposition, the system will achieve "Train-of-Thought Preservation," keeping users below the critical 4-minute latency-utility threshold. Furthermore, we expect to see a marked increase in Perceived Agency; as suggested by Tchemeube et al. (2025), the ability to override deterministic logic with "Human Flair" will lead to greater user ownership than purely generative tools. Finally, by providing visual "Red Line" validation, we aim to demonstrate that "Musically Honest" determinism builds a more resilient form of user trust—shifting the musician’s role from a skeptical proofreader to a confident co-creator.
+Who cares?
+This research addresses the critical scarcity of personalized, editable repertoire that currently limits the flexibility of chamber groups. For gigging musicians and ensemble coordinators, HarmonyForge shifts the orchestration workflow from a tedious technical bottleneck to an efficient, co-creative process—resolving the "Random Ensemble" barrier by allowing for ad-hoc instrument inclusion (e.g., transcribing a piano theme for a violin/cello duo).
+Beyond utility, this system serves as a pedagogical partner for music educators, using "Glass Box" interpretability to bridge the gap between innate musical sense and explicit theory. For the broader AI community, this work provides a blueprint for "Copyright Safety by Design"; by using a rule-based core rather than training on the copyrighted datasets used by "Goliaths" like the Lakh MIDI dataset (Thickstun et al., 2024), we offer a legally resilient alternative for commercial adoption. Ultimately, by prioritizing Expressive Sovereignty over black-box automation, HarmonyForge empowers users to refocus their energy from the mechanics of notation to the artistry of performance.
+ 
+
+
+1. Title of the Project
+A tentative but descriptive title for the research.
+HarmonyForge: Bridging the "Repair Phase" in Music Arrangement through Axiomatic Generation and LLM-Driven "Glass Box" Explainability
+Alternative Titles (depending on venue focus): 
+For HCI/UIST (System focus): HarmonyForge: A Tactile "Glass Box" System for Human-AI Co-Creation in Symbolic Music Arrangement. 
+For CSCW/CHI (User focus): Beyond the Black Box: Empowering Creative Stewardship and Reducing "Mechanical Toil" in Professional Music Workflows.
+Keywords:
+Systemic: Symbolic Music Generation, SATB Harmonization, Axiomatic Hierarchy, Constraint Satisfaction Problems (CSP). 
+HCI/AI: Explainable AI (XAI), Human-AI Co-Creation, Ante-hoc Transparency, Edit-Authority. 
+User/Domain: "Mechanical Toil", Creative Stewardship, "Jumping Pad" Philosophy, Inclusive Gigging, Repertoire Accessibility.
+
+2. Background and Motivation
+What is the problem you are going to address?
+The "Gigging Musician" Bottleneck & Mechanical Toil: Professional chamber groups and band ensembles frequently operate under significant "Time-Crunch" scenarios. Although these groups often require arrangements for ad-hoc instrumentation—such as a "Random Ensemble" where a violin must substitute for a missing cello—current manual workflows necessitate substantial "Mechanical Toil". This process involves strenuous, non-creative tasks like manual transcription and clef transposition, which can consume hours or even weeks, depending on complexity. Consequently, this administrative labor functions as a prohibitive barrier to repertoire expansion and collective "jamming".
+The Reliability Crisis in Generative AI: Current SOTA probabilistic models, such as the Anticipatory Music Transformer (Thickstun et al., 2024), fail this user group in three ways:
+Structural Drift: They "guess" harmonies, frequently hallucinating parallel fifths or voice-leading errors that break the professional "polish" required for performance.
+The "Forced Auditing" Loop: Because the logic is opaque, musicians must spend their limited time proofreading every note, negating the efficiency gains of AI.
+Loss of Expressive Sovereignty: Users feel like "passive recipients" of an AI’s style. As noted by Louie et al. (2020), if the AI does too much without providing a "Jumping Pad" for human flair, the musician loses their sense of authorship.
+Why is this topic important or interesting?
+Bridging the "Workflow Gap" via Symbolic Editability: HarmonyForge prioritizes the "Collaging and Refinement" phase. By generating valid, editable MusicXML, we ensure that the user retains "Edit-Authority." This shifts the AI's role from a "Black Box" creator to a "Tactile Assistant" that preserves the user's "Train-of-Thought."
+Establishing "Copyright Safety by Design": Unlike models trained on the Lakh MIDI dataset, which Thickstun et al. admit "risk infringing on copyrighted material," HarmonyForge is "Musically Honest." Its core is built on public-domain music theory axioms (e.g., Schenkerian analysis). This provides the "Copyright Ambiguity-Free" environment necessary for professional and commercial adoption.
+Advancing "Glass Box" Explainability (XAI): Following the "Ante-hoc" transparency framework (Liu et al., 2025), we transform the AI into a "Pedagogical Partner." Through a "Theory Inspector" that provides visual "Red Line" validation, the system explains the "physics" of a chord. This fosters the trust required for high-stakes environments like classrooms or professional stages.
+
+3. Research Question(s) or Objective(s)
+Research Question(s): 
+MainRQ: To what extent does replacing probabilistic generation with deterministic logic and explainable critique enhance musician agency and trust when arranging lead sheets for non-standard ensembles?
+Sub-Questions:
+RQ1: How do limitations in part availability affect musicians' participation and satisfaction in ensembles?
+RQ2: What are the current manual practices and pain points for adapting music?
+RQ3: How do musicians perceive the integration of algorithmic/AI tools in the arrangement process?
+RQ4: What features and guardrails are required for a human-centric music arrangement tool?
+What prior work or literature does it relate to?
+HarmonyForge aligns with the architectural rigor of HarmonySolver (Pawłowski et al., 2020) and MusicAIR (Liao et al., 2025), adopting their purely algorithmic composition cores to ensure outputs are theoretically valid (SATB-compliant) and "Copyright Ambiguity-Free." While we adopt the top-down structural depth of SchenkComposer (Hahn et al., 2023), we evolve their framework by replacing Probabilistic Context-Free Grammars (PCFG) with deterministic axioms to eliminate the "aimless wandering" and hallucinations found in deep learning models.
+We contrast our approach against probabilistic "Goliaths" like DeepBach (Hadjeres et al., 2017) and the Anticipatory Music Transformer (Thickstun et al., 2024). While these models represent the state-of-the-art in texture generation, they frequently suffer from "Structural Drift" and infringe on intellectual property by training on copyrighted datasets like Lakh MIDI. HarmonyForge serves as a foil to these "Black Boxes," prioritizing structural reliability for high-stakes professional and educational environments.
+Our architecture leverages the finding by Zhou et al. (2024) that LLMs perform poorly as music creators but excel as music theorists. By implementing the "Reviewer Agent" pattern from ComposerX (Deng et al., 2024), we utilize the LLM solely as a Theory Inspector. This provides the "Ante-hoc" explainability defined by Liu et al. (2025), ensuring that the AI functions as a transparent pedagogical partner rather than an opaque oracle.
+What is our role-modeling paper?
+Our primary role-modeling paper is HarmonySolver by Pawłowski, Sikora, and Sroka (2020), which serves as both a technical and functional blueprint for HarmonyForge. Unlike contemporary neural models, HarmonySolver utilizes a symbolic, rule-based constraint satisfaction engine to solve functional harmony exercises within a strictly vertical SATB framework. We model our project after their "non-AI" deterministic approach because it guarantees the enforcement of pedagogical constraints—such as interval prohibitions and voice ranges—without the "harmonic hallucinations" or parallel fifths common in probabilistic systems. Crucially, HarmonySolver is our deployment role model; as one of the few symbolic research projects to successfully transition into a functional MuseScore Plugin, it proves that a logic engine can be integrated directly into a professional notation workflow. HarmonyForge builds upon this foundation by evolving the solver from a static pedagogical tool into a dynamic co-creative partner, incorporating the "Reviewer Agent" patterns from ComposerX (Deng et al., 2024) to add the conversational explainability that Pawłowski’s original system lacks.
+What new perspective do you aim to discover, develop, or demonstrate?
+We aim to demonstrate that in high-stakes creative domains like music arrangement, Generative AI is most effective when utilized as a critic and auditor rather than a primary creator. We contrast our "Axiomatic Hierarchy"—a logic-first, AI-second architecture—against the current industry standard of "Probabilistic Guessing." By operationalizing Schenkerian Analysis within a deterministic framework, we aim to prove that "Glass Box" transparency does not stifle creativity; rather, it augments it by relieving the musician of "Mechanical Toil." Our perspective suggests that user trust and agency are not derived from the AI's ability to mimic human patterns, but from its ability to provide a "Musically Honest" foundation that the user can then override with their own "Human Flair." Ultimately, we demonstrate that by shifting the AI's role from a black-box generator to an explainable "Pedagogical Partner," we can bridge the "Workflow Gap" and transform the tedious repair phase into a moment of intentional, co-creative stewardship.
+
+4. Methodology / Approach
+What methods or techniques will you use?
+Phase I - Axiomatic Logic (Input & Generation): The system begins with the user uploading a lead sheet (melody and chords). Rather than using a transformer to "guess" the next notes, we employ a backtracking constraint satisfaction solver in TypeScript. This engine applies the deterministic music theory rules modeled after HarmonySolver (Pawłowski et al., 2020) to generate a theoretically valid SATB foundation. By utilizing the hierarchical "Global Planning" framework suggested by SchenkComposer (Hahn et al., 2023), the engine ensures the arrangement follows a logical harmonic syntax (T->D->T) before the user even begins the repair phase.
+Phase II - The Tactile Sandbox (Manual Repair & Refinement): The generated score is rendered in an interactive, web-based notation editor powered by VexFlow or OpenSheetMusicDisplay. This phase facilitates "Direct Manipulation," where the user exercises "Edit-Authority" to drag notes, change inversions, or add non-chord tones. This directly addresses the "Collaging and Refinement" step found in the literature, allowing the musician to inject "Human Flair" and resolve the "stiff" nature of rule-based generation.
+Phase III - LLM Co-Creation (The Theory Inspector & Dispatcher): Adopting the multi-agent "GroupChatManager" architecture from ComposerX (Deng et al., 2024), we implement a Group Leader to serve as the system’s intent classifier and orchestrator. Rather than driving generation, the Leader monitors the "Tactile Sandbox" for user inputs (both natural language and symbolic edits) and dynamically routes control to three specialized agents:
+The Auditor (Automated Validation): Triggered by symbolic state changes (score deltas), the Leader assigns the Auditor to validate user edits against the deterministic Axiomatic Engine. Drawing on the constraint-satisfaction logic of HarmonySolver (Pawłowski et al., 2020), the Auditor flags theoretical violations (e.g., parallel fifths, tessitura breaches) using visual "Red Line" indicators, ensuring the score remains "Musically Honest" without overriding the user's "Edit-Authority."
+The Tutor (Ante-hoc Explainability): When the Leader detects a pedagogical query (e.g., "Why is this note marked red?"), it activates the Tutor. Leveraging findings that LLMs excel at theoretical reasoning even when they struggle with generation (Zhou et al., 2024), the Tutor provides non-prescriptive, ante-hoc explanations of the underlying music theory rules, fostering the "Glass Box" transparency required for educational scaffolding.
+The Stylist (Creative Translation): Triggered by high-level aesthetic prompts (e.g., "Make this cadence more Brahms-ian"), the Leader assigns the Stylist to translate semantic descriptors into candidate symbolic edits. As demonstrated in MuseCoco (Lu et al., 2023) and ComposerX, this agent bridges the gap between natural language and notation, offering specific modification options that the user can accept or reject, thereby maintaining "Expressive Sovereignty" (Louie et al., 2020).
+What tools or platforms will be involved, if there is any?
+Technical Stack & Infrastructure
+Frontend & Interface: The application is built using Next.js (React) and Tailwind CSS to manage a responsive, dashboard-style UI. The core notation rendering and interactive "Tactile Sandbox" are powered by VexFlow, allowing for note-level "Direct Manipulation" and "Edit-Authority."
+Logic Engine (Backend): The Axiomatic Core is a custom backtracking constraint solver written in Node.js (TypeScript). It processes MusicXML and MIDI data to enforce the deterministic SATB rules modeled after HarmonySolver.
+Explainability Layer: We utilize the OpenAI API (GPT-4o) to power the "Theory Inspector." Following the "Reviewer Agent" pattern, the LLM analyzes JSON-based score deltas to provide ante-hoc explanations of theoretical conflicts.
+Design & Prototyping: Figma and other vibe coding design software are used for high-fidelity prototyping, specifically focusing on the ergonomics of "Red Line" Validation and the “Theory Inspector” sidebar layout.
+Evaluation & Validation Tools
+Algorithmic Verification: We use the music21 (Python) toolkit to calculate the Harmonic Error Rate (HER). This serves as our "Ground Truth" for measuring the reliability of our engine against probabilistic models like DeepBach.
+Performance Metrics: Custom telemetry will track the "Repair Efficiency" metric, measuring the time delta between generation and a "performance-ready" state to ensure we meet the Latency-Utility Threshold.
+User Experience: We will deploy the Creativity Support Index (CSI), System Usability Scale (SUS), and Net Promoter Score (NPS) with a specific focus on the "Transparency" and "Agency" sub-scales to validate the "Glass Box" design.
+What datasets or participants (if any) will be needed?
+The "Axiomatic" Knowledge Base (Datasets): Rather than utilizing pattern-based datasets (like the Lakh MIDI corpus), our logic engine is informed by deterministic rule-sets extracted from foundational music theory pedagogy.
+Axiomatic Logic Source: Rules are codified from established harmony textbooks, specifically the Targosz and Sikorski functional harmony frameworks (as modeled in the HarmonySolver lineage). These provide the "ground truth" for SATB constraints (e.g., voice ranges, interval prohibitions, and resolution of the leading tone).
+Evaluation Baseline: We will use the JSB Chorales (Bach) dataset via the music21 library to benchmark the engine's ability to recreate theoretically valid 4-part textures compared to the probabilistic outputs of DeepBach.
+Expert Feedback & User Study Data:
+Qualitative Data: Transcripts and screen-recordings from "Think-Aloud" sessions during the "Collaging and Refinement" phase.
+Quantitative Data: Time-series data tracking "Repair Efficiency" (time-to-performance-ready state) and logs of user overrides to measure "Edit-Authority."
+Who are our participants? Do you have the IRB approved yet?
+Target Participants: We are recruiting 20–25 participants representing three distinct "Stakeholder Personas" identified in our initial thematic analysis:
+Gigging Musicians: Semi-professional or professional performers who require rapid, reliable arrangements for "Random Ensembles" and ad-hoc jam sessions.
+Music Educators/Students: Individuals using the tool for pedagogical purposes, where the "Theory Inspector" serves as a scaffolding partner.
+Chamber Ensemble Coordinators: Users responsible for repertoire expansion and instrumentation doubling.
+IRB Status:
+As discussed in our project timeline and meeting with Maz, the IRB application is currently in the final refinement stage. We have completed the protocol draft focusing on "Human-AI Co-Creation in Creative Workflows" and are finalizing the consent forms and data anonymization procedures. We expect full approval by Week 4 (Phase 1 Milestone), which will allow us to begin the Phase 3 Evaluation on schedule.
+
+5. Expected Outcomes
+Deliverables:
+The HarmonyForge Web Application
+This is the primary technical artifact: a functional, "Glass Box" co-creative tool. It allows users to upload a lead sheet and receive a theoretically sound 4-part arrangement (MusicXML/MIDI) generated by the Axiomatic Engine. The interface is specifically designed to facilitate the "Collaging and Refinement" phase, providing the "Edit-Authority" musicians need to add "Human Flair" to the algorithmic foundation.
+The "Theory Inspector" (XAI Interface)
+A specialized UI component that operationalizes the "Pedagogical Partner" role. When a user interacts with a note or chord, this feature provides "Ante-hoc" explainability—leveraging the LLM to explain specific music-theory rules (e.g., parallel-fifth detection, voice-leading constraints) —thereby informing the engine's logic. It serves as a visual "proofread editor," providing the "Red Line" validation requested by our study participants.
+The Research Paper (Formal Evaluation)
+A comprehensive study documenting the system’s impact on Perceived Agency and Workflow Efficiency. This paper will present the results of our comparative analysis, proving that for functional arrangement, a "Musically Honest" Rule-Based Core + GenAI Interface outperforms pure probabilistic models (like DeepBach) in both theoretical accuracy and user trust. It will specifically highlight how automating "Mechanical Toil" preserves the user's "Train-of-Thought."
+What do you expect to find, build, or contribute?
+Through this research, we intend to contribute a "Glass Box" Co-Creative System that fundamentally redefines the relationship between musicians and generative technology. We aim to build a platform that prioritizes pedagogical transparency for learners, workflow efficiency for professionals, and repertoire accessibility for gigging musicians by addressing the "Random Ensemble" barrier. Our primary contribution is the demonstration of an "Axiomatic Hierarchy"—proving that a system grounded in Intrinsic Determinism (logic-first) is superior to "Probabilistic Guessing" (AI-first) for high-stakes creative tasks. By operationalizing Schenkerian Analysis within a digital interface, we shift the AI's role from an opaque creator to a reliable scaffolding tool, ensuring that the human remains the primary creative steward. Ultimately, we contribute a blueprint for "Copyright Safe by Design" AI that fosters user trust by providing a "Musically Honest" foundation, allowing experts to spend less time on "Mechanical Toil" and more time on the artistry and curiosity of performance.
+How will you evaluate the outcomes (e.g., metrics, feedback, comparisons)?
+The "Repair Efficiency" Metric: We will conduct a timed within-subjects study where participants reach a "performance-ready" state using HarmonyForge versus a standard baseline (e.g., a standard notation editor starting from a raw GPT-4 MIDI output). Success is defined by a significant reduction in the time spent on "forced auditing" and "Mechanical Toil."
+Harmonic Error Rate (HER): Utilizing the music21 library, we will quantitatively measure theoretical validity. We expect the "Axiomatic Engine" to maintain a 0% rate of parallel fifths and voice-crossing errors, whereas the probabilistic baseline is expected to show significant "Structural Drift."
+Creativity Support Index (CSI): Following Tchemeube et al. (2025), we will utilize the CSI to measure "Results Worth Effort." This allows us to evaluate if the tool provides a "Jumping Pad" that augments the "fun" and curiosity of arranging without the frustration of aimless AI generation.
+Pedagogical Growth Assessment: For student participants, we will implement pre- and post-tests to determine if interacting with the "Theory Inspector" improved their ability to identify voice-leading errors manually, measuring the tool's effectiveness as a "Pedagogical Partner."
+System Usability Scale (SUS): We will adapt the SUS to include a sub-scale for "Interpretability" and "Agency," specifically testing if the "Red Line" validation increases the user's trust in the system's logic.
+Net Promoter Score (NPS): To assess professional viability beyond mere usability, we will measure the NPS to determine the likelihood of adoption within gigging and educational networks. Following the validation protocol of Hahn et al. (2023), who utilized "likeliness to recommend" to benchmark the viability of SchenkComposer, this metric serves as a proxy for "Workflow Utility." A positive NPS will empirically validate that HarmonyForge successfully transitions from a "novelty toy" to a robust solution for the "Time-Crunch" scenarios faced by ensemble leaders, confirming that the reduction in "Mechanical Toil" translates into real-world professional value.
+What kind of analysis will you conduct? If you leverage any existing scales, double-check if they can be directly applied.
+Quantitative Analysis: Reliability & Efficiency
+Harmonic Error Rate (HER) Benchmarking: We will perform a comparative statistical analysis between the outputs of the Axiomatic Engine and the Anticipatory Music Transformer (Thickstun et al., 2024). Using music21 (Python), we will conduct a t-test on the frequency of theoretically invalid notes (hallucinations) to prove the "Musically Honest" reliability of our core.
+Efficiency Analysis: We will measure the "Repair Efficiency" metric—the total time from initial generation to a "performance-ready" MusicXML file. We will analyze the time delta using a within-subjects ANOVA to determine if automating "Mechanical Toil" (clef/key transposition) significantly preserves the user's "Train-of-Thought."
+Qualitative Analysis: Agency & Trust
+Thematic Coding (Zambrano et al., 2025 Protocol): We will use the Zambrano Protocol to analyze transcripts from "Think-Aloud" user studies. Following our established "Red-to-Green" refinement, we will perform deductive coding for constructs like "Edit-Authority," "Expressive Sovereignty," and "Deductive Trust."
+Creativity Support Index (CSI) (Tchemeube et al., 2025): We will apply the CSI specifically to measure the "Results Worth Effort" sub-scale. This metric is directly applicable because it evaluates whether the co-creative interaction (the "Collaging" phase) feels like a "Jumping Pad" or a "Nagging" distraction.
+Adapted System Usability Scale (SUS): While the standard SUS measures general usability, we will follow the methodology of Louie et al. (2020) by adding specific Likert-scale questions regarding "Authorship" and "Perceived Control." This allows us to double-check if the "Theory Inspector" successfully reduces automation bias without overwhelming the user.
+Net Promoter Score (NPS) & Professional Viability: To assess the system's potential for adoption in real-world professional workflows, we will measure the Net Promoter Score. Following the validation protocol of Hahn et al. (2023), who utilized the "likeliness to recommend" metric (achieving a mean of 9.0/10) to benchmark the viability of the SchenkComposer system, we employ NPS as a proxy for "Workflow Utility." This metric serves to empirically distinguish HarmonyForge from mere "novelty" generative tools; a positive NPS will indicate that the system's reduction of "Mechanical Toil" and provision of "Glass Box" transparency are sufficient to motivate adoption among time-constrained ensemble leaders and educators.
+
+6. Timeline and Milestones
+Semester phases:
+Phase 1: Inception & UX Definition (Jan 20 – Feb 27)
+Focus: (Milestones #1 & #2) Establish the technical baseline and human-centered scope. We are currently finalizing the unified vision and transitioning from literature review to MoSCoW feature prioritization.
+Key Tasks: Finalize GitHub infrastructure, audit the axiomatic logic source (textbooks), and create low-fidelity wireframes for the "Theory Inspector."
+Checkpoint: Secure IRB approval by Week 4-5 to ensure the evaluation phase remains on track.
+Phase 2: Technical Architecture & Core Development (Feb 28 – Mar 27)
+Focus: (Milestone #3) Building the "Glass Box" differentiators. This is the heavy-lift engineering phase for the backend and the "LLM as a judge" architecture.
+Key Tasks: Build the backtracking SATB logic engine, implement the "LLM Council" using LangChain/LangGraph, and perform internal synthetic testing of harmonic error rates.
+Checkpoint: Application deadline for the Undergraduate Research Symposium (URS) is on March 13.
+Phase 3: Frontend Interactivity & Initial Prototyping (Mar 28 – Apr 17)
+Focus: (Milestones #4 & #5) Transitioning from backend logic to a musician-facing interface. Shivam leads the development of the "Tactile Sandbox" and the "Red Line" visual validation system.
+Key Tasks: Integrate VexFlow for direct note manipulation, connect the LLM reasoning sidebar, and finalize the evaluative scripts for the user study.
+Checkpoint: Abstract and Full Paper deadlines for UIST 2026 (Detroit) on March 25 and April 1.
+Phase 4: Evaluation, Polish & Synthesis (Apr 18 – May 2)
+Focus: (Milestones #6 & #7) Validating the tool with expert musicians and documenting findings. This phase concludes with a high-fidelity deployment and the final research paper submission.
+Key Tasks: Execute user studies with 20-25 participants, analyze data using the Zambrano Protocol, and compile the final "Piece of Art" research report.
+Checkpoint: Presentation at the Undergraduate Research Symposium on April 30 and final paper/portfolio due May 2.
+Add any important deadlines or checkpoints.
+February 20, 2026: Milestone #1 Completion. Communication protocols finalized and technical baseline established.
+February 27, 2026: CUI 2026 Abstract Deadline. First potential venue for a conversational user interface-focused paper.
+February 27, 2026: Milestone #2 Completion. UX flow and explainability requirements finalized.
+March 3, 2026: Graphics Interface 2026 Deadline. A strong secondary venue for our tactile "Sandbox" and notation manipulation work.
+March 13, 2026 (11:59 PM): URS Application Deadline. Crucial internal checkpoint for presenting our work at the Illini Union.
+March 25, 2026: UIST 2026 Abstract Deadline. The primary target for our system-based innovation.
+March 27, 2026: Milestone #3 Completion. Backend architecture and algorithmic engine finalized.
+April 1, 2026: UIST 2026 Full Paper Deadline. Requires a solid system description and initial validation.
+April 3, 2026: Milestone #4 Completion. Responsive UI and POUR-compliant interactivity finished.
+April 17, 2026: Milestone #5 Completion. User study executed and qualitative feedback synthesized.
+April 30, 2026 (9 AM - 5 PM): Undergraduate Research Symposium. Live poster/demo presentation at the Illini Union.
+May 2, 2026: Ubicomp/IMWUT Deadline. Alternative venue if the study reveals significant insights into ubiquitous musical creativity.
+May 15, 2026: Milestones #6 & #7 Final Handoff. Fully polished application deployment and formal research paper/portfolio case study submission.
+
+7. TEAM, Resources, and Support Needed
+Are you going to work on this ourselves or with others? If so, who are they and what do they contribute to?
+Team Members and Contributions
+Advisors & Mentors
+Dr. Yun Huang (PI, Salt Lab): Provides high-level research supervision, faculty-level oversight, and guidance on the project’s integration into formal HCI studies.
+Dr. Jeff Ginger (Instructor, INFO 490): Guides the "design arc" and the "colleague-style" exploration of Generative AI, ensuring the project meets seminar standards for innovation and accessibility.
+Project Leads
+Dulf Genis (Backend/Systems & UX Architect): Focuses on the "Glass Box" technical infrastructure. Responsibilities include architecting the Axiomatic Logic Core in Node.js, managing the UX architecture for "Ante-hoc" explainability, and refining the backtracking constraint solver to ensure the system remains "Musically Honest."
+Shivam Patel (Frontend/UI & Feature Integration): Focuses on the musician-facing experience. Responsibilities include building the "Tactile Sandbox" using VexFlow, integrating the "Theory Inspector" sidebar, and ensuring the interface adheres to POUR accessibility principles for inclusive gigging.
+Research & Development Support
+Muawiz & Yiren (Doctoral Researchers, Salt Lab): Provide expert technical guidance and research support. They are instrumental in transitioning HarmonyForge from a classroom prototype into a formal academic study, specifically assisting with IRB protocols, thematic analysis (Zambrano Protocol), and literature synthesis.
+Communication & Collaborative Syncs
+To manage the dual nature of the project (Research Group + Seminar), we have established a rigorous sync schedule:
+Research Sync (Fridays, 3:30 PM – 4:30 PM): A deep dive into the technical and academic progress with Dr. Huang and the doctoral team. This is where we refine our "Axiomatic Hierarchy" and discuss paper submission strategies for venues like UIST and CHI.
+Seminar Sync (Mondays, 12:00 PM – 1:00 PM): Focused on the design process, generative AI experimentation, and peer feedback within the INFO 490 cohort.
+Daily Operations: We utilize GitHub Issues for task tracking and Microsoft Teams/Zoom/Slack for asynchronous daily communication, ensuring that project momentum is maintained despite busy faculty and student schedules.
+What guidance, tools, or data do you need from our mentor or lab?
+Guidance and Mentorship
+IRB Protocol Oversight: Continued guidance from Muawiz and Yiren to ensure the user study protocol, consent forms, and data anonymization meet the university’s ethical standards for publication.
+Musicological Validation: Expert feedback on the "Schenkerian Lite" logic core to ensure our "Axiomatic" rules are pedagogically sound and correctly prioritized for a 4-part SATB arrangement.
+Academic Storytelling: Mentorship from Dr. Huang and Dr. Ginger on framing our findings for high-ranked venues like UIST and CHI, specifically focusing on how to narrate the "Glass Box" architecture as a "Piece of Art."
+Technical Tools and Credits
+LLM API Access: Sustainable credits for the OpenAI API (GPT-4o) to support the "Theory Inspector" sidebar and the "LLM Council" architecture during development and user testing.
+Generative AI Baseline Tools: Access to (or credits for) state-of-the-art generative tools like Suno, Udio, or Anticipatory Music Transformer environments to establish our "Black Box" control group for comparative error-rate analysis.
+Overleaf Professional: Access to a collaborative Overleaf project using the ACM Primary Article Template for drafting the final research paper and literature review.
+Participant Access and Data
+Musician Recruitment: Access to the Salt Lab’s network of student and professional musicians for the Phase 3 Evaluation. Specifically, we need 20–25 participants with experience in chamber ensembles or worship bands to test the "Random Ensemble" barrier.
+Study Space: Permission to use lab facilities or the Illini Union (for the URS) to conduct recorded "Think-Aloud" sessions and usability tests.
+Are there ethical considerations (e.g., IRB)?
+Yes, ethical considerations are central to this project, primarily concerning human subject research and the integrity of creative authorship. We are currently in the process of securing IRB approval to ensure that our user studies with gigging musicians and educators adhere to university standards for informed consent and data privacy. Beyond procedural ethics, the project proactively addresses the "Copyright Safety" crisis inherent in modern Generative AI; by utilizing an Axiomatic Logic Core rather than training on the copyrighted datasets used by "Black Box" models, HarmonyForge provides an inherently ethical, "Copyright Ambiguity-Free" environment for creators. We are also carefully monitoring the risk of automation bias, ensuring that the "Theory Inspector" acts as a non-suggestive "Pedagogical Partner" rather than a coercive force that dictates artistic choices, thereby preserving the user's Expressive Sovereignty.
+
+8. Potential Risks
+Potential Risks, Technical Hurdles, and Mitigation
+The "Nagging" Problem & Creative Stifling: A major risk identified in Theme 3.1 of our analysis is that the LLM "Theory Inspector" may become a "Nagging" presence. If the system flags every minor theoretical conflict (like a parallel fifth) during the initial creative phase, it could cause "Information Overload" and kill the musician's creative flow.
+Mitigation: We will implement "Mode Toggling." Users can switch between "Strict Mode" (where the Tutor flags every error for pedagogical purposes) and "Creative Mode" (where the Tutor only speaks when prompted or provides a high-level "vibe check" without interrupting the user's "Human Flair").
+The "Robotic" Rigidity of Axiomatic Logic: Rule-based music generation is historically criticized for sounding "stiff" or "textbook-like" compared to the expressive, pattern-rich outputs of diffusion models. There is a risk that the initial "Axiomatic" foundation might be too boring to serve as a high-quality "Jumping Pad" for professionals.
+Mitigation: We are integrating Timbre-Preserving Playback and an LLM "Stylist" feature. The AI won't just generate rules; it will suggest decorations (non-chord tones, rhythmic heterogeneity) that the user can manually "collage" onto the valid structure to add life to the arrangement.
+Mathematical Complexity of Schenkerian Hierarchy: Implementing a full Schenkerian analysis engine—which involves recursive layers of musical "background" and "foreground"—is mathematically difficult to achieve in real-time within a web browser. Attempting a total implementation could lead to high latency, breaking our 4-minute Latency-Utility Threshold.
+Mitigation: We will implement a "Schenkerian Lite" hierarchy. This focuses specifically on Cadential Planning (ensuring phrase beginnings and endings are structurally sound) while leaving the internal "foreground" decorations to the user’s tactile manipulation.
+Technical "Nagging" from Latency: If the "LLM Council" takes too long to analyze the score deltas, the user's "Train-of-Thought Preservation" will be lost.
+Mitigation: We are exploring LangGraph to optimize the "Reviewer Agent" workflow, ensuring that the delta-analysis only processes the measures the user has changed, rather than re-scanning the entire score.
+
+9. Personal Learning Goals
+What skills or knowledge do you hope to gain from this experience?
+Dulf: Systems Architecture & XAI Engineering
+My primary goal is to evolve toward the role of an Explainable AI (XAI) Engineer. Specifically, I aim to:
+Master Backend AI Orchestration: I plan to gain deep proficiency in using LangChain and LangGraph to build "Reviewer Agent" architectures. I want to learn how to move beyond single-prompt calls to create a "Council of Agents" that can verify complex musical logic in real-time.
+Implement Axiomatic Systems: I hope to master the transition from probabilistic "Black Boxes" to Deterministic Logic Engines. Learning how to translate centuries-old music theory (Schenkerian Analysis) into a TypeScript-based backtracking solver is a core technical challenge I intend to conquer.
+Strategic Product Management: I want to develop the ability to balance technical feasibility with user needs, specifically learning how to mitigate "feature creep" and avoid the "analysis paralysis" often associated with complex AI ethics.
+Shivam: UX Interactivity & Frontend Orchestration
+My focus is on mastering the "Human" side of the Human-AI Co-Creation loop. My goals include:
+Advanced Frontend Manipulation: I aim to master VexFlow and OpenSheetMusicDisplay to create a seamless, tactile "Sandbox." I want to learn how to translate complex symbolic data into an interface that allows for "Direct Manipulation" without overwhelming the user.
+Designing for Transparency: I hope to gain expertise in Explainable UI (XUI). This involves learning how to visually communicate AI reasoning (the "Red Line" validation) in a way that is non-suggestive and preserves the user's "Expressive Sovereignty."
+Accessibility & Inclusive Design: I intend to deepen my knowledge of POUR principles, ensuring that a complex, high-information tool like a music editor remains accessible and intuitive for a wide range of musicians, from beginners to professionals.
+
+10. Team Roles & Authorship
+Who is the Project Manager? (The lead student responsible for project initiation, study development, meeting management, and paper submission.)
+Dulf Genis serves as the Project Manager for HarmonyForge. In this capacity, he is the lead student responsible for project initiation, defining the UX/Systems architecture, and coordinating the synthesis of technical development with the Salt Lab’s research goals. His management duties include leading the weekly meeting cycles (Seminar and Research syncs), overseeing the GitHub Issues workflow, and ensuring the final research paper is compiled and submitted to high-ranked venues like UIST or CHI.
+Is this project part of a PhD dissertation? If so, will the Project Manager work independently or involve other students?
+This project is not part of a PhD dissertation. It is an independent research collaboration led by undergraduate students in INFO 490 and the Salt Lab. While we are working closely with doctoral students Muawiz and Yiren, who provide technical guidance and research support, the project’s initiation, core development, and creative direction are managed by Dulf and Shivam.
+Do you need additional expertise? If you plan to include new students, have you discussed this with the PI and reached a written agreement regarding expected efforts and authorship?
+At this stage, we have a complete multidisciplinary team covering systems architecture, UX design, and music theory. We do not plan to include new students at this time. Should the need for specialized expertise arise (e.g., advanced digital signal processing), any such addition will be discussed with Dr. Huang and Dr. Ginger, and a written agreement regarding authorship and effort will be established before their involvement.
+What is the authorship structure? If this is a system-based paper, is the primary contribution the system novelty or the interaction design/evaluation?
+HarmonyForge is a system-based paper. The primary contribution is the "Glass Box" system novelty—specifically the Axiomatic Hierarchy—and the subsequent evaluation of its impact on user agency and trust.
+Co-first authors: Dulf Genis and Shivam Patel will serve as co-first authors, reflecting their comparable intellectual and writing contributions.
+Definitions of Contribution: "Comparable contribution" is defined as a 50/50 split in the primary writing of the Introduction, System Design, and Findings, with Dulf focusing on the System Implementation and Shivam focusing on the User Study Execution.
+Have you consulted the PI regarding Faculty co-authors? (Any formal invitation to external faculty must be discussed with the PI first.)
+Faculty Co-authors: We will consult with our PI, Dr. Huang, regarding the inclusion of faculty co-authors and the doctoral students on the final submission.
+What is the plan for long-term effort? Are all authors aware that authorship may be updated based on participation in unpredictable revision cycles?
+All authors are aware that the research process involves unpredictable revision cycles. We are committed to maintaining the project through the summer of 2026 if necessary to address reviewer feedback for venues like UIST or CHI. Authorship may be updated based on participation in these revision cycles to ensure it accurately reflects ongoing effort.
+Contribution Log: Based on the following items, who is responsible for each (and what is the Project Manager’s % of writing)?
+N/A
+
+11. Submission Logistics & Tasks
+What is our target submission venue? (e.g., CHI, UIST, CSCW, DIS—please aim for high-ranked venues.)
+Primary Venue: UIST 2026 (ACM Symposium on User Interface Software and Technology)
+Focus: As the premier venue for innovations in human-computer interfaces, UIST is the ideal home for our "Tactile Sandbox" and the technical implementation of our "Glass Box" system.
+Strategic Fit: Our contribution of "Edit-Authority" and the Axiomatic Logic Core directly addresses UIST's interest in advanced interaction techniques for creative expression.
+Secondary Venue: Ubicomp / IMWUT (ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies)
+Focus: This venue is suitable if our findings emphasize the real-world application of the tool for "Random Ensembles" and the expansion of repertoire in informal, ubiquitous musical settings.
+Strategic Fit: The "Mechanical Toil" reduction and "Train-of-Thought Preservation" aspects align well with IMWUT’s focus on how technology supports daily human activities and expertise.
+Have you sent the team two calendar invites? (One for the abstract deadline and one for the full paper deadline, including the conference link.) / What are our internal deadlines? (Internal drafts must be ready at least two weeks before the official due date to avoid withdrawal.)
+Calendar Invites Sent: Weekly calendar invites have been sent to all team members (Advisors, Project Leads, and Doctoral Support). These will include:
+The UIST Sprint: Includes the March 25th Abstract Deadline and the April 1st Full Paper Deadline, with a link to the Detroit 2026 conference portal.
+The IMWUT Sprint: Includes the May 2nd Deadline, including the Shanghai 2026 conference details.
+The "Two-Week Polish" Rule: We have mandated that internal drafts must be finalized and ready for PI review at least two weeks before any official due date. This buffer is dedicated to refining figures, generating the demo video, and incorporating feedback from Dr. Huang and Dr. Ginger to avoid last-minute withdrawals.
+Weekly Revision Checkpoints: Following our Friday Research Syncs, the Overleaf project will be reviewed directly to ensure the "Introduction" and "Related Works" sections evolve alongside our technical prototyping.
+Is the Overleaf project ready? Have you used the correct template for the venue? (Note: Weekly meetings will review Overleaf progress directly.)
+The Overleaf project is fully initialized using the official ACM Primary Article Template, providing the necessary LaTeX environment for a high-ranked submission to venues like UIST. The bibliography is managed through a centralized .bib file, currently populated with our core literature anchors, including Zhou et al. (2024) for LLM reasoning and Hahn et al. (2023) for hierarchical music theory. To facilitate a "colleague-style" collaboration, we have enabled "Track Changes" to allow Muawiz and Yiren to provide real-time feedback on our technical descriptions and research framing. This setup ensures that we move beyond a standard class report and maintain a "Piece of Art" standard, where the manuscript is treated as a design object that undergoes the same iterative refinement as the HarmonyForge application itself.
+How have you planned our revision period? Have you allocated two full weeks at the end solely for polishing and incorporating feedback?
+Yes, we have strictly structured the final phase of each submission cycle to include a dedicated two-week "Polish and Pivot" period. This ensures that the technical core and the academic narrative are perfectly synthesized before they reach the conference reviewers.
+Internal Draft Lock: Exactly 14 days before the UIST and IMWUT deadlines, we will implement a "feature freeze" on the manuscript. This shifts our focus from generating new content to refining the "Ante-hoc" explainability arguments and ensuring our figures meet the high-fidelity standards of a "Piece of Art" contribution.
+The "Advisory Loop": During these two weeks, we have scheduled intensive review sessions with Dr. Huang and Dr. Ginger. This allows us to incorporate faculty-level feedback on our Thematic Coding results and ensures our discussion of "Expressive Sovereignty" is theoretically robust.
+Visual & Media Synthesis: We have allocated a specific time within this window for the production of the Supplemental Demo Video. This is not just a screen recording, but a narrated demonstration of the "Tactile Sandbox" and "Red Line" validation in action, which is often a make-or-break element for system-based UIST submissions.
+Proofreading & LaTeX Audit: The final 72 hours are reserved solely for a meticulous audit of the Overleaf project—checking for consistent terminology (e.g., ensuring "Axiomatic Hierarchy" is used consistently over "Logic Core"), verifying BIBTeX citations, and ensuring all accessibility alt-text for figures is present.
+
+12. Mindset & Standards
+Is this a "Class Report" or a "Piece of Art"? How have you raised our standards to meet the community norms of published papers in our field?
+HarmonyForge is positioned as a "Piece of Art" research contribution that transcends standard class reports by interrogating the structural failures of probabilistic AI through a lens of Intrinsic Determinism. By operationalizing Schenkerian Analysis within an Axiomatic Hierarchy, the project replaces "aimless" deep learning outputs with theoretically rigorous scaffolding, grounding engineering in established musicological frameworks. We elevate professional standards through a dual-pronged evaluation: quantitative Harmonic Error Rate analysis and qualitative assessment using the Creativity to measure trust and perceived agency. This approach specifically targets the "Repair Phase Bottleneck," utilizing MusicXML affordances to transform orchestration into a transparent, co-creative process. Ultimately, by treating the report as a design object—employing the LATCH framework and Nielsen’s Heuristics—the work manages the inherent complexity of music theory while ensuring ethical, "Copyright Safe" outputs that prioritize human-in-the-loop artistic direction over opaque black-box generation.
+Are you ready to "Dance with it"? Does this topic truly interest you, or is it time to step away?
+Yes. I like dancing. And singing. And gigging. This is not the time to step away, but step into the music.

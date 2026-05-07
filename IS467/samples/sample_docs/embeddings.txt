@@ -1,0 +1,9 @@
+Embeddings are dense vector representations of data in a continuous vector space.
+Word embeddings map words to vectors where similar words are positioned closer together.
+Popular word embedding techniques include Word2Vec, GloVe, and FastText.
+Sentence embeddings capture meaning at the sentence level rather than individual words.
+Models like Universal Sentence Encoder and SBERT create powerful sentence embeddings.
+Document embeddings represent entire documents as fixed-length vectors.
+Embeddings enable semantic search by finding documents with similar meaning, not just keyword matches.
+They also power recommendation systems, clustering, and classification tasks.
+Recent models like OpenAI's text-embedding-ada and Cohere's embedding models offer state-of-the-art performance.

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Algorithmic Accountability Audit: Adult Census Income (UCI)</title>
+  <style>
+    :root { --text: #1a1a1a; --muted: #444; --border: #ccc; }
+    * { box-sizing: border-box; }
+    body { font-family: Georgia, "Times New Roman", serif; line-height: 1.55; color: var(--text); max-width: 46rem; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; font-size: 11pt; }
+    h1 { font-size: 1.5rem; line-height: 1.25; margin-top: 0; }
+    h2 { font-size: 1.2rem; margin-top: 2rem; page-break-after: avoid; border-bottom: 1px solid var(--border); padding-bottom: 0.25rem; }
+    h3 { font-size: 1.05rem; margin-top: 1.25rem; }
+    nav.toc { background: #f5f5f5; padding: 1rem 1.25rem; margin: 1.5rem 0; border: 1px solid var(--border); font-family: system-ui, sans-serif; font-size: 0.95rem; }
+    nav.toc ul { margin: 0.25rem 0 0 1rem; padding: 0; }
+    nav.toc a { color: #0b5; text-decoration: none; }
+    nav.toc a:hover { text-decoration: underline; }
+    .meta { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; font-family: system-ui, sans-serif; }
+    .lead { font-size: 1.02rem; }
+    figure { margin: 1rem 0; page-break-inside: avoid; }
+    figure img { max-width: 100%; height: auto; border: 1px solid var(--border); }
+    figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 0.35rem; font-family: system-ui, sans-serif; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92rem; page-break-inside: avoid; font-family: system-ui, sans-serif; }
+    th, td { border: 1px solid var(--border); padding: 0.35rem 0.5rem; text-align: left; vertical-align: top; }
+    th { background: #f0f0f0; }
+    caption.table-desc { caption-side: bottom; font-size: 0.88rem; text-align: left; padding: 0.5rem 0 0; color: var(--muted); max-width: 100%; }
+    .small { font-size: 0.88rem; }
+    section { page-break-before: auto; }
+    #phase-2, #phase-3, #phase-4, #limitations, #appendix { page-break-before: always; }
+    blockquote.disclosure { border-left: 4px solid #333; padding-left: 1rem; margin: 1rem 0; font-style: italic; background: #fafafa; padding: 1rem 1rem 1rem 1.25rem; }
+    pre.deps { overflow-x: auto; background: #f7f7f7; border: 1px solid var(--border); padding: 0.75rem; font-size: 0.82rem; }
+    ul.checklist li { margin-bottom: 0.35rem; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--muted); }
+    @media print {
+      body { padding: 0; max-width: none; }
+      nav.toc { border: 1px solid #999; }
+      a { color: #000; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Algorithmic Accountability Audit Report</h1>
+  <p class="meta"><strong>Author:</strong> Dulf Vincent Genis<br />
+  <strong>Commission:</strong> U.S. Commission on Algorithmic Transparency (USCAT)<br />
+  <strong>Domain:</strong> Hiring and employment inference using census-derived attributes<br />
+  <strong>Deliverable:</strong> Independent audit suitable for regulatory oversight review (HTML source, printable to PDF)</p>
+</header>
+
+<p class="lead">This report presents an independent audit of a binary classifier that predicts whether annual income exceeds $50K using the UCI Adult (Census Income) benchmark. The analysis combines model performance, fairness testing, explainability, and regulatory mapping in a four-phase structure. All figures and metrics come from the companion notebook (<code>capstone_analysis.ipynb</code>) using a fixed random seed and the recorded train/test split in the processed dataset.</p>
+
+<nav class="toc" aria-label="Table of contents">
+  <strong>Contents</strong>
+  <ul>
+    <li><a href="#phase-1">Phase 1: Build and baseline the model</a></li>
+    <li><a href="#phase-2">Phase 2: Fairness audit and explainability</a></li>
+    <li><a href="#phase-3">Phase 3: Regulatory and policy mapping</a></li>
+    <li><a href="#phase-4">Phase 4: Responsible AI governance</a></li>
+    <li><a href="#limitations">Limitations and scope boundaries</a></li>
+    <li><a href="#appendix">Code appendix and dependencies</a></li>
+  </ul>
+</nav>
+
+<!-- ========== PHASE 1 ========== -->
+<section id="phase-1">
+  <h2>Phase 1: Build and baseline the model</h2>
+
+  <h3>Domain rationale and dataset provenance</h3>
+  <p>Hiring and pay decisions shape access to opportunity. Automated systems trained on historical data can repeat patterns of exclusion even when no one programs an explicit rule to discriminate. The Adult dataset is a common benchmark for income prediction from demographic and job-related fields. It is not a live applicant log, but it encodes sensitive attributes such as sex, race, marital status, and occupation next to an income label, which makes it a useful stand-in for asking how standard supervised learning behaves in an employment-like setting.</p>
+  <p>The audit uses the UCI Machine Learning Repository <em>Adult</em> dataset [1], beginning from the raw source files (<code>others/data/adult.data</code> and <code>others/data/adult.test</code>) and consolidating them into one analysis table with a <code>dataset_split</code> column. The prediction target is binary income (<code>&gt;50K</code> versus <code>&lt;=50K</code>).</p>
+
+  <h3>Exploratory data analysis</h3>
+  <p>The training split has 32,561 rows and the test split has 16,281. Labels are imbalanced, with more rows in the <code>&lt;=50K</code> class than in the high-income class. Accuracy alone can hide weak performance on the minority class, so the audit reports precision, recall, F1, and ROC AUC as well as accuracy, and later breaks metrics out by protected groups.</p>
+  <p>Figure 1 summarizes how often each income label appears in the training split. The bars show roughly three times as many low-income as high-income rows. That skew implies a model can look accurate while rarely predicting the positive class unless training uses class weights, resampling, or other imbalance-aware choices. It also frames later fairness checks, because minority-class error rates need explicit attention.</p>
+  <figure>
+    <img src="others/figures/eda_income_balance.png" alt="Bar chart comparing counts of rows with income at or below 50K versus above 50K in the training set" width="600" />
+    <figcaption>Figure 1. Counts of training rows by income label (<code>&lt;=50K</code> versus <code>&gt;50K</code>). The distribution is imbalanced, with the majority of records in the lower-income class. Class imbalance affects baseline accuracy and motivates reporting metrics beyond accuracy.</figcaption>
+  </figure>
+
+  <p>Figure 2 relates age to income using a stacked histogram. Low-income records concentrate at younger ages. High-income records rise through middle age and peak in mid-career bands before tapering. The pattern matches earnings lifecycles but also shows why age can carry heavy weight in a predictor. Age is not a Title VII protected category in the same way as race or sex, yet it can stand in for experience or cohort effects if the score is applied without safeguards.</p>
+  <figure>
+    <img src="others/figures/eda_age_by_income.png" alt="Stacked histogram of age with two income classes stacked at each age bin" width="640" />
+    <figcaption>Figure 2. Age distribution by income group (training set, stacked counts). Blue indicates <code>&lt;=50K</code> and Orange <code>&gt;50K</code>. High-income counts are scarce at very young ages and rise through middle age.</figcaption>
+  </figure>
+
+  <p>Figure 3 compares education levels side by side for each income class. At lower attainment levels, counts in the <code>&lt;=50K</code> bar dominate. At bachelor’s degree and above, the share of <code>&gt;50K</code> rows grows, and for some advanced degrees the high-income bar approaches or exceeds the low-income bar. The figure supports education as a strong predictor of the label, which matches labor-market structure and raises fairness questions when education correlates with protected characteristics.</p>
+  <figure>
+    <img src="others/figures/eda_education_by_income.png" alt="Horizontal grouped bar chart of education categories with two bars per category for low and high income" width="720" />
+    <figcaption>Figure 3. Education level by income group (training set). Each row shows counts for <code>&lt;=50K</code> and <code>&gt;50K</code> within that education category. Higher credentials associate with a larger high-income share.</figcaption>
+  </figure>
+
+  <p>Figures 4 through 6 turn to sex, race, and hours worked. Together they document representation and outcome differences in the training data. They do not prove discriminatory intent. They do show where a hiring-related model trained on similar fields could track historical skew and where fairness metrics and subgroup evaluation become necessary.</p>
+  <figure>
+    <img src="others/figures/eda_sex_income.png" alt="Grouped bar chart of counts by male and female for each income class" width="520" />
+    <figcaption>Figure 4. Income counts by sex (training set). Male rows outnumber female rows overall. Among women, the <code>&gt;50K</code> count is much smaller relative to <code>&lt;=50K</code> than among men, so any model inherits a historical association between sex and high income from label prevalence alone.</figcaption>
+  </figure>
+  <figure>
+    <img src="others/figures/eda_race_income.png" alt="Horizontal grouped bar chart of income counts within each race category" width="720" />
+    <figcaption>Figure 5. Income by race (training set). The White category contains the largest number of records. Every group shows more <code>&lt;=50K</code> than <code>&gt;50K</code> rows, but the relative size of the high-income bar differs across groups. Sparse cells for small groups warrant cautious interpretation in later tables.</figcaption>
+  </figure>
+  <figure>
+    <img src="others/figures/eda_hours_by_income.png" alt="Density plot of weekly hours for two income groups" width="640" />
+    <figcaption>Figure 6. Distribution of weekly working hours by income (density, training set). Both curves spike near forty hours. Below forty hours, density is higher for the low-income group. Above forty hours, the high-income group tends to show more mass in overtime ranges. Hours worked are a direct economic signal but also a lever that could interact with job type and caregiving roles.</figcaption>
+  </figure>
+
+  <p>Taken together, Figures 1 through 6 establish class imbalance, strong relationships between income and education and hours, and demographic patterns in labels that Phase 2 metrics and explainability later interpret in regulatory terms.</p>
+
+  <p>Raw files mark missing categories with “?”. Those tokens are treated as missing and imputed (most frequent value for categorical fields, mean for numeric fields after train and test features are separated). Occupation and native country have long tails of rare labels. One-hot encoding with an unknown category keeps the test pipeline stable when a label never appeared in training.</p>
+
+  <p>The notebook also summarizes how income relates to workclass, marital status, occupation, relationship, and native country. Small subgroup counts add noise to fine-grained fairness estimates. Native-country effects, in particular, can make seemingly neutral fields act as stand-ins for sensitive structure without careful governance.</p>
+
+  <h3>Proxy variables</h3>
+  <p>Marital status and relationship overlap as signals about household structure. Years of education often track credential barriers in hiring, and occupation mixes industry with seniority. Removing race or sex from inputs does not automatically make the model fair, because correlated features can preserve disparity while making it less visible. This audit keeps encoded sensitive attributes in the feature set so disparity can be measured directly rather than assumed away.</p>
+
+  <h3>Modeling approach and training/testing protocol</h3>
+  <p>Three classifiers share one preprocessing path: logistic regression with balanced class weights, gradient boosting, and random forest with balanced weights. Categorical columns are one-hot encoded. Numeric columns are mean-imputed and scaled. Only the label and split column are dropped from features. That choice favors transparency about proxies over quietly deleting sensitive columns without a policy basis.</p>
+  <p>The audit selects the model with the highest test ROC AUC for follow-on fairness and explainability work. Gradient boosting achieved the best AUC and is treated as the primary model below.</p>
+
+  <p>Logistic regression reached higher recall on the positive class but lower overall discrimination (ROC AUC 0.904). Random forest sat between the two (AUC 0.899). Boosting fits interactions among marital status, occupation, and hours more flexibly, which helps ranking but also calls for explainability tools because effects are not single linear slopes.</p>
+
+  <p>No probability calibration step was run on this baseline. Reported scores may rank well yet misstate probability for threshold rules. Before any deployment tied to fixed cutoffs or fairness constraints on predicted risk, calibration on held-out data would normally come first.</p>
+
+  <h3>Overall and disaggregated performance</h3>
+  <p>Before subgroup analysis, overall test utility summarizes how well the selected model separates the two income classes on held-out data. ROC AUC summarizes ranking quality across thresholds. Accuracy summarizes the share of correct labels at the default decision rule used for the confusion matrix in the notebook. Strong utility on aggregate does not imply fairness across groups, but it shows the model is technically informative enough that fairness findings below refer to a non-trivial predictor rather than a random score.</p>
+  <table>
+    <caption class="table-desc">Table 1. Overall test performance for the gradient boosting model. ROC AUC of 0.920 indicates strong ability to rank high-income instances above low-income ones. Accuracy of 0.869 means about 87 percent of test rows are labeled correctly at the model’s default threshold. These figures establish a baseline for utility before examining group-level differences.</caption>
+    <thead><tr><th>Metric (test)</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>ROC AUC</td><td>0.920</td></tr>
+      <tr><td>Accuracy</td><td>0.869</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Full classification reports for all three candidate models appear in the notebook output.</p>
+
+  <p>Table 2 breaks the same model’s metrics out by sex and race on the test set. Sample sizes differ sharply (for example men outnumber women in the excerpt, and White rows outnumber Black rows by roughly nine to one). Accuracy is higher for women than for men and higher for Black than for White in this excerpt, which can reflect prevalence of the majority label and threshold effects. Recall for the high-income class is lower for women than for men and lower for Black than for White, meaning the model catches a smaller share of true high earners in those groups at the current cutoff. ROC AUC remains high within each shown group, so separation ability differs from error profiles at the operating point.</p>
+  <table>
+    <caption class="table-desc">Table 2. Disaggregated test metrics for gradient boosting (excerpt). Columns report accuracy, precision, recall, and F1 for the positive class and ROC AUC within each row’s subgroup. Large imbalances in <code>n</code> warrant caution when comparing rates. The full disaggregated table in the notebook lists additional race categories.</caption>
+    <thead>
+      <tr><th>Attribute</th><th>Group</th><th>n</th><th>Accuracy</th><th>Precision (&gt;50K)</th><th>Recall (&gt;50K)</th><th>F1 (&gt;50K)</th><th>ROC AUC</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>sex</td><td>Female</td><td>5,421</td><td>0.937</td><td>0.820</td><td>0.539</td><td>0.650</td><td>0.940</td></tr>
+      <tr><td>sex</td><td>Male</td><td>10,860</td><td>0.835</td><td>0.788</td><td>0.615</td><td>0.691</td><td>0.900</td></tr>
+      <tr><td>race</td><td>Black</td><td>1,561</td><td>0.928</td><td>0.777</td><td>0.525</td><td>0.627</td><td>0.941</td></tr>
+      <tr><td>race</td><td>White</td><td>13,946</td><td>0.862</td><td>0.794</td><td>0.607</td><td>0.688</td><td>0.916</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Anticipated bias (prior to Phase 2)</h3>
+  <p>Before computing group fairness metrics, the working expectation was that gaps would show along sex and race because income in the data reflects occupational segregation and historical earnings inequality. Marital status and occupation were also expected to rank high in explainability because they track pay yet correlate with protected characteristics. Phase 2 checks those expectations against demographic parity, equal opportunity, and predictive parity numbers.</p>
+
+  <p>The Adult snapshot reflects mid-1990s labor markets. Any live system would need refreshed data, updated occupation codes, and ongoing drift checks rather than a single offline validation.</p>
+</section>
+
+<!-- ========== PHASE 2 ========== -->
+<section id="phase-2">
+  <h2>Phase 2: Fairness audit and explainability</h2>
+
+  <h3>Fairness metrics and trade-offs</h3>
+  <p>The audit reports three standard group fairness notions on test-set predictions from gradient boosting: <em>demographic parity</em> (similar predicted positive rate across groups), <em>equal opportunity</em> (similar true positive rate among people who truly have the positive label), and <em>predictive parity</em> (similar precision among those predicted positive). Definitions match the notebook code and common references in the fairness literature.</p>
+
+  <p>Fairness metrics often cannot all be satisfied at once except in narrow special cases. Tightening demographic parity can move precision or true positive rates apart from one another. That tension is sometimes called the fairness impossibility result in simplified form: improving one criterion frequently weakens another, so an organization has to choose what to prioritize under law and ethics rather than treat a single score as “fair” in every sense [2].</p>
+
+  <p>Table 3 compares men and women on three fairness criteria computed from test-set predictions. Demographic parity measures how often the model predicts high income regardless of truth. Equality of opportunity compares true positive rates among people who actually have high income. Predictive parity compares precision among everyone the model labels high income. The three rows rarely align, which illustrates why a single number cannot summarize “fairness.”</p>
+  <table>
+    <caption class="table-desc">Table 3. Fairness metrics by sex on the test set. The demographic-parity gap is the largest row: men receive a predicted high-income label at about 23.4 percent of rows versus about 7.2 percent for women. Equality of opportunity shows a smaller but still meaningful gap in catching true high earners (true positive rate). Predictive parity is the tightest row, meaning that when the model predicts high income, labels are similarly reliable for men and women in this run. Together these rows show metric tension rather than a single story.</caption>
+    <thead>
+      <tr><th>Metric</th><th>Male</th><th>Female</th><th>|Gap|</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Demographic parity: P(predicted &gt;50K)</td><td>0.234</td><td>0.072</td><td>0.163</td></tr>
+      <tr><td>Equality of opportunity: TPR (among truly &gt;50K)</td><td>0.615</td><td>0.539</td><td>0.076</td></tr>
+      <tr><td>Predictive parity: precision among predicted &gt;50K</td><td>0.788</td><td>0.820</td><td>0.032</td></tr>
+    </tbody>
+  </table>
+
+  <p>Table 4 applies the same three definitions to a White versus Non-White comparison. This grouping is used only as a coarse illustration for this audit and is not a production recommendation. Gaps are smaller than in Table 3 but still nonzero on every line.</p>
+  <table>
+    <caption class="table-desc">Table 4. Fairness metrics for White versus Non-White groups on the test set. Predicted high-income rates differ by about 7.7 percentage points under the demographic-parity definition. True positive rates differ by about 3.1 points. Precision among predicted positives differs by about 2.7 points. Collapsing race into two bins hides within-group variation and should be paired with the finer-grained disaggregated metrics in the notebook where counts allow.</caption>
+    <thead>
+      <tr><th>Metric</th><th>White</th><th>Non-White</th><th>|Gap|</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Demographic parity: P(predicted &gt;50K)</td><td>0.191</td><td>0.114</td><td>0.077</td></tr>
+      <tr><td>Equality of opportunity: TPR</td><td>0.607</td><td>0.576</td><td>0.031</td></tr>
+      <tr><td>Predictive parity: precision</td><td>0.794</td><td>0.768</td><td>0.027</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Ethical framing when metrics disagree</h3>
+  <p>A rule-based (<strong>deontological</strong>) view stresses limits on processing certain attributes or uses without a clear lawful basis. A consequence-focused (<strong>utilitarian</strong>) view weighs aggregate outcomes but can obscure concentrated harm to specific groups. <strong>Justice-oriented</strong> approaches emphasize correcting structural disadvantage and often align with protecting equal opportunity for qualified individuals rather than only optimizing aggregate accuracy.</p>
+
+  <p>For this employment-like audit, <strong>equal opportunity</strong> (parity of true positive rates among qualified positives) is treated as the primary remediation anchor because false negatives screen out people who meet the positive label in truth. That choice does not erase legal interest in <strong>demographic parity</strong>, since large gaps in predicted selection rates still raise disparate impact concerns under U.S. employment law and warrant mitigation such as threshold adjustment, reweighting, or post-processing. <strong>Predictive parity</strong> stays comparatively tight here, which illustrates the general pattern that metrics conflict rather than move in lockstep.</p>
+
+  <h3>Intersectionality caveat</h3>
+  <p>Binary race summaries and sex-only tables hide overlapping disadvantage (for example, compounded effects for women of color). Sparse cells in this benchmark limit stable intersectional estimates. A production audit with richer data would need finer subgroup slices or methods designed for small-cell stability.</p>
+
+  <h3>Explainability: global SHAP and local context</h3>
+  <p>Explaining the model matters both at global scale (which inputs matter overall) and at local scale (why one person received one score). SHAP TreeExplainer values on a subsample of test rows feed Figures 7 and 8. Figure 7 is a bar chart of mean absolute SHAP values. It answers which features move the predicted probability most on average. Figure 8 is a beeswarm summary of the same underlying values. Each dot is one row. Horizontal position is SHAP impact on output for the high-income class. Color encodes whether the feature value for that row was high or low (for one-hot columns, presence versus absence).</p>
+  <figure>
+    <img src="others/figures/shap_bar.png" alt="SHAP bar chart ranking features by mean absolute SHAP value for the positive income class" width="520" />
+    <figcaption>Figure 7. Global SHAP bar summary. Features are sorted by mean absolute SHAP value. In this run <code>marital-status_Married-civ-spouse</code> dominates, followed by <code>age</code>, <code>education-num</code>, <code>capital-gain</code>, and <code>hours-per-week</code>. Smaller bars appear for occupation codes, <code>sex_Female</code>, <code>sex_Male</code>, <code>race_White</code>, and other encoded fields. Even modest mean contributions for sensitive attributes matter for oversight because they show direct use of those inputs in the score.</figcaption>
+  </figure>
+  <figure>
+    <img src="others/figures/shap_beeswarm.png" alt="SHAP beeswarm plot showing each feature on the vertical axis and SHAP value on horizontal axis with colored points for feature magnitude" width="520" />
+    <figcaption>Figure 8. SHAP beeswarm summary. For marriage status, positive SHAP values cluster when the married-civilian-spouse indicator is active, and negative values when it is not. Age and education-num show high values pushing predictions toward high income. Capital-gain displays a long right tail where large gains sharply increase predicted probability. The <code>sex_Female</code> row shows mass to the left of zero, so encoding female is associated with lower predicted probability holding other terms fixed in this model. <code>race_White</code> appears low in the ranking but with a slight positive direction for present versus absent in many rows.</figcaption>
+  </figure>
+
+  <p>The bar chart and beeswarm agree that marital status, age, education, capital gains, and hours drive most of the movement in predicted probability. Marriage and hours look like ordinary economic signals but track household structure and work patterns that correlate with sex. Capital gains capture unequal access to asset income. Encoded sex and race terms still shift scores directly, which matters for policy even when their mean absolute SHAP is smaller than marriage or age.</p>
+
+  <p>The beeswarm clarifies direction and heterogeneity. Extreme capital-gain values produce large positive contributions for a few rows. Low hours and certain occupation indicators pull predictions down. Local behavior is sharpest near decision boundaries, which is where the recourse example in the notebook sits.</p>
+
+  <p>SHAP rests on explainer assumptions (TreeExplainer matches tree ensembles). A different architecture might need another explainer. Explanation shows dependence in the model. It does not by itself authorize every feature for every use case under law.</p>
+
+  <p>A LIME explanation for the same borderline case appears in the notebook output for readers who want a second local method beside SHAP.</p>
+
+  <h3>Recourse spot-check and governance rights</h3>
+  <p>The audit inspected a near-borderline case where the true label was high income but predicted probability sat near 0.50. Local SHAP attributions pointed to marital status, age, hours, capital gains, and encoded race among the larger effects for that row. Some levers that appear in data (such as hours or education) might be ethically contested if an employer tried to “optimize” them for a score. Attributes such as age or race are not legitimate levers for manipulation in hiring practice.</p>
+  <p><strong>GDPR Articles 15 and 22</strong> together underline access to meaningful information about automated processing and, where they apply, rights tied to solely automated decisions with legal or similar significant effects, including human review in qualified situations [5]. A production hiring workflow would need documented appeals, plain-language notices, and safeguards against unmanned final decisions where the law requires them. Those gaps appear again in the compliance table in Phase 3.</p>
+
+  <h3>Discovery checkpoint</h3>
+  <p>Phase 1 expected disparity along sex and race and strong roles for marital status and occupation. Tables 3 and 4 confirm large sex gaps in predicted positive rates and smaller but nonzero White versus Non-White gaps on the same three fairness definitions. Table 2 already showed uneven recall for true high earners across sex and race at the default threshold. Figures 7 and 8 confirm that marital status, age, education, capital gains, and hours dominate globally while sex and race features still move scores directly. That combination supports mitigation focused on thresholds, subgroup monitoring, and feature policy rather than on headline accuracy or AUROC alone.</p>
+</section>
+
+<!-- ========== PHASE 3 ========== -->
+<section id="phase-3">
+  <h2>Phase 3: Regulatory and policy mapping</h2>
+
+  <h3>Applicable regulations (selection)</h3>
+  <p><strong>United States: Title VII of the Civil Rights Act of 1964 (Section 703(a)).</strong> Bars discrimination in employment on bases including race, color, religion, sex, and national origin. Neutral tests or models that disproportionately exclude protected groups can raise disparate impact theories unless justified and validated under agency and court standards [3].</p>
+  <p><strong>United States: EEOC Uniform Guidelines on Employee Selection Procedures.</strong> Section 4 frames adverse impact. Agencies and employers often use the four-fifths rule as a practical screen while retaining fuller statistical analysis [4].</p>
+  <p><strong>European Union: GDPR Articles 9 and 22.</strong> Article 9 limits special-category data unless a specific legal basis applies. Article 22 addresses automated decisions with legal or similar significant effect and meaningful human involvement where required [5].</p>
+  <p><strong>European Union: AI Act.</strong> High-risk AI in employment carries expectations for data governance, documentation, transparency, and post-market oversight, with obligations phased in over time as implementation milestones take effect [6].</p>
+  <p><strong>Illinois: Artificial Intelligence Video Interview Act (820 ILCS 42).</strong> Represents a state-level transparency model for certain AI-assisted hiring interfaces and contrasts with EU-wide privacy framing [7].</p>
+
+  <p><strong>Cross-cutting notes.</strong> Title VII doctrine and EEOC guidance together shape how facially neutral selection tools face disparate impact review [3], [4]. GDPR Article 9(2) lists narrow bases for sensitive processing. Article 22(3) speaks to intervention and contestation where the GDPR automated-decision framework applies [5]. The AI Act high-risk chapter and the NIST AI Risk Management Framework both stress lifecycle controls [6], [8]. NIST’s Govern, Map, Measure, and Manage functions line up with documentation, risk identification, evaluation, and monitoring even though NIST is voluntary guidance rather than statute.</p>
+
+  <h3>Comparative note (one finding, three jurisdictions)</h3>
+  <p>The clearest comparative example is the sex gap in predicted positive rates. In U.S. practice, counsel would typically pair adverse-impact statistics with validation of job-relatedness and business necessity under Title VII and EEOC guidance. In EU practice, review would focus on lawful bases under Articles 6 and 9 and transparency duties for automated processing. Illinois-style notice rules add modality-specific duties for AI-assisted video interviews, even when federal U.S. analysis centers on discrimination theories.</p>
+
+  <p>If this score were used in applicant ranking, U.S. review would focus on selection-rate ratios and validation evidence, EU review would emphasize purpose limitation and lawful sensitive-data processing, and Illinois review would add interview-notice obligations where video tools are used. In practice, multinational organizations have to satisfy all applicable layers at once, not pick one regime.</p>
+
+  <p>OECD AI Principles on accountability and robustness echo the same lifecycle themes and support enterprise policies that aim above minimum legal floors [9].</p>
+
+  <h3>Compliance gap analysis</h3>
+  <p>Table 5 maps Phase 2 findings to legal and policy expectations. Status labels summarize fit for this baseline artifact and are not legal conclusions.</p>
+  <table class="small">
+    <caption class="table-desc">Table 5. Compliance gap analysis. Each row ties an audit finding from Phase 2 to a representative statute or instrument, notes an article or section where helpful, assigns a coarse status for this research baseline (compliant, gray, or non-compliant), and records governance notes. Gray marks areas that need context-specific legal review rather than a simple pass or fail. This matrix supports prioritization and does not substitute for counsel.</caption>
+    <thead>
+      <tr><th>#</th><th>Audit finding (summary)</th><th>Regulation / instrument</th><th>Article / section</th><th>Status</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Sex: predicted &gt;50K rate ~23.4% male vs ~7.2% female on test split.</td><td>Title VII, Civil Rights Act of 1964</td><td>Section 703(a)</td><td>gray</td><td>Disparate treatment / impact risk. Document business justification and validation.</td></tr>
+      <tr><td>2</td><td>Race (White vs Non-White): predicted positive rates differ.</td><td>EEOC Uniform Guidelines</td><td>29 C.F.R. 1607.4 (adverse impact)</td><td>gray</td><td>Monitor selection rates vs. four-fifths heuristic where applicable.</td></tr>
+      <tr><td>3</td><td>Global SHAP shows marital status, education, capital features among top drivers.</td><td>State/local EEO, EU AI Act (high-risk)</td><td>Varies</td><td>gray</td><td>High-impact features may still skew outcomes. Governance review needed.</td></tr>
+      <tr><td>4</td><td>Strong local sensitivities include marital-status and race-encoded columns in examples.</td><td>Fair Chance / state hiring laws (where applicable)</td><td>Varies</td><td>gray</td><td>Legitimate predictors can still produce skew. Contextual testing needed.</td></tr>
+      <tr><td>5</td><td>Pipeline retains sex and race as model inputs (one-hot encoded).</td><td>GDPR Art. 9, US state privacy laws</td><td>Sensitive / special-category data</td><td>gray</td><td>For EU data subjects: lawful basis and minimization. Document necessity.</td></tr>
+      <tr><td>6</td><td>Notebook documents data source, split, metrics, and methodology.</td><td>EU AI Act</td><td>Art. 52 (transparency for certain AI)</td><td>compliant</td><td>Research artifact is documented. A product UI would still need user-facing notices.</td></tr>
+      <tr><td>7</td><td>Recourse example shows borderline prediction without a productized appeal channel.</td><td>GDPR Arts. 15/22 [5], CCPA/CPRA [11], NYC Local Law 144 [10] (where relevant)</td><td>Explainability / ADM</td><td>non-compliant</td><td>No packaged contestation workflow in this baseline.</td></tr>
+      <tr><td>8</td><td>No fairness constraints, reweighting, or post-processing in baseline model.</td><td>EEOC guidance and EU AI Act risk management</td><td>Bias mitigation expectations</td><td>non-compliant</td><td>Mitigation plan required before deployment (pre-processing, in-processing, or post-processing options).</td></tr>
+      <tr><td>9</td><td>No human-in-the-loop review or contestation workflow demonstrated.</td><td>GDPR Art. 22</td><td>Automated individual decision-making</td><td>non-compliant</td><td>Add meaningful human review where Art. 22 applies.</td></tr>
+      <tr><td>10</td><td>No live monitoring, drift detection, or scheduled fairness audit cadence.</td><td>EU AI Act Art. 61, NIST AI RMF (Monitor)</td><td>Post-market monitoring / Govern</td><td>non-compliant</td><td>Define KPIs, logging, periodic fairness regression tests.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ========== PHASE 4 ========== -->
+<section id="phase-4">
+  <h2>Phase 4: Responsible AI governance</h2>
+
+  <h3>Pre-deployment checklist (minimum ten items)</h3>
+  <p>Strong governance ties technical controls to named roles such as model owner, legal counsel, and HR leadership. The list below tracks gaps from Phase 3 and risks from Phase 2. Mitigation can target data and labels before training (<strong>pre-processing</strong>), the optimization objective during training (<strong>in-processing</strong>), or scores and decisions after training (<strong>post-processing</strong>), depending on legal advice and feasibility.</p>
+  <ol class="checklist">
+    <li>Publish model cards or fact sheets stating intent, lineage, limits, and known failure modes for hiring-related use.</li>
+    <li>Freeze seeds and artifact hashes for reproducible builds and pin dependencies (<code>requirements.txt</code>).</li>
+    <li>Validate subgroup performance by sex, race or ethnicity, and intersectional slices where counts allow.</li>
+    <li>Set threshold policies tied explicitly to the fairness metrics governance selects, not only to AUROC.</li>
+    <li>Run structured mitigation experiments (reweighting, constrained optimization, equalized-odds style post-processing) under legal review.</li>
+    <li>Provide human review paths for adverse automated outcomes where GDPR Article 22 or analogous duties apply.</li>
+    <li>Retain SHAP or LIME summaries for appeals with a defined retention policy.</li>
+    <li>Monitor drift in occupation and education distributions as labor markets shift.</li>
+    <li>Schedule recurring fairness reviews and periodic independent audit for high-risk deployment.</li>
+    <li>Train HR and compliance staff on disparity metrics and lawful handling of sensitive attributes.</li>
+    <li>Maintain an incident plan for errors that produce disparate harm, including legal escalation.</li>
+  </ol>
+
+  <h3>Stakeholder disclosure (plain language)</h3>
+  <blockquote class="disclosure">
+    <p><strong>What this system does in this audit.</strong> The audited model estimates whether income is likely above or below $50K per year from census-like fields. This exercise uses historical benchmark data. It is not a live hiring decision engine.</p>
+  <p><strong>What data were used.</strong> Records come from the public UCI Adult dataset [1]. Fields include education, occupation, hours worked, and demographic categories.</p>
+    <p><strong>Fairness testing.</strong> The audit compared predicted outcomes and errors across sex and race groups. Gaps appeared across metrics. Fixing one kind of disparity can move another. Deployment would require deeper legal review and mitigation beyond this baseline.</p>
+  <p><strong>Review and contestation.</strong> A live employment system should offer a clear path to human review of adverse automated results and a plain-language summary of main factors, consistent with transparency expectations in frameworks such as GDPR Articles 15 and 22 where they apply [5].</p>
+    <p><strong>Further detail.</strong> Technical reproduction steps and outputs appear in <code>capstone_analysis.ipynb</code>.</p>
+  </blockquote>
+
+  <p class="small"><strong>Implementation note.</strong> Operational deployment should pair public-facing disclosure with internal escalation routes (for example ethics review and legal sign-off when sensitive attributes are processed) and change control whenever data or thresholds shift.</p>
+</section>
+
+<section id="limitations">
+  <h2>Limitations and scope boundaries</h2>
+  <p>This document is not legal advice, a regulatory filing, or a certification artifact. Fairness results depend on grouping choices that simplify lived identity. SHAP and LIME provide useful approximations, but they can mislead when features are correlated or when observations fall outside training support [12], [13]. Translating these findings into legal liability conclusions would require employer-specific evidence on job-relatedness, alternatives, and decision context that this benchmark cannot provide.</p>
+</section>
+
+<section id="references">
+  <h2>References</h2>
+  <ol class="small">
+    <li>B. Becker and R. Kohavi, “Adult,” UCI Machine Learning Repository, 1996. [Online]. Available: https://doi.org/10.24432/C5XW20</li>
+    <li>J. Kleinberg, S. Mullainathan, and M. Raghavan, “Inherent trade-offs in the fair determination of risk scores,” in <em>Proc. 8th Innovations in Theoretical Computer Science Conf. (ITCS)</em>, 2017.</li>
+    <li>U.S. Congress, “Civil Rights Act of 1964, Title VII,” 42 U.S.C. Sec. 2000e-2, 1964.</li>
+    <li>U.S. Equal Employment Opportunity Commission, Civil Service Commission, Department of Labor, and Department of Justice, “Uniform Guidelines on Employee Selection Procedures,” 29 C.F.R. Part 1607, 1978.</li>
+    <li>European Parliament and Council, “Regulation (EU) 2016/679 (General Data Protection Regulation),” Official Journal of the European Union, 2016.</li>
+    <li>European Parliament and Council, “Regulation (EU) 2024/1689 (Artificial Intelligence Act),” Official Journal of the European Union, 2024.</li>
+    <li>Illinois General Assembly, “Artificial Intelligence Video Interview Act,” 820 ILCS 42, 2020.</li>
+    <li>National Institute of Standards and Technology, <em>Artificial Intelligence Risk Management Framework (AI RMF 1.0)</em>, NIST AI 100-1, Jan. 2023.</li>
+    <li>OECD, “Recommendation of the Council on Artificial Intelligence,” OECD/LEGAL/0449, 2019.</li>
+    <li>New York City Council, “Local Law 144 of 2021: Automated Employment Decision Tools,” 2021.</li>
+    <li>California Legislature, “California Consumer Privacy Act of 2018,” Cal. Civ. Code Sec. 1798.100 et seq., as amended by California Privacy Rights Act, 2020.</li>
+    <li>S. M. Lundberg and S.-I. Lee, “A unified approach to interpreting model predictions,” in <em>Advances in Neural Information Processing Systems</em>, vol. 30, 2017.</li>
+    <li>M. T. Ribeiro, S. Singh, and C. Guestrin, “Why should I trust you?: Explaining the predictions of any classifier,” in <em>Proc. 22nd ACM SIGKDD Int. Conf. Knowledge Discovery and Data Mining</em>, 2016.</li>
+  </ol>
+</section>
+
+<section id="appendix">
+  <h2>Code appendix: reproducibility</h2>
+  <p>The companion notebook <strong>capstone_analysis.ipynb</strong> contains fully commented code. Install dependencies first, then run all cells from the working directory containing the <code>others/data</code> bundle. Raw source files are <code>others/data/adult.data</code> and <code>others/data/adult.test</code>; the processed analysis table used in this report is <code>others/data/adult_census_income.csv</code>.</p>
+  <pre class="deps"># Reproducible environment for capstone_analysis.ipynb
+# Install: pip install -r requirements.txt
+
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.3
+matplotlib>=3.7
+seaborn>=0.13
+shap>=0.44
+lime>=0.2.0.1
+jupyter>=1.0
+ipython>=8.0</pre>
+  <p class="small">Figures and tables in this report trace to that notebook’s execution path with the recorded random seed and processed CSV.</p>
+</section>
+
+<footer>
+  <p><strong>Data citation:</strong> Adult dataset [1]. Processed CSV path when the working directory is the Submission folder: <code>others/data/adult_census_income.csv</code>.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Environment and secrets (never commit)
+.env
+.env.local
+.env.*.local
+
+# Optional: keep a template without real keys
+# .env.example is safe to commit if it has no secrets

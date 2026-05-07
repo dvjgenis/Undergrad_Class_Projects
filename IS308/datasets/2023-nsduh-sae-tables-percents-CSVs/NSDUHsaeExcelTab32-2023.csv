@@ -1,0 +1,66 @@
+"Table 32. Did Not Receive Substance Use Treatment in the Past Year: Among People Aged 12 or Older Classified as Needing Substance Use Treatment; by Age Group and State, Annual Average Percentages, 2022 and 2023",,,,,,,,,,,,,,,,
+"NOTE: Not receiving substance use treatment among those needing treatment (%) = 100 * [X1 / (X1 + X2)], where X1 is the number of people not receiving treatment who needed treatment, X2 is the number people receiving treatment who needed treatment, and (X1+ X2) denotes the number of people who needed treatment. State and census region estimates, along with the 95 percent Bayesian confidence (credible) intervals, are based on simultaneous modeling of X1 and X2 components using the survey-weighted hierarchical Bayes small area estimation approach. The associated Markov Chain Monte Carlo chains were used to calculate the posterior variance. For the “Total U.S.” row, design-based (direct) estimates and corresponding 95 percent confidence intervals are given.",,,,,,,,,,,,,,,,
+"NOTE: Respondents were classified as needing substance use treatment if they met Diagnostic and Statistical Manual of Mental Disorders, 5th edition (DSM-5) criteria for a drug or alcohol use disorder or received treatment for drug or alcohol use through inpatient treatment/counseling, outpatient treatment/counseling, medication-assisted treatment, telehealth treatment, or treatment received in a prison, jail, or juvenile detention center. Substance use treatment questions are asked of respondents who used drugs or alcohol in their lifetime.",,,,,,,,,,,,,,,,
+NOTE: Substance use disorder (SUD) estimates are based on DSM-5 criteria. SUD is defined as meeting the criteria for drug or alcohol use disorder. See 2023 National Survey on Drug Use and Health (NSDUH): Methodological Summary and Definitions at https://www.samhsa.gov/data/report/2023-methodological-summary-and-definitions for details on who was eligible to receive questions on SUD.,,,,,,,,,,,,,,,,
+"NOTE: Drug use includes the use of marijuana (including vaping), cocaine (including crack), heroin, hallucinogens, inhalants, or methamphetamine in the past year or any use (i.e., not necessarily misuse) of prescription pain relievers, tranquilizers, stimulants, or sedatives in the past year.",,,,,,,,,,,,,,,,
+"NOTE: Because of the high proportion of respondents in the “substance unspecified” category for treatment, the estimates in this table have added uncertainty. ",,,,,,,,,,,,,,,,
+"Note: For details about estimates in this table, see Section B of 2022-2023 National Surveys on Drug Use and Health: Guide to State Tables and Summary of Small Area Estimation Methodology at https://www.samhsa.gov/data/report/2022-2023-nsduh-guide-state-tables-and-summary-sae-methodology.",,,,,,,,,,,,,,,,
+NOTE: The column labeled “Order” can be used to sort the data to the original sort order.,,,,,,,,,,,,,,,,
+"Source: SAMHSA, Center for Behavioral Health Statistics and Quality, National Surveys on Drug Use and Health, 2022 and 2023.",,,,,,,,,,,,,,,,
+Order,State,"12+ Estimate","12+ 95% CI (Lower)","12+ 95% CI (Upper)","12-17 Estimate","12-17 95% CI (Lower)","12-17 95% CI (Upper)","18-25 Estimate","18-25 95% CI (Lower)","18-25 95% CI (Upper)","26+ Estimate","26+ 95% CI (Lower)","26+ 95% CI (Upper)","18+ Estimate","18+ 95% CI (Lower)","18+ 95% CI (Upper)"
+1,Total U.S.,76.19%,75.22%,77.14%,60.52%,57.88%,63.11%,83.51%,82.29%,84.66%,75.54%,74.32%,76.72%,77.09%,76.06%,78.08%
+2,Northeast,74.70%,72.57%,76.72%,64.72%,59.98%,69.19%,83.96%,81.97%,85.77%,73.14%,70.53%,75.59%,75.15%,72.95%,77.23%
+3,Midwest,76.17%,74.48%,77.79%,57.95%,54.29%,61.52%,83.12%,81.36%,84.75%,75.75%,73.68%,77.71%,77.23%,75.49%,78.88%
+4,South,75.75%,74.17%,77.27%,58.36%,54.81%,61.82%,82.99%,81.35%,84.51%,75.41%,73.48%,77.25%,76.86%,75.21%,78.43%
+5,West,77.97%,76.09%,79.73%,64.02%,59.52%,68.29%,84.26%,82.17%,86.15%,77.37%,75.06%,79.52%,78.73%,76.80%,80.54%
+6,Alabama,74.39%,69.63%,78.64%,58.38%,48.93%,67.25%,81.07%,75.74%,85.46%,74.18%,68.33%,79.27%,75.38%,70.43%,79.74%
+7,Alaska,78.91%,74.11%,83.03%,60.58%,50.34%,69.97%,86.09%,81.56%,89.65%,78.60%,72.56%,83.62%,79.94%,74.94%,84.16%
+8,Arizona,74.37%,69.12%,79.00%,59.09%,49.18%,68.31%,82.13%,76.86%,86.42%,73.41%,66.56%,79.29%,75.34%,69.86%,80.11%
+9,Arkansas,74.93%,69.85%,79.40%,57.74%,47.92%,66.98%,81.84%,76.55%,86.16%,74.64%,68.19%,80.16%,76.01%,70.71%,80.61%
+10,California,81.40%,78.47%,84.00%,69.18%,61.76%,75.73%,85.45%,81.97%,88.36%,81.17%,77.47%,84.39%,82.05%,79.01%,84.73%
+11,Colorado,76.79%,72.27%,80.77%,62.21%,52.21%,71.26%,80.86%,75.46%,85.30%,76.70%,71.12%,81.49%,77.48%,72.81%,81.55%
+12,Connecticut,75.55%,70.10%,80.29%,70.98%,60.78%,79.42%,83.85%,78.82%,87.87%,73.64%,66.69%,79.59%,75.74%,70.10%,80.61%
+13,Delaware,77.60%,72.99%,81.62%,65.16%,56.01%,73.31%,85.33%,80.73%,88.98%,76.78%,71.04%,81.68%,78.28%,73.45%,82.43%
+14,District of Columbia,79.58%,74.70%,83.72%,75.12%,62.42%,84.59%,86.20%,80.83%,90.25%,78.05%,72.02%,83.09%,79.67%,74.71%,83.87%
+15,Florida,74.72%,70.93%,78.18%,54.59%,47.70%,61.30%,81.60%,77.69%,84.96%,74.58%,69.80%,78.83%,75.89%,71.88%,79.49%
+16,Georgia,80.41%,76.41%,83.87%,63.78%,55.45%,71.36%,83.67%,78.96%,87.50%,80.99%,75.95%,85.17%,81.50%,77.34%,85.05%
+17,Hawaii,74.22%,67.82%,79.73%,52.82%,42.04%,63.34%,84.73%,79.12%,89.04%,73.61%,65.82%,80.16%,75.32%,68.59%,81.01%
+18,Idaho,73.65%,68.03%,78.59%,54.74%,44.73%,64.38%,81.47%,75.82%,86.05%,73.35%,66.06%,79.57%,75.05%,69.13%,80.16%
+19,Illinois,79.54%,75.66%,82.94%,63.18%,55.78%,70.01%,82.73%,78.71%,86.13%,79.95%,75.01%,84.11%,80.50%,76.45%,84.00%
+20,Indiana,73.49%,68.51%,77.95%,56.49%,46.62%,65.87%,84.49%,79.49%,88.45%,72.05%,65.64%,77.66%,74.69%,69.48%,79.27%
+21,Iowa,73.82%,68.10%,78.84%,56.91%,46.42%,66.81%,83.19%,77.81%,87.47%,72.50%,65.27%,78.71%,74.77%,68.84%,79.90%
+22,Kansas,75.54%,70.30%,80.12%,56.60%,46.76%,65.95%,84.57%,79.59%,88.50%,74.57%,67.57%,80.49%,76.87%,71.36%,81.60%
+23,Kentucky,70.16%,64.80%,75.03%,51.43%,41.93%,60.83%,81.28%,75.99%,85.62%,69.27%,62.70%,75.15%,71.33%,65.71%,76.36%
+24,Louisiana,76.46%,71.88%,80.49%,54.59%,45.58%,63.30%,79.90%,73.90%,84.81%,77.39%,71.73%,82.20%,77.84%,73.03%,82.00%
+25,Maine,76.48%,70.98%,81.21%,62.30%,51.75%,71.79%,86.20%,81.41%,89.91%,75.24%,68.56%,80.90%,77.07%,71.38%,81.91%
+26,Maryland,77.07%,71.58%,81.77%,58.50%,48.29%,68.04%,85.98%,80.85%,89.91%,76.35%,69.39%,82.13%,78.22%,72.44%,83.07%
+27,Massachusetts,77.36%,72.47%,81.59%,69.77%,59.73%,78.22%,83.88%,79.32%,87.59%,75.98%,69.79%,81.24%,77.63%,72.63%,81.95%
+28,Michigan,74.52%,71.02%,77.73%,54.78%,47.50%,61.87%,82.06%,78.18%,85.38%,73.98%,69.63%,77.90%,75.57%,71.95%,78.87%
+29,Minnesota,78.05%,73.10%,82.30%,62.64%,52.81%,71.53%,81.42%,75.88%,85.91%,78.20%,71.83%,83.47%,78.88%,73.75%,83.24%
+30,Mississippi,71.98%,66.53%,76.85%,54.77%,44.49%,64.65%,82.57%,77.05%,86.99%,70.98%,64.16%,76.97%,73.13%,67.44%,78.15%
+31,Missouri,75.78%,70.71%,80.21%,56.94%,47.67%,65.74%,84.40%,79.42%,88.36%,75.13%,68.84%,80.51%,76.83%,71.54%,81.40%
+32,Montana,73.70%,68.36%,78.41%,56.19%,46.06%,65.83%,84.21%,79.06%,88.28%,72.53%,65.97%,78.24%,74.66%,69.13%,79.49%
+33,Nebraska,75.19%,70.15%,79.63%,57.04%,47.01%,66.52%,82.58%,77.23%,86.88%,74.67%,68.10%,80.28%,76.42%,71.15%,80.98%
+34,Nevada,77.37%,72.44%,81.64%,63.71%,53.66%,72.70%,85.25%,80.53%,88.98%,76.66%,70.59%,81.80%,78.12%,72.97%,82.52%
+35,New Hampshire,74.03%,68.97%,78.52%,63.85%,53.90%,72.75%,84.34%,79.19%,88.40%,72.41%,66.30%,77.79%,74.41%,69.19%,79.01%
+36,New Jersey,76.77%,71.83%,81.08%,62.42%,53.48%,70.58%,83.65%,79.01%,87.42%,76.17%,69.95%,81.44%,77.59%,72.44%,82.02%
+37,New Mexico,74.58%,69.31%,79.22%,53.62%,43.59%,63.37%,84.08%,79.05%,88.08%,74.04%,67.09%,79.96%,76.20%,70.58%,81.03%
+38,New York,74.67%,71.10%,77.94%,69.06%,60.94%,76.14%,83.75%,80.05%,86.87%,72.97%,68.57%,76.96%,74.91%,71.22%,78.27%
+39,North Carolina,77.26%,72.42%,81.47%,57.32%,47.77%,66.35%,83.82%,78.79%,87.85%,77.19%,71.00%,82.39%,78.45%,73.36%,82.80%
+40,North Dakota,76.81%,71.67%,81.26%,62.09%,51.96%,71.26%,85.95%,81.08%,89.72%,74.96%,68.18%,80.71%,77.66%,72.31%,82.23%
+41,Ohio,74.60%,71.16%,77.77%,53.86%,46.50%,61.05%,82.43%,78.77%,85.57%,74.21%,69.90%,78.09%,75.74%,72.17%,78.99%
+42,Oklahoma,75.79%,70.68%,80.25%,55.33%,45.84%,64.45%,86.88%,82.70%,90.17%,74.09%,67.33%,79.87%,77.08%,71.71%,81.68%
+43,Oregon,74.13%,68.57%,79.00%,57.21%,47.62%,66.28%,84.36%,79.76%,88.08%,72.88%,65.95%,78.85%,74.98%,69.19%,80.00%
+44,Pennsylvania,71.10%,66.92%,74.96%,58.20%,50.35%,65.66%,83.97%,80.17%,87.15%,69.11%,64.00%,73.79%,71.74%,67.39%,75.72%
+45,Rhode Island,78.70%,73.87%,82.84%,57.91%,48.30%,66.96%,86.47%,81.99%,89.97%,77.85%,71.79%,82.92%,79.55%,74.57%,83.77%
+46,South Carolina,76.20%,70.85%,80.84%,56.56%,46.64%,65.99%,82.75%,77.36%,87.06%,76.21%,69.46%,81.86%,77.43%,71.86%,82.16%
+47,South Dakota,75.81%,70.45%,80.47%,58.41%,48.49%,67.70%,85.62%,80.97%,89.29%,74.21%,67.22%,80.15%,76.83%,71.24%,81.62%
+48,Tennessee,72.12%,66.50%,77.12%,54.65%,44.78%,64.18%,83.02%,77.95%,87.11%,71.06%,64.03%,77.20%,73.22%,67.30%,78.41%
+49,Texas,75.76%,72.48%,78.76%,60.01%,52.42%,67.16%,82.67%,78.79%,85.96%,75.51%,71.37%,79.22%,76.95%,73.50%,80.07%
+50,Utah,69.81%,64.07%,74.99%,55.70%,43.78%,66.99%,81.64%,75.01%,86.83%,67.66%,60.19%,74.33%,70.93%,64.91%,76.30%
+51,Vermont,74.86%,69.72%,79.38%,58.16%,48.14%,67.56%,84.17%,79.08%,88.21%,73.35%,66.97%,78.89%,75.49%,70.20%,80.10%
+52,Virginia,78.16%,74.37%,81.53%,68.25%,60.56%,75.05%,84.89%,80.73%,88.29%,77.17%,72.43%,81.31%,78.72%,74.80%,82.17%
+53,Washington,75.45%,70.45%,79.85%,66.10%,56.55%,74.50%,84.85%,80.24%,88.54%,73.91%,67.69%,79.30%,75.89%,70.69%,80.42%
+54,West Virginia,70.16%,64.31%,75.42%,55.93%,45.64%,65.73%,82.40%,77.05%,86.72%,68.43%,61.23%,74.85%,70.85%,64.77%,76.26%
+55,Wisconsin,78.19%,73.58%,82.19%,59.49%,49.60%,68.66%,84.51%,80.06%,88.11%,77.88%,71.98%,82.84%,79.25%,74.47%,83.33%
+56,Wyoming,71.77%,65.63%,77.20%,62.35%,52.12%,71.59%,82.22%,76.59%,86.74%,69.91%,62.19%,76.65%,72.30%,65.89%,77.91%

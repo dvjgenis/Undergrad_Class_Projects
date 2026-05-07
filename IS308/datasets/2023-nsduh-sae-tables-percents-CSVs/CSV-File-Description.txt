@@ -1,0 +1,91 @@
+CSV File Description
+
+Files with a comma separated value (*.csv) extension are in plain text. They contain characters stored in a flat, nonproprietary format and can be opened by most computer programs. Each *.csv file contains a set of tabular data, with each record delineated by a line break and each field within a record delineated by a comma. A field that contains commas as part of its content has the additional delineation of a quote mark character before and after the field's contents. 
+
+Computers with Microsoft Excel installed open *.csv files in Excel by default, with the fields automatically arranged appropriately in columns. Other database programs also open *.csv files with the fields appropriately arranged.
+
+This zip archive holds 41 CSV files (i.e., "NSDUHsaeExcelTab##-2023.csv"), reflecting the 41 "Table #" tabs in the Excel file, and they contain the table title, table notes, column headings, and data.
+
+List of Tables
+
+Table 1. Illicit Drug Use in the Past Month: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 2. Marijuana Use in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 3. Marijuana Use in the Past Month: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 4. Perceptions of Great Risk from Smoking Marijuana Once a Month: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 5. First Use of Marijuana in the Past Year: Among People Aged 12 or Older at Risk for Initiation of Marijuana Use; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 6. Illicit Drug Use Other Than Marijuana in the Past Month: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 7. Cocaine Use in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 8. Perceptions of Great Risk from Using Cocaine Once a Month: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 9. Heroin Use in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 10. Perceptions of Great Risk from Trying Heroin Once or Twice: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 11. Hallucinogen Use in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 12. Methamphetamine Use in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 13. Prescription Pain Reliever Misuse in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 14. Opioid Misuse in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 15. Alcohol Use in the Past Month: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 16. Binge Alcohol Use in the Past Month: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 17. Perceptions of Great Risk from Having Five or More Drinks of an Alcoholic Beverage Once or Twice a Week: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 18. Alcohol Use in the Past Month, Binge Alcohol Use in the Past Month, and Perceptions of Great Risk from Having Five or More Drinks of an Alcoholic Beverage Once or Twice a Week: Among People Aged 12 to 20; by State, Annual Average Percentages, 2022 and 2023
+
+Table 19. Tobacco Product Use in the Past Month: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 20. Cigarette Use in the Past Month: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 21. Nicotine Vaping in the Past Month: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 22. Perceptions of Great Risk from Smoking One or More Packs of Cigarettes per Day: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 23. Tobacco Product Use in the Past Month and Cigarette Use in the Past Month: Among People Aged 12 to 20; by State, Annual Average Percentages, 2022 and 2023
+
+Table 24. Substance Use Disorder in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 25. Alcohol Use Disorder in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 26. Alcohol Use Disorder in the Past Year: Among People Aged 12 to 20; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 27. Drug Use Disorder in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 28. Pain Reliever Use Disorder in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 29. Opioid Use Disorder in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 30. Received Substance Use Treatment in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 31. Classified as Needing Substance Use Treatment in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 32. Did Not Receive Substance Use Treatment in the Past Year: Among People Aged 12 or Older Classified as Needing Substance Use Treatment; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 33. Any Mental Illness in the Past Year: Among People Aged 18 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 34. Serious Mental Illness in the Past Year: Among People Aged 18 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 35. Co-occurring Substance Use Disorder and Any Mental Illness in the Past Year: Among People Aged 18 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 36. Co-occurring Substance Use Disorder and Serious Mental Illness in the Past Year: Among People Aged 18 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 37. Received Mental Health Treatment in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 38. Major Depressive Episode in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 39. Had Serious Thoughts of Suicide in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 40. Made Any Suicide Plans in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023
+
+Table 41. Attempted Suicide in the Past Year: Among People Aged 12 or Older; by Age Group and State, Annual Average Percentages, 2022 and 2023

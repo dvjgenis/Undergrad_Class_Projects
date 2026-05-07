@@ -1,0 +1,568 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 16
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -144,
+        0
+      ],
+      "id": "925c61b2-394d-47aa-a8fe-81e0892df257",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "url": "https://export.arxiv.org/api/query?search_query=all:explainable+ai&start=0&max_results=1&sortBy=submittedDate&sortOrder=descending",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        160,
+        -144
+      ],
+      "id": "ddd25d25-09cb-4949-bd07-3cd54d932e0e",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        368,
+        -144
+      ],
+      "id": "c9fad4cb-31f5-4cc1-be00-692238bdf7bb",
+      "name": "XML"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f886f25c-0b3d-456c-bd47-c5183c6de5e2",
+              "name": "title",
+              "value": "={{ $json.feed.entry.title }}",
+              "type": "string"
+            },
+            {
+              "id": "79ad82b1-591c-42dd-a860-c26300f7e884",
+              "name": "authors",
+              "value": "={{ $json.feed.entry.author.map(a => a.name).join(', ') }}",
+              "type": "string"
+            },
+            {
+              "id": "88e1e8a7-0ee4-419b-bcf7-9034e44bea3d",
+              "name": "published",
+              "value": "={{ $json.feed.entry.published }}",
+              "type": "string"
+            },
+            {
+              "id": "93f17f69-a33d-4c10-953e-564a73b03ff4",
+              "name": "link",
+              "value": "={{ $json.feed.entry.id }}",
+              "type": "string"
+            },
+            {
+              "id": "5205e368-0864-4ad6-98bc-dc958e8a8e66",
+              "name": "abstract",
+              "value": "={{ $json.feed.entry.summary }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        576,
+        -144
+      ],
+      "id": "5d29a662-a7ea-4e36-a21a-6163d9de5dfe",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Summarize this research paper abstract in 3-4 clear sentences for a student: {{ $json.abstract }}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        1536,
+        176
+      ],
+      "id": "ca6c4e06-be2d-46ac-be6f-d37cb5ef33e2",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        1536,
+        400
+      ],
+      "id": "8c31b072-be82-4443-8d1d-cdb4c505fb7d",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "8fmrP0J24Pzf5P9G",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "dgeni2@illinois.edu",
+        "subject": "=New arXiv Paper: {{ $('Edit Fields').item.json.title }}",
+        "emailType": "text",
+        "message": "=New Research Paper Alert\n\nTitle: {{ $('Edit Fields').item.json.title }}\n\nAuthors: {{ $('Edit Fields').item.json.authors }}\n\nPublished: {{ $('Edit Fields').item.json.published }}\n\nPaper Link: {{ $('Edit Fields').item.json.link }}\n\n---\n\nAI Summary:\n{{ $json.text }}\n\n---\n\nFull Abstract:\n{{ $('Edit Fields').item.json.abstract }}\n\n---\n\nThis is your daily arXiv research update.\nThanks,\nn8n agent demo",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1600,
+        -160
+      ],
+      "id": "d65f3435-84af-4802-9cbf-dd5e5865185b",
+      "name": "Send a message",
+      "webhookId": "3b3706cd-24c9-4b1f-95d1-e1b8a8f1e2ee",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "thZyjHORTVsIilsN",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ae882491-22e9-484b-b02b-6a30878b75ad",
+              "leftValue": "={{ DateTime.fromISO($json.published).toSeconds() }}",
+              "rightValue": "={{ DateTime.now().minus({ days: 1 }).toSeconds() }}",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        1168,
+        -48
+      ],
+      "id": "76ed7c10-fe4b-40c3-9e5b-d4b8ec4c5fdb",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1NU6aObmhHfMAIUYR3OkX7f3WII6skfuixSgIURZRJ00",
+          "mode": "list",
+          "cachedResultName": "N8N",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NU6aObmhHfMAIUYR3OkX7f3WII6skfuixSgIURZRJ00/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NU6aObmhHfMAIUYR3OkX7f3WII6skfuixSgIURZRJ00/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "title",
+              "displayName": "title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "authors",
+              "displayName": "authors",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "published",
+              "displayName": "published",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link",
+              "displayName": "link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "abstract",
+              "displayName": "abstract",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1168,
+        -256
+      ],
+      "id": "4776d3bf-1494-40dc-a435-7673ba484c9a",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "13aWBps75PXeykCs",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://export.arxiv.org/api/query?search_query=all:human-centered+AI+dashboard+or+interpretability&start=0&max_results=1&sortBy=submittedDate&sortOrder=descending",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        160,
+        112
+      ],
+      "id": "f1b66c0f-df25-4500-825b-6194e05558b9",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        368,
+        112
+      ],
+      "id": "e6608b36-31b2-4728-85cb-a7f4d72fa8b0",
+      "name": "XML1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f886f25c-0b3d-456c-bd47-c5183c6de5e2",
+              "name": "title",
+              "value": "={{ $json.feed.entry.title }}",
+              "type": "string"
+            },
+            {
+              "id": "79ad82b1-591c-42dd-a860-c26300f7e884",
+              "name": "authors",
+              "value": "={{ $json.feed.entry.author.map(a => a.name).join(', ') }}",
+              "type": "string"
+            },
+            {
+              "id": "88e1e8a7-0ee4-419b-bcf7-9034e44bea3d",
+              "name": "published",
+              "value": "={{ $json.feed.entry.published }}",
+              "type": "string"
+            },
+            {
+              "id": "93f17f69-a33d-4c10-953e-564a73b03ff4",
+              "name": "link",
+              "value": "={{ $json.feed.entry.id }}",
+              "type": "string"
+            },
+            {
+              "id": "5205e368-0864-4ad6-98bc-dc958e8a8e66",
+              "name": "abstract",
+              "value": "={{ $json.feed.entry.summary }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        576,
+        112
+      ],
+      "id": "7b904a12-bb86-4f95-942f-fa2b33b12a30",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        784,
+        0
+      ],
+      "id": "ffc7c1a4-7e3a-499d-8da9-3819537861d3",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1168,
+        160
+      ],
+      "id": "287d9458-4f73-41ec-ac9b-21ac1cb1ac22",
+      "name": "Loop Over Items"
+    }
+  ],
+  "pinData": {
+    "Schedule Trigger": [
+      {
+        "json": {
+          "timestamp": "2025-10-14T13:19:10.936-05:00",
+          "Readable date": "October 14th 2025, 1:19:10 pm",
+          "Readable time": "1:19:10 pm",
+          "Day of week": "Tuesday",
+          "Year": "2025",
+          "Month": "October",
+          "Day of month": "14",
+          "Hour": "13",
+          "Minute": "19",
+          "Second": "10",
+          "Timezone": "America/Chicago (UTC-05:00)"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "XML1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "3b6efeec-436b-4910-83a1-f21a2d2fe3c1",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d28595f874468ed63c594a66bebd98d2486918eca71933ca8abd06e61b612706"
+  },
+  "id": "v64h7pWIXdHDDe6K",
+  "tags": []
+}

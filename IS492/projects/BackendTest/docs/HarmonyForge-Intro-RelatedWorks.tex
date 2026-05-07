@@ -1,0 +1,43 @@
+% =============================================================================
+% HarmonyForge: Introduction and Related Works (REVISED)
+% Copy this content into sample-manuscript.tex on Overleaf.
+% Structure matches ACM acmart template (UIST/CHI).
+% Revised: removed repetition, grounded methodology in empirical analysis.
+% =============================================================================
+
+\section{Introduction}
+
+Algorithmic music generation has increasingly relied on deep learning models that produce plausible outputs through probabilistic sampling---what we term ``Black Boxes.'' Systems such as DeepBach~\cite{hadjeres2017} and the Anticipatory Music Transformer~\cite{thickstun2024} achieve impressive stylistic mimicry by training on large corpora (e.g., the Lakh MIDI dataset), yet they introduce critical problems: outputs are opaque, difficult to edit, and entangled with copyright ambiguity. Practitioners who need musically correct, pedagogically grounded four-part harmony---gigging musicians, educators, and students---often experience a ``loss of expressive sovereignty'' when tools automate without transparency~\cite{louie2020}. Meanwhile, large language models (LLMs) excel at music-theoretic reasoning but struggle with raw generation~\cite{zhou2024}, suggesting a hybrid architecture where the LLM acts as critic rather than composer.
+
+We present HarmonyForge, a human-AI co-creation system that inverts this paradigm. Instead of probabilistic guessing, our engine uses Constraint Satisfaction Problems (CSP) over layered graphs---following the technical blueprint of HarmonySolver~\cite{dajda2020}---to produce deterministic, rule-compliant SATB harmonizations. We adopt a ``Global Planning'' phase inspired by SchenkComposer~\cite{hahn2023}, using Schenkerian analysis to structure generation and prevent aimless wandering. Our Theory Inspector deploys an LLM as a ``Reviewer Agent,'' following the multi-agent orchestration of ComposerX~\cite{deng2024}, to explain errors and suggest stylistic refinements without generating notes. This design embodies the transition ``From Black Box to Glass Box''~\cite{liu2025}: ante-hoc explainability and red-line validation as socio-technical necessities for trust.
+
+Our axiomatic core is grounded in canonical music theory: Fuxian counterpoint~\cite{fux1725} for parsimony and contrary motion, Aldwell-Schachter~\cite{aldwellschachter} for hard constraints (parallel fifths, chord spacing), and Caplin~\cite{caplin1998} for structural segmentation. The Theory Inspector draws on Open Music Theory~\cite{gotham2024} via retrieval-augmented generation. We evaluate the Repair Phase using the Creativity Support Index (CSI)~\cite{tchemeube2025}. Through thematic analysis~\cite{braun2006,zambrano2025} of 21 musician interviews (633 initial codes, 9 Must Have features), we derived design requirements that align with our three-stage architecture. HarmonyForge demonstrates that deterministic, glass-box approaches---as advocated by MusicAIR~\cite{liao2025}---offer a viable alternative to Black Box generation for users who require edit-authority and pedagogical transparency.
+
+\section{Related Works}
+
+We organize related work into four strands: (1) Black Box generative models and their limitations, (2) deterministic and glass-box alternatives, (3) human-AI co-creation and UX foundations, and (4) LLM capabilities in music reasoning.
+
+\subsection{Black Box Music Generation}
+
+DeepBach~\cite{hadjeres2017} remains the seminal probabilistic model for four-part harmonization. Trained on Bach chorales, it uses pseudo-Gibbs sampling to generate stylistically convincing outputs. While steerable via positional constraints, it lacks transparency: users cannot trace why a note was chosen or correct violations of music-theoretic rules, imposing mechanical toil that undermines efficiency gains. The Anticipatory Music Transformer~\cite{thickstun2024} represents state-of-the-art in LLM-style music generation, trained on the Lakh MIDI dataset. Its reliance on large corpora highlights the copyright ambiguity that axiomatic approaches avoid---HarmonyForge generates from rules, not training data.
+
+\subsection{Deterministic and Glass-Box Alternatives}
+
+HarmonySolver~\cite{dajda2020} demonstrates that Constraint Satisfaction Problems (CSP) using layered graphs are a viable, deterministic alternative to neural networks for solving functional SATB harmony. We adopt this as our primary technical blueprint. SchenkComposer~\cite{hahn2023} justifies our Global Planning phase: Schenkerian analysis provides hierarchical structure that prevents the aimless wandering common in algorithmic generation. MusicAIR~\cite{liao2025} bolsters the argument for glass-box deterministic approaches over deep learning. The CSE-TR-397-99 report~\cite{csetr397} provides the historical origin of CSP-based harmonic analysis that we modernize. Bryan-Kinns et al.~\cite{bryan2023} offer alternative approaches to explaining music AI via latent spaces; we contrast with our focus on pedagogical axioms. Bhandari et al.~\cite{bhandari2024} acknowledge current literature on hierarchical music structures.
+
+\subsection{Human-AI Co-Creation and UX}
+
+Louie et al.~\cite{louie2020} (Cococo) define the loss of expressive sovereignty and justify why users need edit-authority rather than full automation. Liu et al.~\cite{liu2025} formalize the transition from Black Box to Glass Box and the use of ante-hoc explainability. Tchemeube et al.~\cite{tchemeube2025} justify our use of the Creativity Support Index (CSI) to evaluate the Repair Phase. Fu et al.~\cite{fu2025exploring} support the psychological need for user agency in AI co-creation workflows. Donahue et al.~\cite{donahue2025} (Hookpad Aria) provide a contemporary comparison; we contrast their co-creation approach with our deterministic, theory-first design. Kim et al.~\cite{kim2026} identify copyright and authorship as unresolved blind spots in current AI music systems---HarmonyForge addresses these explicitly.
+
+\subsection{LLM Music Reasoning}
+
+Zhou et al.~\cite{zhou2024} prove that LLMs excel at music reasoning but fail at music generation, supporting our use of the LLM as a Theory Inspector (critic) rather than a generator. ComposerX~\cite{deng2024} provides the multi-agent Reviewer Agent architecture that justifies our Theory Inspector's LLM orchestration. Mundada et al.~\cite{mundada2025}, Wang et al.~\cite{wang2025symbolic}, and Carone et al.~\cite{carone2026} benchmark LLM capabilities in symbolic music reasoning, validating our Theory Inspector approach.
+
+% =============================================================================
+% Required BibTeX keys (ensure these exist in sample-base.bib):
+% Tier 1: hadjeres2017, thickstun2024, louie2020, dajda2020, hahn2023, deng2024,
+%         liao2025, liu2025, tchemeube2025, zhou2024, fux1725, aldwellschachter,
+%         caplin1998, gotham2024, braun2006, zambrano2025
+% Tier 2: kim2026, bryan2023, csetr397, mundada2025, wang2025symbolic, carone2026,
+%         donahue2025, fu2025exploring, bhandari2024
+% =============================================================================
