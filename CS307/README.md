@@ -1,51 +1,71 @@
-# CS307
+<div align="center">
 
-## Overview
+# CS307 — Data Science & ML
+
+[![Course](https://img.shields.io/badge/CS307-Data%20Science-0ea5e9?style=for-the-badge)](../README.md)
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
+[![Portfolio](https://img.shields.io/badge/←_Portfolio-111827?style=for-the-badge)](../README.md)
+
 Data science and notebook-heavy labs/projects with Python environments.
 
+</div>
+
+---
+
+## Overview
+
+Progressive labs and a cumulative final project covering cleaning, analysis, modeling, and communication of findings.
+
 ## What I Learned
-- Strengthened practical data analysis skills from raw data cleaning through interpretation.
-- Learned to communicate findings clearly using notebooks, visualizations, and final project narratives.
-- Improved repeatable experiment structure across multiple labs.
+
+- Practical data analysis from raw cleaning through interpretation  
+- Communicating findings with notebooks, visualizations, and project narratives  
+- Repeatable experiment structure across multiple labs  
 
 ## Skills Applied
-- Python data stack workflows (`pandas`, notebook analysis, plotting).
-- Exploratory data analysis, feature exploration, and result interpretation.
-- Project organization across labs, notes, and a cumulative final project.
+
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white" alt="pandas" />
+  <img src="https://img.shields.io/badge/EDA-0ea5e9?style=flat-square" alt="EDA" />
+  <img src="https://img.shields.io/badge/ML-FF6F00?style=flat-square&logo=scikitlearn&logoColor=white" alt="ML" />
+</p>
+
+- Python data stack workflows (`pandas`, notebooks, plotting)  
+- Exploratory analysis, feature exploration, and result interpretation  
+- Project organization across labs, notes, and a final project  
 
 ## What This Folder Contains
-- `Final_Project/`: end-to-end project artifacts and final deliverables.
-- `Notes/`: class notes and supporting references.
-- `lab1/` to `lab6/`: lab exercises covering progressive data science concepts.
 
-## Folder Organization
-- `Final_Project/`
-- `Notes/`
-- `lab1/`
-- `lab2/`
-- `lab3/`
-- `lab4/`
-- `lab5/`
-- `lab6/`
+| Path | Description |
+|------|-------------|
+| `Final_Project/` | End-to-end project artifacts and final deliverables |
+| `Notes/` | Class notes and supporting references |
+| `lab1/` – `lab6/` | Progressive data science lab exercises |
 
 ## Key Work To Present
-- `Final_Project`
-- `Notes`
-- `lab1`
-- `lab2`
-- `lab3`
-- `lab4`
-- `lab5`
-- `lab6`
+
+- `Final_Project` · `Notes` · `lab1`–`lab6`
 
 ## Setup and Run Notes
-- Use Python 3.10+ and create a local virtual environment before running notebooks/scripts.
-- Keep large datasets/media in their categorized folders to preserve clean navigation.
+
+- Use Python 3.10+ and a local virtual environment before running notebooks/scripts  
+- Keep large datasets/media in categorized folders for clean navigation  
 
 ## Architecture
-- System/workflow diagram: [`docs/architecture.md`](docs/architecture.md)
-- The diagram shows how this class folder flows from inputs (course prompts/data) to implementation and outputs.
+
+System/workflow diagram: [`docs/architecture.md`](docs/architecture.md)
 
 ## Conventions
-- Keep new work in semantic folders (`assignments`, `labs`, `projects`, `datasets`, `reports`, etc.).
-- Avoid adding loose files at the class root unless they are index docs (`README.md`) or high-level metadata.
+
+- Keep new work in semantic folders (`assignments`, `labs`, `projects`, etc.)  
+- Avoid loose files at the class root unless they are index docs or high-level metadata  
+
+---
+
+<div align="center">
+
+[← Back to portfolio](../README.md)
+
+</div>
