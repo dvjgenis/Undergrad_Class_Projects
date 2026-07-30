@@ -2,16 +2,21 @@
 
 # Undergrad Class Projects Portfolio
 
+### [dulfvincent.com](https://www.dulfvincent.com/) — personal website & portfolio
+
+[![Website](https://img.shields.io/badge/🌐_Personal_Website-dulfvincent.com-0ea5e9?style=for-the-badge)](https://www.dulfvincent.com/)
 [![License](https://img.shields.io/badge/license-See%20LICENSE-blue?style=for-the-badge)](./LICENSE)
-[![Courses](https://img.shields.io/badge/courses-9-0ea5e9?style=for-the-badge)](#academic-tracks)
+[![Courses](https://img.shields.io/badge/courses-9-64748b?style=for-the-badge)](#academic-tracks)
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)](#academic-tracks)
 [![AI%20%2F%20ML](https://img.shields.io/badge/AI%20%2F%20ML-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](#academic-tracks)
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&pause=1200&color=0EA5E9&center=true&vCenter=true&width=620&lines=CS+%E2%80%A2+Info+Science+%E2%80%A2+Math+%E2%80%A2+Statistics;From+fundamentals+to+AI+prototyping)](https://github.com/dvjgenis/Undergrad_Class_Projects)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&pause=1200&color=0EA5E9&center=true&vCenter=true&width=620&lines=CS+%E2%80%A2+Info+Science+%E2%80%A2+Math+%E2%80%A2+Statistics;From+fundamentals+to+AI+prototyping)](https://www.dulfvincent.com/)
 
 Coursework portfolio spanning computer science, information science, mathematics, and statistics.  
 Documents progression from foundational programming and quantitative reasoning to applied machine learning, data systems, visualization, and AI prototyping.
+
+For the full personal site — background, initiatives, and resume — visit **[www.dulfvincent.com](https://www.dulfvincent.com/)**.
 
 </div>
 
@@ -83,6 +88,7 @@ Then open any class-level README to review work samples, skills applied, and pro
 
 <div align="center">
 
+**Personal website:** [www.dulfvincent.com](https://www.dulfvincent.com/)  
 **License** · See [`LICENSE`](./LICENSE)
 
 </div>

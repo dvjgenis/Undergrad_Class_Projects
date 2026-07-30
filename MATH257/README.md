@@ -5,6 +5,7 @@
 [![Course](https://img.shields.io/badge/MATH257-Linear%20Algebra-6366f1?style=for-the-badge)](../README.md)
 [![Focus](https://img.shields.io/badge/focus-foundations-0ea5e9?style=for-the-badge)](#overview)
 [![Portfolio](https://img.shields.io/badge/←_Portfolio-111827?style=for-the-badge)](../README.md)
+[![Website](https://img.shields.io/badge/%F0%9F%8C%90_dulfvincent.com-0ea5e9?style=for-the-badge)](https://www.dulfvincent.com/)
 
 Mathematics classwork organized by class session folders.
 
@@ -63,6 +64,6 @@ System/workflow diagram: [`docs/architecture.md`](docs/architecture.md)
 
 <div align="center">
 
-[← Back to portfolio](../README.md)
+[← Repo portfolio](../README.md) · [Personal website](https://www.dulfvincent.com/)
 
 </div>

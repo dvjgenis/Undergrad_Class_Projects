@@ -6,6 +6,7 @@
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![ML](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![Portfolio](https://img.shields.io/badge/←_Portfolio-111827?style=for-the-badge)](../README.md)
+[![Website](https://img.shields.io/badge/%F0%9F%8C%90_dulfvincent.com-0ea5e9?style=for-the-badge)](https://www.dulfvincent.com/)
 
 Machine learning and AI coursework with assignments, notebooks, and reports.
 
@@ -71,6 +72,6 @@ System/workflow diagram: [`docs/architecture.md`](docs/architecture.md)
 
 <div align="center">
 
-[← Back to portfolio](../README.md)
+[← Repo portfolio](../README.md) · [Personal website](https://www.dulfvincent.com/)
 
 </div>

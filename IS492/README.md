@@ -7,6 +7,7 @@
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![LLMs](https://img.shields.io/badge/LLMs%20%2F%20Agents-10A37F?style=for-the-badge&logo=openai&logoColor=white)](#overview)
 [![Portfolio](https://img.shields.io/badge/←_Portfolio-111827?style=for-the-badge)](../README.md)
+[![Website](https://img.shields.io/badge/%F0%9F%8C%90_dulfvincent.com-0ea5e9?style=for-the-badge)](https://www.dulfvincent.com/)
 
 Capstone and advanced AI projects, labs, prototypes, and research materials.
 
@@ -70,6 +71,6 @@ System/workflow diagram: [`docs/architecture.md`](docs/architecture.md)
 
 <div align="center">
 
-[← Back to portfolio](../README.md)
+[← Repo portfolio](../README.md) · [Personal website](https://www.dulfvincent.com/)
 
 </div>

@@ -5,6 +5,7 @@
 [![Course](https://img.shields.io/badge/CS277-Systems-64748b?style=for-the-badge)](../README.md)
 [![Focus](https://img.shields.io/badge/focus-fundamentals-0ea5e9?style=for-the-badge)](#overview)
 [![Portfolio](https://img.shields.io/badge/←_Portfolio-111827?style=for-the-badge)](../README.md)
+[![Website](https://img.shields.io/badge/%F0%9F%8C%90_dulfvincent.com-0ea5e9?style=for-the-badge)](https://www.dulfvincent.com/)
 
 Systems and programming coursework artifacts and milestone submissions.
 
@@ -63,6 +64,6 @@ System/workflow diagram: [`docs/architecture.md`](docs/architecture.md)
 
 <div align="center">
 
-[← Back to portfolio](../README.md)
+[← Repo portfolio](../README.md) · [Personal website](https://www.dulfvincent.com/)
 
 </div>

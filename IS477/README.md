@@ -6,6 +6,7 @@
 [![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)](#overview)
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Portfolio](https://img.shields.io/badge/←_Portfolio-111827?style=for-the-badge)](../README.md)
+[![Website](https://img.shields.io/badge/%F0%9F%8C%90_dulfvincent.com-0ea5e9?style=for-the-badge)](https://www.dulfvincent.com/)
 
 Database and application coursework with assignments and labs.
 
@@ -67,6 +68,6 @@ System/workflow diagram: [`docs/architecture.md`](docs/architecture.md)
 
 <div align="center">
 
-[← Back to portfolio](../README.md)
+[← Repo portfolio](../README.md) · [Personal website](https://www.dulfvincent.com/)
 
 </div>
