@@ -9,7 +9,9 @@
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![AI%20%2F%20ML](https://img.shields.io/badge/AI%20%2F%20ML-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](#academic-tracks)
 
-**TL;DR — One sentence:** A curated portfolio of University of Illinois coursework across CS, information science, math, and statistics — organized so anyone can see *what I learned*, *what I built*, and *how the skills stack from fundamentals to AI / fullstack capstone work*.
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&pause=1200&color=0EA5E9&center=true&vCenter=true&width=620&lines=CS+%E2%80%A2+Info+Science+%E2%80%A2+Math+%E2%80%A2+Statistics;From+fundamentals+to+AI+prototyping)](https://www.dulfvincent.com/)
+
+**TL;DR — One sentence:** A curated portfolio of University of Illinois coursework by Dulf Vincent Genis across CS, information science, math, and statistics — organized so anyone can see *what he learned*, *what he built*, and *how the skills stack from fundamentals to AI / fullstack capstone work*.
 
 **Why it matters:** Transcripts list course codes. This repo shows the actual work — labs, projects, models, pipelines, and capstone builds — with clear navigation and documentation for each class.
 
