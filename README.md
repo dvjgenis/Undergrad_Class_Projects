@@ -1,88 +1,92 @@
 <div align="center">
 
-# Undergrad Class Projects Portfolio
+# Undergrad Class Projects
 
 ### [dulfvincent.com](https://www.dulfvincent.com/) — personal website & portfolio
 
-[![Website](https://img.shields.io/badge/🌐_Personal_Website-dulfvincent.com-0ea5e9?style=for-the-badge)](https://www.dulfvincent.com/)
-[![License](https://img.shields.io/badge/license-See%20LICENSE-blue?style=for-the-badge)](./LICENSE)
+[![Website](https://img.shields.io/badge/Personal_Website-dulfvincent.com-0ea5e9?style=for-the-badge)](https://www.dulfvincent.com/)
 [![Courses](https://img.shields.io/badge/courses-9-64748b?style=for-the-badge)](#academic-tracks)
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)](#academic-tracks)
 [![AI%20%2F%20ML](https://img.shields.io/badge/AI%20%2F%20ML-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](#academic-tracks)
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&pause=1200&color=0EA5E9&center=true&vCenter=true&width=620&lines=CS+%E2%80%A2+Info+Science+%E2%80%A2+Math+%E2%80%A2+Statistics;From+fundamentals+to+AI+prototyping)](https://www.dulfvincent.com/)
+**TL;DR — One sentence:** A curated portfolio of University of Illinois coursework across CS, information science, math, and statistics — organized so anyone can see *what I learned*, *what I built*, and *how the skills stack from fundamentals to AI / fullstack capstone work*.
 
-Coursework portfolio spanning computer science, information science, mathematics, and statistics.  
-Documents progression from foundational programming and quantitative reasoning to applied machine learning, data systems, visualization, and AI prototyping.
+**Why it matters:** Transcripts list course codes. This repo shows the actual work — labs, projects, models, pipelines, and capstone builds — with clear navigation and documentation for each class.
 
-For the full personal site — background, initiatives, and resume — visit **[www.dulfvincent.com](https://www.dulfvincent.com/)**.
+For background, initiatives, and resume, visit **[www.dulfvincent.com](https://www.dulfvincent.com/)**.
 
 </div>
 
 ---
 
-## Portfolio Highlights
+## What this is (in plain English)
+
+Nine class folders. Each one is a **standalone portfolio unit**: README for context, organized artifacts (assignments, labs, projects, reports), and enough structure that a reviewer can browse without hunting.
+
+The arc is intentional:
+
+**Foundations** (systems, linear algebra, stats) → **data & visualization** → **ML / AI** → **capstone fullstack & agents**
+
+---
+
+## Why it's interesting / significant
 
 | | |
 |---|---|
-| **Breadth of work** | Labs, homework, mini-projects, capstones, and independent extensions |
-| **Applied outcomes** | Each class folder captures learning, skills practiced, and concrete artifacts |
-| **Production habits** | Organized for reproducibility, documentation, and clear navigation |
+| **Breadth with a story** | Not a dump of PDFs — a progression you can follow course by course |
+| **Applied outcomes** | Concrete notebooks, apps, analyses, and prototypes — not only lecture notes |
+| **Reviewer-friendly** | Every class has its own README; folders grouped by purpose |
+| **Capstone signal** | IS492 spans LLMs, agents, and end-to-end product delivery |
 
-## Academic Tracks
+---
 
-| Class | Focus | Skills | Docs |
-|:-----:|-------|--------|:----:|
-| <img src="https://img.shields.io/badge/CS277-Systems-64748b?style=flat-square" alt="CS277" /> | Systems & programming fundamentals | Algorithms, implementation discipline, debugging | [README](./CS277/README.md) |
-| <img src="https://img.shields.io/badge/CS307-Data%20Science-0ea5e9?style=flat-square" alt="CS307" /> | Data science & machine learning | Modeling, evaluation, feature analysis | [README](./CS307/README.md) |
-| <img src="https://img.shields.io/badge/IS308-Data%20Analysis-14b8a6?style=flat-square" alt="IS308" /> | Applied data analysis | Cleaning, EDA, survey/public data | [README](./IS308/README.md) |
-| <img src="https://img.shields.io/badge/IS445-Visualization-8b5cf6?style=flat-square" alt="IS445" /> | Data visualization | Visual storytelling, chart design | [README](./IS445/README.md) |
-| <img src="https://img.shields.io/badge/IS467-AI%20%2F%20ML-f59e0b?style=flat-square" alt="IS467" /> | AI/ML systems | Modeling workflows, experimentation | [README](./IS467/README.md) |
-| <img src="https://img.shields.io/badge/IS477-Data%20Mgmt-22c55e?style=flat-square" alt="IS477" /> | Data management & reproducibility | SQL, schemas, pipelines | [README](./IS477/README.md) |
-| <img src="https://img.shields.io/badge/IS492-Capstone-ef4444?style=flat-square" alt="IS492" /> | Capstone AI & fullstack | LLMs, agents, end-to-end delivery | [README](./IS492/README.md) |
-| <img src="https://img.shields.io/badge/MATH257-Linear%20Algebra-6366f1?style=flat-square" alt="MATH257" /> | Mathematical foundations | Linear algebra, structured problem solving | [README](./MATH257/README.md) |
-| <img src="https://img.shields.io/badge/STAT207-Statistics-ec4899?style=flat-square" alt="STAT207" /> | Statistical analysis | Inference, modeling, hypothesis testing | [README](./STAT207/README.md) |
+## Academic tracks
 
-## Core Competencies
+| Class | Focus | What you'll find | Docs |
+|:-----:|-------|------------------|:----:|
+| **CS277** | Systems & programming | Machine problems, implementation discipline | [README](./CS277/README.md) |
+| **CS307** | Data science & ML | Modeling, evaluation, feature work | [README](./CS307/README.md) |
+| **IS308** | Applied data analysis | Cleaning, EDA, public/survey data | [README](./IS308/README.md) |
+| **IS445** | Data visualization | Visual storytelling and chart craft | [README](./IS445/README.md) |
+| **IS467** | AI / ML systems | Modeling workflows and experiments | [README](./IS467/README.md) |
+| **IS477** | Data management | SQL, schemas, reproducible pipelines | [README](./IS477/README.md) |
+| **IS492** | Capstone AI & fullstack | LLMs, agents, end-to-end apps | [README](./IS492/README.md) |
+| **MATH257** | Linear algebra | Structured quantitative foundations | [README](./MATH257/README.md) |
+| **STAT207** | Statistics | Inference, modeling, hypothesis testing | [README](./STAT207/README.md) |
 
-<p>
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white" alt="Jupyter" />
-  <img src="https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white" alt="SQL" />
-  <img src="https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white" alt="pandas" />
-  <img src="https://img.shields.io/badge/Machine%20Learning-FF6F00?style=flat-square&logo=scikitlearn&logoColor=white" alt="ML" />
-  <img src="https://img.shields.io/badge/LLMs%20%2F%20Agents-10A37F?style=flat-square&logo=openai&logoColor=white" alt="LLMs" />
-  <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js" />
-  <img src="https://img.shields.io/badge/Data%20Viz-8b5cf6?style=flat-square&logo=plotly&logoColor=white" alt="Data Viz" />
-</p>
+---
+
+## Core competencies
 
 - **Python & notebooks** — analysis, modeling, scripting, reproducible experiments  
-- **Data & statistics** — exploratory analysis, inference, evidence-based interpretation  
-- **Data systems** — SQL, schema design, structured data workflows  
-- **Machine learning & AI** — model experimentation, evaluation, LLM-enabled prototyping  
-- **Technical communication** — README documentation, reports, architecture notes  
+- **Data & statistics** — EDA, inference, evidence-based interpretation  
+- **Data systems** — SQL, schemas, structured workflows  
+- **ML & AI** — model experiments, evaluation, LLM-enabled prototyping  
+- **Fullstack & agents** — Node/Python services, product delivery, agent workflows  
+- **Communication** — READMEs, reports, architecture notes  
 
-## How To Navigate
+---
+
+## How to navigate
 
 1. Open any class `README.md` for learning outcomes and artifacts  
-2. Check each class `docs/architecture.md` for folder structure and workflow context  
-3. Explore by purpose: `assignments`, `labs`, `projects`, `datasets`, `reports`, `archive`  
-
-## Repository Standards
-
-- Every class folder is a standalone portfolio unit with its own documentation  
-- Artifacts are grouped by purpose so code, data, reports, and media stay easy to review  
-- Dependencies and runtime setup live near the projects that use them  
-
-## Getting Started
+2. Check that class's `docs/` (when present) for structure and workflow context  
+3. Browse by purpose: `assignments`, `labs`, `projects`, `datasets`, `reports`, `archive`  
 
 ```bash
 git clone https://github.com/dvjgenis/Undergrad_Class_Projects.git
 cd Undergrad_Class_Projects
 ```
 
-Then open any class-level README to review work samples, skills applied, and project context.
+Then pick a class folder and start with its README.
+
+---
+
+## Repository standards
+
+- Each class folder stands alone as a portfolio unit  
+- Artifacts are grouped so code, data, reports, and media stay easy to review  
+- Dependencies and setup notes live near the projects that need them  
 
 ---
 
