@@ -1,5 +1,9 @@
 <div align="center">
 
+<img src="docs/banner.svg" alt="Undergrad Class Projects — CS, information science, math, and statistics at Illinois" width="100%" />
+
+<br/>
+
 # Undergrad Class Projects
 
 ### [dulfvincent.com](https://www.dulfvincent.com/) — personal website & portfolio
